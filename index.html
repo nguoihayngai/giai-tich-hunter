@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#6366f1" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Giải Tích Hunter - Chọn Bài Giải Đúng</title>
+
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="./icon.svg" />
+  <link rel="apple-touch-icon" href="./icon.svg" />
+
+  <!-- KaTeX for fast & crisp Math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Status Header -->
+    <header class="top-bar">
+      <div class="brand">
+        <img src="./icon.svg" alt="Logo" class="brand-logo" />
+        <div>
+          <h1 class="brand-title">Giải Tích Hunter</h1>
+          <p class="brand-subtitle" id="user-rank-label">Tân binh Giải tích</p>
+        </div>
+      </div>
+
+      <div class="stats-pills">
+        <div class="stat-pill streak-pill" title="Chuỗi ngày học liên tiếp">
+          <span class="pill-icon">🔥</span>
+          <span id="streak-count">0</span>
+        </div>
+        <div class="stat-pill xp-pill" title="Điểm kinh nghiệm (XP)">
+          <span class="pill-icon">⚡</span>
+          <span id="xp-count">0</span>
+          <span class="xp-unit">XP</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Views -->
+    <main class="main-content">
+      <!-- ==================== VIEW 1: LUYỆN TẬP ==================== -->
+      <section id="view-practice" class="view-section active">
+        <!-- Topic & Filter Bar -->
+        <div class="filter-bar">
+          <div class="topic-chips" id="topic-chips-container">
+            <!-- Rendered by JS -->
+          </div>
+          <div class="sub-filters">
+            <select id="difficulty-select" class="select-control" aria-label="Độ khó">
+              <option value="all">Mọi độ khó</option>
+              <option value="Dễ">🌱 Dễ</option>
+              <option value="Trung bình">⚔️ Trung bình</option>
+              <option value="Khó">🔥 Khó</option>
+            </select>
+            <button id="btn-QuickAI" class="btn-outline-sm" title="Sinh thêm câu hỏi bằng AI">
+              ✨ +Câu hỏi AI
+            </button>
+          </div>
+        </div>
+
+        <!-- Review Mode Banner (hidden unless reviewing mistakes) -->
+        <div id="review-mode-banner" class="review-banner hidden">
+          <div>
+            <strong>🎯 Chế độ Ôn tập lỗi sai</strong>
+            <span id="review-banner-text">Đang luyện lại các câu bạn từng chọn nhầm</span>
+          </div>
+          <button id="btn-exit-review" class="btn-text-sm">Thoát</button>
+        </div>
+
+        <!-- Question Card -->
+        <div id="question-container" class="question-card">
+          <div class="question-meta">
+            <span id="q-topic-badge" class="badge badge-topic">Chủ đề</span>
+            <span id="q-diff-badge" class="badge badge-diff">Độ khó</span>
+            <span id="q-progress-text" class="q-counter">Câu 1/8</span>
+          </div>
+
+          <h2 id="q-title" class="question-title">Tiêu đề câu hỏi</h2>
+          <div id="q-problem" class="question-problem math-content"></div>
+
+          <!-- Hint Toggle -->
+          <div class="hint-row">
+            <button id="btn-toggle-hint" class="btn-hint">
+              💡 Xem gợi ý cho người lười
+            </button>
+            <div id="hint-box" class="hint-box hidden math-content"></div>
+          </div>
+        </div>
+
+        <!-- Instruction Banner -->
+        <div class="instruction-bar">
+          <span>👇 Dưới đây là <strong>3 lời giải chi tiết</strong> (chỉ có <strong>1 bài giải đúng</strong>, 2 bài còn lại cài bẫy). Hãy chạm vào bài giải đúng!</span>
+        </div>
+
+        <!-- Solutions List -->
+        <div id="solutions-list" class="solutions-grid">
+          <!-- Rendered by JS -->
+        </div>
+
+        <!-- Result & Key Takeaway Panel (Appears after selecting a solution) -->
+        <div id="feedback-panel" class="feedback-panel hidden">
+          <div id="feedback-header" class="feedback-header"></div>
+          <div class="takeaway-card">
+            <div class="takeaway-title">🧠 Mẹo 1 câu nhớ luôn (Khỏi học vẹt):</div>
+            <div id="feedback-takeaway" class="takeaway-body math-content"></div>
+          </div>
+          <div class="feedback-actions">
+            <button id="btn-next-question" class="btn-primary btn-full">
+              Câu tiếp theo ➡️
+            </button>
+          </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="question-nav-footer">
+          <button id="btn-prev-q" class="btn-secondary">⬅️ Câu trước</button>
+          <button id="btn-random-q" class="btn-secondary">🎲 Ngẫu nhiên</button>
+          <button id="btn-skip-q" class="btn-secondary">Câu sau ➡️</button>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 2: SỔ TAY LỖI SAI ==================== -->
+      <section id="view-mistakes" class="view-section">
+        <div class="section-header-card">
+          <h2>📓 Sổ Tay Bắt Bẫy & Lỗi Hay Mắc</h2>
+          <p>Học Giải tích nhanh nhất là biết mình hay sập bẫy ở bước nào để lần sau né ngay!</p>
+        </div>
+
+        <div class="mistakes-summary-grid">
+          <div class="stat-box">
+            <div class="stat-box-num" id="stat-solved-total">0</div>
+            <div class="stat-box-label">Câu đã vượt qua</div>
+          </div>
+          <div class="stat-box stat-box-warn">
+            <div class="stat-box-num" id="stat-mistakes-count">0</div>
+            <div class="stat-box-label">Câu cần ôn lại</div>
+          </div>
+          <div class="stat-box stat-box-success">
+            <div class="stat-box-num" id="stat-accuracy">0%</div>
+            <div class="stat-box-label">Tỷ lệ nhìn ra bẫy</div>
+          </div>
+        </div>
+
+        <div class="card-block">
+          <div class="card-block-header">
+            <h3>⚠️ Các loại bẫy bạn từng mắc phải</h3>
+          </div>
+          <div id="error-categories-list" class="error-tags-list">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <div class="card-block">
+          <div class="card-block-header">
+            <h3>🔄 Danh sách câu hỏi cần phục thù</h3>
+            <button id="btn-practice-all-mistakes" class="btn-primary-sm">
+              Ôn tất cả câu sai
+            </button>
+          </div>
+          <div id="mistake-questions-list" class="mistake-items-list">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 3: AI TẠO ĐỀ (BYOK) ==================== -->
+      <section id="view-ai" class="view-section">
+        <div class="section-header-card ai-header-card">
+          <h2>🤖 Phòng Thí Nghiệm AI (Tự Sinh Bài Giải)</h2>
+          <p>Cung cấp Gemini API Key cá nhân của bạn để AI tự động chế đề mới hoặc giải bài tập của bạn thành 3 lời giải (1 đúng, 2 bẫy) để bạn luyện phản xạ!</p>
+        </div>
+
+        <!-- API Key Configuration Card -->
+        <div class="card-block">
+          <div class="card-block-header">
+            <h3>🔑 Cấu hình Gemini API Key (Lưu trên máy bạn)</h3>
+            <span id="api-key-status" class="badge badge-warn">Chưa có Key</span>
+          </div>
+          <p class="helper-text">
+            API Key chỉ được lưu trực tiếp trong trình duyệt của điện thoại/máy tính này (<code>localStorage</code>), tuyệt đối không gửi đi đâu khác ngoài máy chủ Google Gemini. Bạn có thể lấy key miễn phí tại <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener">Google AI Studio</a>.
+          </p>
+          <div class="form-group">
+            <label for="input-api-key">Gemini API Key:</label>
+            <div class="input-with-btn">
+              <input type="password" id="input-api-key" class="input-control" placeholder="Dán mã AIzaSy... của bạn vào đây" autocomplete="off" />
+              <button id="btn-save-key" class="btn-primary-sm">Lưu Key</button>
+            </div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="select-ai-model">Mô hình Gemini:</label>
+              <select id="select-ai-model" class="select-control full-width">
+                <option value="gemini-2.5-flash">Gemini 2.5 Flash (Nhanh & Chuẩn - Khuyên dùng)</option>
+                <option value="gemini-2.0-flash">Gemini 2.0 Flash</option>
+                <option value="gemini-2.5-pro">Gemini 2.5 Pro (Toán nâng cao)</option>
+              </select>
+            </div>
+            <div class="form-group btn-align-bottom">
+              <button id="btn-clear-key" class="btn-outline-danger">Xóa Key khỏi máy</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mode Switcher: Auto Generate vs Custom Problem -->
+        <div class="card-block">
+          <div class="tabs-pill">
+            <button id="tab-ai-auto" class="tab-pill-btn active">🎲 AI Tự Nghĩ Đề Mới</button>
+            <button id="tab-ai-custom" class="tab-pill-btn">✍️ Nhập Bài Tập Của Bạn</button>
+          </div>
+
+          <!-- Sub-mode 1: Auto Generate -->
+          <div id="ai-mode-auto" class="ai-mode-pane">
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="ai-topic-select">Chủ đề muốn luyện:</label>
+                <select id="ai-topic-select" class="select-control full-width">
+                  <option value="limits">🔍 Giới hạn & Liên tục</option>
+                  <option value="derivatives">📈 Đạo hàm & Vi phân</option>
+                  <option value="integrals">∫ Nguyên hàm & Tích phân</option>
+                  <option value="multivariable_series">🌐 Chuỗi & Hàm nhiều biến</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="ai-diff-select">Độ khó:</label>
+                <select id="ai-diff-select" class="select-control full-width">
+                  <option value="Dễ">🌱 Dễ (Nắm công thức cơ bản)</option>
+                  <option value="Trung bình" selected>⚔️ Trung bình (Hay ra thi)</option>
+                  <option value="Khó">🔥 Khó (Bẫy vận dụng cao)</option>
+                </select>
+              </div>
+            </div>
+            <button id="btn-generate-auto" class="btn-primary btn-full">
+              ✨ Tạo câu hỏi + 3 lời giải ngay
+            </button>
+          </div>
+
+          <!-- Sub-mode 2: Custom Problem Input -->
+          <div id="ai-mode-custom" class="ai-mode-pane hidden">
+            <div class="form-group">
+              <label for="ai-custom-input">Nhập đề bài Giải tích bạn đang lười giải:</label>
+              <textarea id="ai-custom-input" rows="3" class="input-control" placeholder="Ví dụ: Tính tích phân từ 0 đến pi/2 của x*sin(x) dx, hoặc Tìm cực trị của hàm f(x) = x^3 - 3x + 2"></textarea>
+            </div>
+            <button id="btn-generate-custom" class="btn-primary btn-full">
+              🧠 Giải thành 3 bài (1 đúng, 2 bẫy) để tôi chọn!
+            </button>
+          </div>
+
+          <div id="ai-status-msg" class="ai-status-msg hidden"></div>
+        </div>
+
+        <!-- Saved AI Questions List -->
+        <div class="card-block">
+          <div class="card-block-header">
+            <h3>📚 Kho câu hỏi AI bạn đã tạo (<span id="ai-saved-count">0</span>)</h3>
+          </div>
+          <div id="ai-saved-list" class="mistake-items-list">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 4: HỒ SƠ & CÀI APP ANDROID ==================== -->
+      <section id="view-profile" class="view-section">
+        <div class="section-header-card">
+          <h2>📱 Cài Đặt Lên Điện Thoại Android & Hồ Sơ</h2>
+          <p>Ứng dụng được thiết kế chuẩn PWA tối ưu cho Android — không cần tải qua kho ứng dụng rườm rà.</p>
+        </div>
+
+        <!-- Supabase Cloud Database & Sync Card -->
+        <div class="card-block">
+          <div class="card-block-header">
+            <h3>☁️ Cơ Sở Dữ Liệu Supabase & Đồng Bộ</h3>
+            <span id="supabase-status-badge" class="badge badge-warn">Chế độ Offline</span>
+          </div>
+          <p class="helper-text">
+            Kết nối với <strong>Supabase PostgreSQL</strong> (miễn phí) để lưu kho câu hỏi AI chung và tự động đồng bộ điểm XP, chuỗi Streak, sổ lỗi sai giữa Máy tính & Điện thoại Android.
+          </p>
+          <div class="form-group">
+            <label for="input-sb-url">Supabase Project URL:</label>
+            <input type="url" id="input-sb-url" class="input-control full-width" placeholder="https://xxxxxxxxxxxx.supabase.co" autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label for="input-sb-key">Supabase Anon Public Key:</label>
+            <input type="password" id="input-sb-key" class="input-control full-width" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label for="input-sync-code">Mã đồng bộ cá nhân (Đặt tên bất kỳ, nhập giống nhau trên Web & Điện thoại):</label>
+            <input type="text" id="input-sync-code" class="input-control full-width" placeholder="Ví dụ: nguoihayngai" autocomplete="off" />
+          </div>
+          <div class="form-row-2" style="margin-top: 10px;">
+            <button id="btn-save-supabase" class="btn-primary">
+              💾 Lưu & Đồng bộ ngay
+            </button>
+            <button id="btn-seed-supabase" class="btn-outline-sm">
+              📤 Nạp 40 câu gốc lên DB
+            </button>
+          </div>
+          <div id="supabase-msg-box" class="ai-status-msg hidden"></div>
+        </div>
+
+        <!-- PWA Install Card -->
+        <div class="card-block install-card">
+          <div class="card-block-header">
+            <h3>📲 Cài đặt như App gốc trên Android</h3>
+          </div>
+          <p class="helper-text">
+            Khi cài lên màn hình chính Android, ứng dụng sẽ chạy toàn màn hình (không có thanh địa chỉ trình duyệt), mượt mà và học được cả khi mất mạng!
+          </p>
+          <button id="btn-install-pwa" class="btn-primary btn-full hidden">
+            📥 Cài đặt ứng dụng ngay
+          </button>
+          <div class="android-steps">
+            <div class="step-item">
+              <span class="step-badge">1</span>
+              <div>Mở trang web này bằng trình duyệt <strong>Chrome</strong> trên điện thoại Android (qua Wi-Fi nội bộ hoặc link web).</div>
+            </div>
+            <div class="step-item">
+              <span class="step-badge">2</span>
+              <div>Nhấn vào biểu tượng <strong>3 chấm dọc (⋮)</strong> ở góc trên bên phải Chrome và chọn <strong>"Thêm vào màn hình chính"</strong> (hoặc <em>Cài đặt ứng dụng</em>).</div>
+            </div>
+            <div class="step-item">
+              <span class="step-badge">3</span>
+              <div>Mở icon <strong>GiảiTíchHunter</strong> ngoài màn hình chính như một app Android thực thụ!</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Achievements & Level Progression -->
+        <div class="card-block">
+          <div class="card-block-header">
+            <h3>🏆 Cấp độ & Huy hiệu săn bẫy</h3>
+          </div>
+          <div id="badges-grid" class="badges-grid">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Reset Data -->
+        <div class="card-block">
+          <div class="card-block-header">
+            <h3>⚙️ Quản lý dữ liệu học tập</h3>
+          </div>
+          <p class="helper-text">Toàn bộ tiến độ, chuỗi ngày học (Streak) và câu hỏi AI đều được lưu an toàn trên thiết bị của bạn.</p>
+          <button id="btn-reset-progress" class="btn-outline-danger">
+            🗑️ Đặt lại tiến độ học tập từ đầu
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Navigation Bar (Optimized for Android Thumb Zone) -->
+    <nav class="bottom-nav" aria-label="Điều hướng chính">
+      <button class="nav-item active" data-target="view-practice">
+        <span class="nav-icon">🎯</span>
+        <span class="nav-label">Săn Bài Đúng</span>
+      </button>
+      <button class="nav-item" data-target="view-mistakes">
+        <span class="nav-icon">📓</span>
+        <span class="nav-label">Sổ Lỗi Sai</span>
+        <span id="nav-mistake-badge" class="nav-badge hidden">0</span>
+      </button>
+      <button class="nav-item" data-target="view-ai">
+        <span class="nav-icon">🤖</span>
+        <span class="nav-label">AI Tạo Đề</span>
+      </button>
+      <button class="nav-item" data-target="view-profile">
+        <span class="nav-icon">📱</span>
+        <span class="nav-label">App & Hồ Sơ</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="./questions.js"></script>
+  <script src="./supabase-client.js"></script>
+  <script src="./ai-generator.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
