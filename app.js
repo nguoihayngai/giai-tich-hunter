@@ -791,7 +791,7 @@
 
         btnSeedSb.disabled = true;
         sbMsgBox.classList.remove('hidden');
-        sbMsgBox.textContent = '⏳ Đang đẩy 40 câu hỏi Giải tích gốc lên bảng questions của Supabase...';
+        sbMsgBox.textContent = `⏳ Đang đẩy ${window.BUILTIN_QUESTIONS.length} câu hỏi Giải tích gốc lên bảng questions của Supabase...`;
         try {
           const count = await window.SupabaseCloud.seedQuestions(window.BUILTIN_QUESTIONS);
           sbMsgBox.textContent = `🎉 Thành công! Đã nạp ${count} câu hỏi Giải tích vào Database Supabase của bạn.`;

@@ -4,7 +4,13 @@ window.TOPICS = [
     id: 'all',
     name: 'Tất cả chủ đề',
     icon: '🎯',
-    desc: 'Tổng hợp 40 dạng bẫy Giải tích hay gặp nhất'
+    desc: 'Tổng hợp toàn bộ câu hỏi Giải tích và Phiếu bài tập'
+  },
+  {
+    id: 'buoi_2_bt',
+    name: 'Phiếu BT Buổi 2 (GT1)',
+    icon: '📝',
+    desc: 'Trọn bộ bài tập từ file Buoi 2 - BT.pdf (Bài 1 đến Bài 25)'
   },
   {
     id: 'limits',
@@ -1999,6 +2005,1387 @@ window.BUILTIN_QUESTIONS.push(
         isCorrect: false,
         wrongStep: 2,
         explanation: 'Sai công thức ở Bước 2! Bán kính hội tụ được tính bằng tỉ số $\\lim |\\frac{a_n}{a_{n+1}}|$ hoặc căn bậc $n$ ($\\frac{1}{\\lim \\sqrt[n]{|a_n|}}$), không phải bằng $\\lim a_n$.'
+      }
+    ]
+  }
+);
+
+// ============================================================================
+// TRỌN BỘ CÂU HỎI & LỜI GIẢI TỪ FILE "Buoi 2 - BT.pdf" (PHIẾU BÀI TẬP GIẢI TÍCH 1 - BUỔI 2)
+// ============================================================================
+window.BUILTIN_QUESTIONS.push(
+  {
+    id: 'b2-01',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Dễ',
+    title: 'Bài 1 (Buổi 2): Tìm số δ từ đồ thị của hàm số f',
+    problem: 'Sử dụng đồ thị đã cho của hàm $f$ (biết trên đồ thị tại $y = 1.2$ ứng với $x = 0.7$, tại $y = 1$ ứng với $x = 1$, tại $y = 0.8$ ứng với $x = 1.1$), hãy tìm một số $\\delta > 0$ sao cho:\n$$\\text{nếu } |x - 1| < \\delta \\quad \\text{thì} \\quad |f(x) - 1| < 0.2$$',
+    hint: 'Bất đẳng thức $|f(x) - 1| < 0.2$ tương đương $0.8 < f(x) < 1.2$. Từ đồ thị, điều này xảy ra khi $x \\in (0.7, 1.1)$. Khoảng đối xứng quanh $x=1$ phải chọn bán kính nhỏ hơn trong hai bên!',
+    errorCategory: 'Chọn bán kính lân cận δ lớn hơn thay vì nhỏ hơn khi khoảng quanh x_0 không đối xứng',
+    keyTakeaway: 'Khi khoảng (a, b) chứa x₀ không đối xứng, muốn |x - x₀| < δ nằm gọn trong (a, b) thì phải chọn δ = min(x₀ - a, b - x₀) (khoảng cách gần hơn)!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Ta có $|f(x) - 1| < 0.2 \\Leftrightarrow 0.8 < f(x) < 1.2$. Nhìn đồ thị hàm nghịch biến trên lân cận $x=1$, điều này ứng với $0.7 < x < 1.1$.',
+          'Bước 2: Khoảng cách từ tâm $x_0 = 1$ tới đầu mút trái $0.7$ là $1 - 0.7 = 0.3$; tới đầu mút phải $1.1$ là $1.1 - 1 = 0.1$.',
+          'Bước 3: Để khoảng đối xứng $(1 - \\delta, 1 + \\delta)$ nằm trọn trong $(0.7, 1.1)$, ta phải chọn $\\delta = \\min(0.3, 0.1) = 0.1$ (hoặc bất kỳ số dương nào $\\le 0.1$).'
+        ],
+        finalAnswer: '$\\delta = 0.1$ (hoặc $0 < \\delta \\le 0.1$)',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Khi $|x - 1| < 0.1 \\Rightarrow 0.9 < x < 1.1 \\subset (0.7, 1.1)$, đảm bảo chắc chắn $|f(x) - 1| < 0.2$.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Từ $|f(x) - 1| < 0.2 \\Leftrightarrow 0.8 < f(x) < 1.2$, nhìn đồ thị ta được $0.7 < x < 1.1$.',
+          'Bước 2: Khoảng cách từ $1$ đến $0.7$ là $0.3$ và từ $1$ đến $1.1$ là $0.1$.',
+          'Bước 3: Chọn giá trị lớn hơn là $\\delta = \\max(0.3, 0.1) = 0.3$.'
+        ],
+        finalAnswer: '$\\delta = 0.3$',
+        isCorrect: false,
+        wrongStep: 3,
+        explanation: 'Sai ở Bước 3! Nếu lấy $\\delta = 0.3$ thì khoảng $(0.7, 1.3)$ sẽ bị lố sang bên phải của $1.1$ (ví dụ tại $x = 1.2$, $|f(x)-1| > 0.2$). Phải lấy $\\min$ chứ không phải $\\max$!'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Trên trục hoành có hai mốc $0.7$ và $1.1$.',
+          'Bước 2: Tính độ dài đoạn thẳng nối hai mốc này là $1.1 - 0.7 = 0.4$.',
+          'Bước 3: Chia đôi độ dài đoạn này ta được $\\delta = \\frac{0.4}{2} = 0.2$.'
+        ],
+        finalAnswer: '$\\delta = 0.2$',
+        isCorrect: false,
+        wrongStep: 3,
+        explanation: 'Sai ở Bước 3! Tâm đang xét là $x_0 = 1$ không nằm chính giữa $0.7$ và $1.1$. Với $\\delta = 0.2$, $(0.8, 1.2)$ vẫn vượt quá $1.1$.'
+      }
+    ]
+  },
+  {
+    id: 'b2-02',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Trung bình',
+    title: 'Bài 2 (Buổi 2): Tìm số δ cho hàm f(x) = x² từ đồ thị',
+    problem: 'Sử dụng đồ thị đã cho của $f(x) = x^2$, hãy tìm một số $\\delta > 0$ sao cho:\n$$\\text{nếu } |x - 1| < \\delta \\quad \\text{thì} \\quad |x^2 - 1| < 0.5$$',
+    hint: 'Giải $0.5 < x^2 < 1.5$ với $x > 0$ để tìm hai dấu chấm hỏi $?$ trên trục hoành là $\\sqrt{0.5}$ và $\\sqrt{1.5}$, sau đó lấy khoảng cách nhỏ hơn tới $1$.',
+    errorCategory: 'Chọn nhầm khoảng cách lớn hơn khi tìm δ cho định nghĩa giới hạn',
+    keyTakeaway: 'Từ 0.5 < x² < 1.5 suy ra √0.5 < x < √1.5. Vì hàm x² dốc hơn ở bên phải x=1 nên nhánh phải hẹp hơn: δ = √1.5 - 1 ≈ 0.224!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Ta có $|x^2 - 1| < 0.5 \\Leftrightarrow 0.5 < x^2 < 1.5$. Với $x > 0$, lấy căn bậc hai các vế ta được $\\sqrt{0.5} < x < \\sqrt{1.5}$ (hai mốc $?$ trên trục $Ox$).',
+          'Bước 2: Khoảng cách từ $x = 1$ đến hai mút là $d_1 = 1 - \\sqrt{0.5} \\approx 1 - 0.707 = 0.293$ và $d_2 = \\sqrt{1.5} - 1 \\approx 1.2247 - 1 = 0.2247$.',
+          'Bước 3: Chọn $\\delta = \\min(1 - \\sqrt{0.5}, \\sqrt{1.5} - 1) = \\sqrt{1.5} - 1 \\approx 0.224$ (hoặc $\\delta = 0.22$).'
+        ],
+        finalAnswer: '$\\delta = \\sqrt{1.5} - 1 \\approx 0.224$',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Đồ thị $y=x^2$ đi lên ngày càng dốc nên khoảng cách bên phải $\\sqrt{1.5} - 1 \\approx 0.224$ nhỏ hơn bên trái $1 - \\sqrt{0.5} \\approx 0.293$.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Từ $0.5 < x^2 < 1.5 \\Rightarrow \\sqrt{0.5} < x < \\sqrt{1.5}$.',
+          'Bước 2: Tính khoảng cách bên trái $1 - \\sqrt{0.5} \\approx 0.293$ và bên phải $\\sqrt{1.5} - 1 \\approx 0.224$.',
+          'Bước 3: Chọn $\\delta = 1 - \\sqrt{0.5} \\approx 0.293$.'
+        ],
+        finalAnswer: '$\\delta = 1 - \\sqrt{0.5} \\approx 0.293$',
+        isCorrect: false,
+        wrongStep: 3,
+        explanation: 'Sai ở Bước 3! Nếu lấy $\\delta = 0.293$ thì khi $x = 1.28 \\in (1 - \\delta, 1 + \\delta)$, ta có $x^2 = 1.6384 > 1.5$, vi phạm điều kiện $|x^2 - 1| < 0.5$.'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Ta có $|x^2 - 1| < 0.5$.',
+          'Bước 2: Lấy căn bậc hai trực tiếp bất đẳng thức: $|x - 1| < \\sqrt{0.5}$.',
+          'Bước 3: Suy ra $\\delta = \\sqrt{0.5} \\approx 0.707$.'
+        ],
+        finalAnswer: '$\\delta = \\sqrt{0.5} \\approx 0.707$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai đại số ở Bước 2! $\\sqrt{|x^2 - 1|}$ KHÔNG bằng $|x - 1|$.'
+      }
+    ]
+  },
+  {
+    id: 'b2-03',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Trung bình',
+    title: 'Bài 3 (Buổi 2): Chứng minh lim(x→2) (1/x) = 1/2 bằng định nghĩa ε - δ',
+    problem: 'Chứng minh bằng định nghĩa $\\varepsilon - \\delta$ rằng:\n$$\\lim_{x \\to 2} \\frac{1}{x} = \\frac{1}{2}$$',
+    hint: 'Biến đổi $|\\frac{1}{x} - \\frac{1}{2}| = \\frac{|x - 2|}{2|x|}$. Để chặn mẫu số $2|x|$ từ dưới, trước tiên hãy giả sử $|x - 2| < 1 \\Rightarrow 1 < x < 3 \\Rightarrow 2|x| > 2$!',
+    errorCategory: 'Quên chặn biến x trong lân cận bán kính 1 trước khi chọn δ theo ε',
+    keyTakeaway: 'Khi chứng minh giới hạn phân thức bằng ε-δ, luôn giả sử trước |x - x₀| < 1 (hoặc một số nhỏ) để làm mất biến x ở mẫu số, rồi chọn δ = min(1, ...)!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Với mọi $\\varepsilon > 0$, ta cần tìm $\\delta > 0$ sao cho nếu $0 < |x - 2| < \\delta$ thì $\\left|\\frac{1}{x} - \\frac{1}{2}\\right| = \\frac{|x - 2|}{2|x|} < \\varepsilon$.',
+          'Bước 2: Trước hết, giả sử $|x - 2| < 1 \\Rightarrow 1 < x < 3 \\Rightarrow |x| > 1 \\Rightarrow \\frac{1}{2|x|} < \\frac{1}{2}$. Khi đó $\\frac{|x - 2|}{2|x|} < \\frac{|x - 2|}{2}$.',
+          'Bước 3: Chọn $\\delta = \\min(1, 2\\varepsilon)$. Khi đó nếu $0 < |x - 2| < \\delta$ thì $|x - 2| < 1$ và $|x - 2| < 2\\varepsilon$, suy ra $\\left|\\frac{1}{x} - \\frac{1}{2}\\right| < \\frac{2\\varepsilon}{2} = \\varepsilon$ (đpcm).'
+        ],
+        finalAnswer: 'Chọn $\\delta = \\min(1, 2\\varepsilon)$ (hoặc $\\frac{2\\varepsilon}{1+2\\varepsilon}$)',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Bước chặn phụ $|x - 2| < 1 \\Rightarrow |x| > 1$ giúp $\\delta = \\min(1, 2\\varepsilon)$ chỉ phụ thuộc vào $\\varepsilon$ mà không chứa biến $x$.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Ta có $\\left|\\frac{1}{x} - \\frac{1}{2}\\right| = \\frac{|x - 2|}{2|x|} < \\varepsilon$.',
+          'Bước 2: Nhân chéo $2|x|$ sang vế phải, ta được $|x - 2| < 2|x|\\varepsilon$.',
+          'Bước 3: Vậy ta chọn trực tiếp $\\delta = 2|x|\\varepsilon$ là hoàn tất chứng minh.'
+        ],
+        finalAnswer: 'Chọn $\\delta = 2|x|\\varepsilon$',
+        isCorrect: false,
+        wrongStep: 3,
+        explanation: 'Sai bản chất ở Bước 3! Số $\\delta$ phải là một hằng số chỉ phụ thuộc vào $\\varepsilon$ (và điểm $x_0 = 2$), TUYỆT ĐỐI không được chứa biến chạy $x$!'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Biến đổi $\\left|\\frac{1}{x} - \\frac{1}{2}\\right| = \\frac{1}{|x - 2|}$.',
+          'Bước 2: Cho $\\frac{1}{|x - 2|} < \\varepsilon \\Leftrightarrow |x - 2| > \\frac{1}{\\varepsilon}$.',
+          'Bước 3: Chọn $\\delta = \\frac{1}{\\varepsilon}$.'
+        ],
+        finalAnswer: 'Chọn $\\delta = \\frac{1}{\\varepsilon}$',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai quy đồng phân số ở Bước 1! $\\frac{1}{x} - \\frac{1}{2} = \\frac{2 - x}{2x}$ chứ không phải $\\frac{1}{x - 2}$.'
+      }
+    ]
+  },
+  {
+    id: 'b2-04',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Trung bình',
+    title: 'Bài 4 (Buổi 2): Chứng minh lim(x→a) √x = √a với a > 0',
+    problem: 'Chứng minh bằng định nghĩa $\\varepsilon - \\delta$ rằng:\n$$\\lim_{x \\to a} \\sqrt{x} = \\sqrt{a} \\quad (\\text{nếu } a > 0)$$\n*(Gợi ý: Sử dụng $|\\sqrt{x} - \\sqrt{a}| = \\frac{|x - a|}{\\sqrt{x} + \\sqrt{a}}$).*',
+    hint: 'Vì $x \\ge 0$ nên ở mẫu số ta luôn có $\\sqrt{x} + \\sqrt{a} \\ge \\sqrt{a}$, suy ra $\\frac{|x - a|}{\\sqrt{x} + \\sqrt{a}} \\le \\frac{|x - a|}{\\sqrt{a}}$!',
+    errorCategory: 'Đánh giá sai chiều bất đẳng thức mẫu số √x + √a ≥ √a',
+    keyTakeaway: 'Vì √x ≥ 0 nên mẫu số √x + √a ≥ √a, do đó |√x - √a| ≤ |x - a| / √a. Chỉ cần chọn δ = min(a, √a · ε) là xong!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Với mọi $\\varepsilon > 0$, xét $x > 0$ (chẳng hạn $|x - a| < a$), nhân liên hợp ta có $|\\sqrt{x} - \\sqrt{a}| = \\frac{|x - a|}{\\sqrt{x} + \\sqrt{a}}$.',
+          'Bước 2: Vì $\\sqrt{x} > 0$ nên $\\sqrt{x} + \\sqrt{a} > \\sqrt{a} \\Rightarrow \\frac{|x - a|}{\\sqrt{x} + \\sqrt{a}} < \\frac{|x - a|}{\\sqrt{a}}$.',
+          'Bước 3: Chọn $\\delta = \\min(a, \\sqrt{a}\\,\\varepsilon)$. Khi $0 < |x - a| < \\delta$, ta có $x > 0$ và $|\\sqrt{x} - \\sqrt{a}| < \\frac{\\sqrt{a}\\,\\varepsilon}{\\sqrt{a}} = \\varepsilon$ (đpcm).'
+        ],
+        finalAnswer: 'Chọn $\\delta = \\min(a, \\sqrt{a}\\,\\varepsilon)$',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Hoàn hảo! Đánh giá $\\sqrt{x} + \\sqrt{a} > \\sqrt{a}$ cực kỳ gọn và chặt chẽ.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Ta có $|\\sqrt{x} - \\sqrt{a}| = \\frac{|x - a|}{\\sqrt{x} + \\sqrt{a}}$.',
+          'Bước 2: Thay $x = a$ vào mẫu số được $|\\sqrt{x} - \\sqrt{a}| = \\frac{|x - a|}{2\\sqrt{a}}$ với mọi $x$.',
+          'Bước 3: Chọn $\\delta = 2\\sqrt{a}\\,\\varepsilon$ mà không cần điều kiện phụ.'
+        ],
+        finalAnswer: 'Chọn $\\delta = 2\\sqrt{a}\\,\\varepsilon$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! Khi $x < a$, ta có $\\sqrt{x} + \\sqrt{a} < 2\\sqrt{a}$ nên $\\frac{|x - a|}{\\sqrt{x} + \\sqrt{a}} > \\frac{|x - a|}{2\\sqrt{a}}$, bất đẳng thức bị ngược chiều!'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Biến đổi $|\\sqrt{x} - \\sqrt{a}| = \\sqrt{|x - a|}$.',
+          'Bước 2: Để $\\sqrt{|x - a|} < \\varepsilon$, ta bình phương hai vế được $|x - a| < \\varepsilon^2$.',
+          'Bước 3: Chọn $\\delta = \\varepsilon^2$.'
+        ],
+        finalAnswer: 'Chọn $\\delta = \\varepsilon^2$',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai ở Bước 1! $|\\sqrt{x} - \\sqrt{a}|$ không bằng $\\sqrt{|x - a|}$ (chỉ đúng khi $a = 0$).'
+      }
+    ]
+  },
+  {
+    id: 'b2-05',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Khó',
+    title: 'Bài 5 (Buổi 2): Chứng minh hàm Heaviside không có giới hạn tại 0',
+    problem: 'Cho hàm Heaviside $H(t) = \\begin{cases} 0 & \\text{nếu } t < 0 \\\\ 1 & \\text{nếu } t \\ge 0 \\end{cases}$. Hãy dùng định nghĩa giới hạn (phản chứng với $\\varepsilon = \\frac{1}{2}$) để chứng minh:\n$$\\lim_{t \\to 0} H(t) \\text{ không tồn tại.}$$',
+    hint: 'Giả sử tồn tại giới hạn $L$. Với $\\varepsilon = \\frac{1}{2}$, trong mọi khoảng $(-\\delta, \\delta)$ luôn có cả số $t_1 < 0$ ($H(t_1)=0$) và số $t_2 > 0$ ($H(t_2)=1$). Áp dụng bất đẳng thức tam giác cho $1 = |1 - 0|$!',
+    errorCategory: 'Không chỉ ra được mâu thuẫn trên cả hai phía âm và dương của lân cận (-δ, δ)',
+    keyTakeaway: 'Nếu hàm số nhận hai giá trị cách nhau 1 đơn vị (0 và 1) trong mọi lân cận của 0, thì với ε = 1/2 không thể có số L nào cách cả 0 và 1 một khoảng nhỏ hơn 1/2!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Giả sử phản chứng rằng $\\lim_{t \\to 0} H(t) = L$. Chọn $\\varepsilon = \\frac{1}{2} > 0$, theo định nghĩa phải tồn tại $\\delta > 0$ sao cho nếu $0 < |t| < \\delta$ thì $|H(t) - L| < \\frac{1}{2}$.',
+          'Bước 2: Lấy $t_1 = -\\frac{\\delta}{2} \\in (-\\delta, 0) \\Rightarrow H(t_1) = 0$, suy ra $|0 - L| = |L| < \\frac{1}{2}$. Lấy $t_2 = \\frac{\\delta}{2} \\in (0, \\delta) \\Rightarrow H(t_2) = 1$, suy ra $|1 - L| < \\frac{1}{2}$.',
+          'Bước 3: Áp dụng bất đẳng thức tam giác: $1 = |1 - 0| = |(1 - L) + L| \\le |1 - L| + |L| < \\frac{1}{2} + \\frac{1}{2} = 1 \\Rightarrow 1 < 1$ (mâu thuẫn!). Vậy giới hạn không tồn tại.'
+        ],
+        finalAnswer: 'Chứng minh phản chứng với $\\varepsilon = \\frac{1}{2}$ dẫn đến $1 < 1$ (mâu thuẫn)',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Xuất sắc! Đây là lời giải chuẩn mực nhất theo đúng gợi ý của sách Stewart Calculus.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Tại $t = 0$, theo định nghĩa hàm Heaviside ta có $H(0) = 1$.',
+          'Bước 2: Nhưng với $t = -1 < 0$ thì $H(-1) = 0 \\neq H(0)$.',
+          'Bước 3: Vì $H(-1) \\neq H(0)$ nên giới hạn tại $0$ không tồn tại.'
+        ],
+        finalAnswer: 'Do $H(-1) \\neq H(0)$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2 và 3! Giá trị tại một điểm ở xa ($t = -1$) hay giá trị tại chính điểm $t = 0$ không quyết định sự tồn tại của giới hạn khi $t \\to 0$.'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Giả sử giới hạn là $L = 0$.',
+          'Bước 2: Khi $t < 0$, $|H(t) - 0| = |0 - 0| = 0 < \\frac{1}{2}$ (luôn đúng).',
+          'Bước 3: Suy ra giới hạn bằng $0$ chứ không phải không tồn tại.'
+        ],
+        finalAnswer: 'Giới hạn tồn tại và bằng $0$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! Định nghĩa giới hạn $0 < |t| < \\delta$ đòi hỏi điều kiện $|H(t) - L| < \\varepsilon$ phải đúng với CẢ $t > 0$ lẫn $t < 0$ trong khoảng $(-\\delta, \\delta)$.'
+      }
+    ]
+  },
+  {
+    id: 'b2-06',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Khó',
+    title: 'Bài 6 (Buổi 2): Giới hạn của hàm Dirichlet tại x = 0',
+    problem: 'Cho hàm số Dirichlet:\n$$f(x) = \\begin{cases} 0 & \\text{nếu } x \\text{ hữu tỉ} \\\\ 1 & \\text{nếu } x \\text{ vô tỉ} \\end{cases}$$\nHãy chứng minh rằng $\\lim_{x \\to 0} f(x)$ không tồn tại.',
+    hint: 'Do tính trù mật của số hữu tỉ và số vô tỉ, trong MỌI khoảng $(-\\delta, \\delta)$ quanh $0$ đều chứa vô số số hữu tỉ ($f(x)=0$) và vô số số vô tỉ ($f(x)=1$).',
+    errorCategory: 'Quên tính trù mật của tập số hữu tỉ Q và vô tỉ R\\Q trong mọi khoảng mở',
+    keyTakeaway: 'Giữa hai số thực bất kỳ luôn có cả số hữu tỉ (f=0) lẫn số vô tỉ (f=1). Do đó hàm Dirichlet dao động giữa 0 và 1 ở mọi nơi và KHÔNG có giới hạn tại bất kỳ điểm nào!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Giả sử phản chứng $\\lim_{x \\to 0} f(x) = L$. Với $\\varepsilon = \\frac{1}{2}$, tồn tại $\\delta > 0$ sao cho mọi $x \\in (-\\delta, \\delta) \\setminus \\{0\\}$ đều thỏa $|f(x) - L| < \\frac{1}{2}$.',
+          'Bước 2: Vì tập hợp số hữu tỉ và vô tỉ đều trù mật trong $\\mathbb{R}$, trong khoảng $(0, \\delta)$ luôn tồn tại một số hữu tỉ $x_1 \\in \\mathbb{Q}$ ($f(x_1) = 0 \\Rightarrow |L| < \\frac{1}{2}$) và một số vô tỉ $x_2 \\notin \\mathbb{Q}$ ($f(x_2) = 1 \\Rightarrow |1 - L| < \\frac{1}{2}$).',
+          'Bước 3: Suy ra $1 = |1 - L + L| \\le |1 - L| + |L| < \\frac{1}{2} + \\frac{1}{2} = 1$ (mâu thuẫn!). Hoặc dùng dãy: $x_n = \\frac{1}{n} \\to 0 \\Rightarrow f(x_n) \\to 0$, còn $y_n = \\frac{\\sqrt{2}}{n} \\to 0 \\Rightarrow f(y_n) \\to 1 \\neq 0$. Vậy giới hạn không tồn tại.'
+        ],
+        finalAnswer: 'Không tồn tại giới hạn (do dao động giữa $0$ và $1$ trong mọi lân cận của $0$)',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Cả cách chứng minh bằng $\\varepsilon - \\delta$ lẫn cách chọn 2 dãy số (1 dãy hữu tỉ $\\frac{1}{n}$ và 1 dãy vô tỉ $\\frac{\\sqrt{2}}{n}$) đều rất thuyết phục.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Vì số $0$ là một số hữu tỉ ($0 = \\frac{0}{1} \\in \\mathbb{Q}$).',
+          'Bước 2: Khi $x \\to 0$, $x$ tiến về một số hữu tỉ nên $f(x)$ tiến về $f(0) = 0$.',
+          'Bước 3: Kết luận $\\lim_{x \\to 0} f(x) = 0$.'
+        ],
+        finalAnswer: '$\\lim_{x \\to 0} f(x) = 0$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! Khi $x \\to 0$, $x$ có thể chạy qua các giá trị vô tỉ (ví dụ $x = \\frac{\\sqrt{2}}{n}$) chứ không chỉ nhận giá trị hữu tỉ.'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Xét giới hạn trái ($x \\to 0^-$) có $f(x) = 0$, và giới hạn phải ($x \\to 0^+$) có $f(x) = 1$.',
+          'Bước 2: Vì giới hạn trái khác giới hạn phải.',
+          'Bước 3: Nên giới hạn tại $0$ không tồn tại.'
+        ],
+        finalAnswer: 'Giới hạn trái bằng $0$, giới hạn phải bằng $1$',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai ở Bước 1! Số hữu tỉ và số vô tỉ không phải nằm ở hai bên trái/phải của số $0$, mà xen kẽ dày đặc ở CẢ hai bên âm và dương!'
+      }
+    ]
+  },
+  {
+    id: 'b2-07',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Trung bình',
+    title: 'Bài 7 (Buổi 2): Chứng minh lim(x→-3) 1/(x+3)² = ∞',
+    problem: 'Chứng minh bằng định nghĩa giới hạn vô cực rằng:\n$$\\lim_{x \\to -3} \\frac{1}{(x + 3)^2} = \\infty$$',
+    hint: 'Theo định nghĩa giới hạn bằng $+\\infty$: Với mọi số dương lớn $M > 0$, ta cần tìm $\\delta > 0$ sao cho nếu $0 < |x - (-3)| < \\delta$ thì $\\frac{1}{(x+3)^2} > M$.',
+    errorCategory: 'Giải ngược chiều bất đẳng thức 1/(x+3)^2 > M khi tìm δ theo M',
+    keyTakeaway: 'Để chứng minh lim f(x) = +∞: Cho f(x) > M (với M > 0 bất kỳ). Từ 1/(x+3)² > M suy ra |x + 3| < 1/√M, chọn ngay δ = 1/√M!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Với mọi số $M > 0$ lớn tùy ý, ta cần tìm $\\delta > 0$ sao cho nếu $0 < |x + 3| < \\delta$ thì $\\frac{1}{(x + 3)^2} > M$.',
+          'Bước 2: Bất đẳng thức $\\frac{1}{(x + 3)^2} > M \\Leftrightarrow (x + 3)^2 < \\frac{1}{M} \\Leftrightarrow |x + 3| < \\frac{1}{\\sqrt{M}}$.',
+          'Bước 3: Vậy chỉ cần chọn $\\delta = \\frac{1}{\\sqrt{M}} > 0$. Khi đó với mọi $x$ thỏa $0 < |x - (-3)| < \\delta$, ta luôn có $\\frac{1}{(x + 3)^2} > \\frac{1}{\\delta^2} = M$ (đpcm).'
+        ],
+        finalAnswer: 'Chọn $\\delta = \\frac{1}{\\sqrt{M}}$ cho mọi $M > 0$',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Phép biến đổi tương đương từ $\\frac{1}{(x+3)^2} > M$ ra $|x + 3| < \\frac{1}{\\sqrt{M}}$ hoàn toàn chặt chẽ.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Với mọi $M > 0$, xét $\\frac{1}{(x + 3)^2} > M$.',
+          'Bước 2: Nghịch đảo hai vế và giữ nguyên chiều bất đẳng thức: $(x + 3)^2 > \\frac{1}{M}$.',
+          'Bước 3: Chọn $\\delta = \\sqrt{M}$.'
+        ],
+        finalAnswer: 'Chọn $\\delta = \\sqrt{M}$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! Khi nghịch đảo hai số dương, chiều của bất đẳng thức phải ĐỔI NGƯỢC lại: $(x+3)^2 < \\frac{1}{M}$.'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Thay trực tiếp $x = -3$ vào phân thức $\\frac{1}{(x+3)^2}$.',
+          'Bước 2: Ta được phép chia số thực $\\frac{1}{0} = \\infty$.',
+          'Bước 3: Điều phải chứng minh.'
+        ],
+        finalAnswer: 'Thay $x = -3$ được $\\frac{1}{0} = \\infty$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai trình bày tự luận ở Bước 2! Trong Toán học không có phép chia cho số $0$ tại một điểm, và bài toán yêu cầu chứng minh bằng định nghĩa giới hạn ($M - \\delta$).'
+      }
+    ]
+  },
+  {
+    id: 'b2-08',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Dễ',
+    title: 'Bài 8 (Buổi 2): Nhìn đồ thị tìm các điểm gián đoạn (không liên tục)',
+    problem: 'Từ đồ thị ở Bài 8 (trang 2 file PDF: đồ thị có lỗ tròn rỗng tại $x = -4$; tại $x = -2$ nhánh trái có chấm đặc cao hơn nhánh phải có chấm rỗng; tại $x = 2$ nhánh trái có chấm rỗng thấp hơn nhánh phải có chấm đặc; tại $x = 4$ có đường tiệm cận đứng), hãy chỉ ra các điểm mà hàm số không liên tục và giải thích lý do.',
+    hint: 'Hàm số không liên tục tại nơi đồ thị bị: (1) Đứt lỗ thủng (không xác định), (2) Nhảy bậc (giới hạn trái $\\neq$ giới hạn phải), hoặc (3) Tiến ra vô cùng (tiệm cận đứng).',
+    errorCategory: 'Bỏ sót điểm gián đoạn loại khử được (lỗ thủng) hoặc điểm tiệm cận đứng',
+    keyTakeaway: 'Trên đồ thị, hàm số gián đoạn tại mọi hoành độ x mà ta phải "nhấc bút lên" khi vẽ: lỗ thủng (x = -4), bước nhảy (x = -2 và x = 2), tiệm cận đứng (x = 4)!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Tại $x = -4$, đồ thị có một lỗ tròn rỗng và không có chấm đặc nào trên đường thẳng $x = -4$, nghĩa là $f(-4)$ không xác định $\\Rightarrow$ gián đoạn tại $x = -4$.',
+          'Bước 2: Tại $x = -2$ và $x = 2$, đồ thị bị đứt thành hai nhánh cao thấp khác nhau: $\\lim_{x \\to -2^-} f(x) \\neq \\lim_{x \\to -2^+} f(x)$ và $\\lim_{x \\to 2^-} f(x) \\neq \\lim_{x \\to 2^+} f(x)$ $\\Rightarrow$ gián đoạn bước nhảy tại $x = -2$ và $x = 2$.',
+          'Bước 3: Tại $x = 4$, đồ thị vọt lên $+\\infty$ dọc theo đường tiệm cận đứng ($\\lim_{x \\to 4} f(x) = +\\infty$) $\\Rightarrow$ gián đoạn vô cực tại $x = 4$. Vậy các điểm gián đoạn là $x \\in \\{-4, -2, 2, 4\\}$.'
+        ],
+        finalAnswer: 'Gián đoạn tại $x = -4, -2, 2, 4$',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Bạn đã phân loại đầy đủ cả 4 điểm gián đoạn trên đồ thị kèm lý do chuẩn xác.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Tại $x = -2$ và $x = 2$ đều có một đầu mút là dấu chấm tròn đặc (tức là $f(-2)$ và $f(2)$ có xác định).',
+          'Bước 2: Vì hàm số vẫn xác định tại $x = -2$ và $x = 2$ nên hàm liên tục tại hai điểm này.',
+          'Bước 3: Hàm số chỉ gián đoạn tại $x = -4$ và $x = 4$.'
+        ],
+        finalAnswer: 'Chỉ gián đoạn tại $x = -4$ và $x = 4$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! Có xác định $f(a)$ mới chỉ là 1 điều kiện; tại $x = -2$ và $x = 2$ giới hạn trái khác giới hạn phải nên giới hạn không tồn tại, hàm bị gián đoạn bước nhảy!'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Quan sát gốc tọa độ $x = 0$, đồ thị đi qua đỉnh nhọn trên trục tung.',
+          'Bước 2: Kết luận hàm số không liên tục tại $x = 0$.',
+          'Bước 3: Các điểm gián đoạn là $x = -2, 0, 2$.'
+        ],
+        finalAnswer: 'Gián đoạn tại $x = -2, 0, 2$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! Tại $x = 0$ nét vẽ đồ thị hoàn toàn liền mạch (không bị đứt), nên hàm số LIÊN TỤC tại $x = 0$.'
+      }
+    ]
+  },
+  {
+    id: 'b2-09',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Dễ',
+    title: 'Bài 9 (Buổi 2): Giải thích vì sao hàm số không liên tục tại x = -2',
+    problem: 'Giải thích vì sao hai hàm số sau không liên tục tại $x = -2$:\n(a) $f(x) = \\frac{1}{x + 2}$\n(b) $f(x) = \\begin{cases} \\frac{1}{x + 2} & \\text{nếu } x \\neq -2 \\\\ 1 & \\text{nếu } x = -2 \\end{cases}$',
+    hint: 'Ba điều kiện để $f$ liên tục tại $a$: (1) $f(a)$ xác định, (2) $\\lim_{x \\to a} f(x)$ tồn tại hữu hạn, (3) $\\lim_{x \\to a} f(x) = f(a)$. Hãy xem câu (a) và (b) vi phạm điều kiện nào!',
+    errorCategory: 'Nhầm lẫn giữa không xác định f(a) và không tồn tại giới hạn hữu hạn khi giải thích sự gián đoạn',
+    keyTakeaway: 'Ở câu (a), f(-2) không xác định (mẫu bằng 0). Ở câu (b), dù đã gán thêm f(-2) = 1 nhưng lim(x→-2) 1/(x+2) tiến ra ±∞ (không tồn tại giới hạn hữu hạn) nên vẫn gián đoạn vô cực!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Với câu (a), tại $x = -2$ mẫu số $x + 2 = 0$ nên $f(-2)$ không xác định (vi phạm ngay điều kiện 1 của tính liên tục).',
+          'Bước 2: Với câu (b), mặc dù $f(-2) = 1$ đã xác định, nhưng khi xét giới hạn tại $x = -2$: $\\lim_{x \\to -2^-} \\frac{1}{x+2} = -\\infty$ và $\\lim_{x \\to -2^+} \\frac{1}{x+2} = +\\infty$.',
+          'Bước 3: Do đó $\\lim_{x \\to -2} f(x)$ không tồn tại (và không thể bằng $f(-2) = 1$). Vì vậy cả hai hàm đều gián đoạn vô cực (có tiệm cận đứng $x = -2$).'
+        ],
+        finalAnswer: '(a) $f(-2)$ không xác định; (b) $\\lim_{x \\to -2} f(x)$ không tồn tại (tiến ra $\\pm\\infty$)',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Ngay cả khi định nghĩa thêm $f(-2) = 1$ ở câu (b), ta vẫn không thể "vá" được tiệm cận đứng của $\\frac{1}{x+2}$.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Ở câu (a), $f(-2)$ không xác định nên hàm số không liên tục tại $x = -2$.',
+          'Bước 2: Ở câu (b), người ta đã bổ sung giá trị $f(-2) = 1$ nên hàm số đã xác định trên toàn $\\mathbb{R}$.',
+          'Bước 3: Suy ra hàm ở câu (b) đã trở thành hàm liên tục tại $x = -2$.'
+        ],
+        finalAnswer: '(a) gián đoạn, còn (b) liên tục tại $x = -2$',
+        isCorrect: false,
+        wrongStep: 3,
+        explanation: 'Sai ở Bước 3! Gán thêm giá trị $f(-2) = 1$ không làm cho $\\lim_{x \\to -2} \\frac{1}{x+2}$ bằng $1$, vì đồ thị hai bên vẫn vọt ra $\\pm\\infty$.'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Xét giới hạn $\\lim_{x \\to -2} \\frac{1}{x+2} = 0$.',
+          'Bước 2: Ở câu (b), $f(-2) = 1 \\neq 0$.',
+          'Bước 3: Nếu sửa $f(-2) = 0$ thì hàm số sẽ liên tục tại $x = -2$.'
+        ],
+        finalAnswer: 'Do $\\lim_{x \\to -2} \\frac{1}{x+2} = 0 \\neq 1$',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai ở Bước 1! Khi $x \\to -2$, mẫu số $x + 2 \\to 0$ nên $\\frac{1}{x+2}$ tiến ra $\\pm\\infty$ chứ không phải tiến về $0$ ($x \\to \\infty$ mới tiến về $0$).'
+      }
+    ]
+  },
+  {
+    id: 'b2-10',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Dễ',
+    title: 'Bài 10 (Buổi 2): Tính liên tục của hàm Lực hấp dẫn Trái Đất F(r)',
+    problem: 'Lực hấp dẫn do Trái Đất tác dụng lên một đơn vị khối lượng tại khoảng cách $r$ từ tâm Trái Đất được cho bởi:\n$$F(r) = \\begin{cases} \\frac{GMr}{R^3} & \\text{nếu } r < R \\\\ \\frac{GM}{r^2} & \\text{nếu } r \\ge R \\end{cases}$$\ntrong đó $M, R, G$ là các hằng số dương. Hỏi $F$ có phải là một hàm liên tục theo $r$ ($r \\ge 0$) hay không?',
+    hint: 'Trên khoảng $(0, R)$ hàm là đa thức bậc nhất theo $r$, trên $(R, \\infty)$ hàm là phân thức có mẫu $r^2 > 0$. Điểm ghép nối duy nhất cần kiểm tra là tại bề mặt Trái Đất $r = R$!',
+    errorCategory: 'Nhầm biến r với hằng số R khi tính giới hạn trái và giới hạn phải tại r = R',
+    keyTakeaway: 'Để kiểm tra hàm ghép nhánh liên tục tại điểm nối r = R, chỉ cần thay r = R vào nhánh trái (GMr/R³) và nhánh phải (GM/r²) xem hai kết quả có bằng nhau không!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Khi $0 \\le r < R$, $F(r) = \\frac{GM}{R^3}r$ là hàm đa thức theo $r$ nên liên tục. Khi $r > R$, $F(r) = \\frac{GM}{r^2}$ là hàm hữu tỉ có mẫu $r^2 > 0$ nên liên tục.',
+          'Bước 2: Xét tại điểm nối $r = R$: Giới hạn trái là $\\lim_{r \\to R^-} F(r) = \\lim_{r \\to R^-} \\frac{GMr}{R^3} = \\frac{GM \\cdot R}{R^3} = \\frac{GM}{R^2}$.',
+          'Bước 3: Giới hạn phải và giá trị tại $R$ là $\\lim_{r \\to R^+} \\frac{GM}{r^2} = F(R) = \\frac{GM}{R^2}$. Vì $\\lim_{r \\to R^-} F(r) = \\lim_{r \\to R^+} F(r) = F(R) = \\frac{GM}{R^2}$, nên $F(r)$ là hàm LIÊN TỤC với mọi $r \\ge 0$.'
+        ],
+        finalAnswer: 'Có, $F(r)$ liên tục tại mọi $r$ (tại $r = R$ giá trị chung là $\\frac{GM}{R^2}$)',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Tại bề mặt Trái Đất ($r = R$), công thức lực hấp dẫn bên trong và bên ngoài khớp nhau hoàn hảo tại giá trị $\\frac{GM}{R^2}$.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Xét tại $r = R$, nhánh trên có mẫu số là $R^3$, nhánh dưới có mẫu số là $r^2 = R^2$.',
+          'Bước 2: Vì $R^3 \\neq R^2$ nên giới hạn trái khác giới hạn phải tại $r = R$.',
+          'Bước 3: Kết luận hàm $F(r)$ không liên tục tại $r = R$.'
+        ],
+        finalAnswer: 'Không liên tục tại $r = R$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! Ở nhánh trên tử số có nhân với $r$, khi $r \\to R$ thì $\\frac{GMr}{R^3} = \\frac{GMR}{R^3}$ rút gọn $R$ đi sẽ còn đúng $\\frac{GM}{R^2}$ bằng nhánh dưới!'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Đạo hàm nhánh trái theo $r$ được $\\frac{GM}{R^3}$, đạo hàm nhánh phải theo $r$ được $-\\frac{2GM}{R^3}$.',
+          'Bước 2: Vì hai giá trị này khác nhau tại $r = R$.',
+          'Bước 3: Nên hàm $F(r)$ không liên tục tại $r = R$.'
+        ],
+        finalAnswer: 'Không liên tục vì đạo hàm hai bên khác nhau',
+        isCorrect: false,
+        wrongStep: 3,
+        explanation: 'Sai khái niệm ở Bước 3! Đạo hàm trái khác đạo hàm phải nghĩa là hàm không KHẢ VI (đồ thị bị gấp khúc tại $r=R$), nhưng đồ thị vẫn nối liền nhau nên hàm vẫn LIÊN TỤC!'
+      }
+    ]
+  },
+  {
+    id: 'b2-11',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Trung bình',
+    title: 'Bài 11 (Buổi 2): Tìm a và b để hàm 3 nhánh liên tục trên toàn trục số',
+    problem: 'Tìm các giá trị $a$ và $b$ để hàm số $f$ liên tục trên toàn bộ trục số $(-\\infty, \\infty)$:\n$$f(x) = \\begin{cases} \\frac{x^2 - 4}{x - 2} & \\text{nếu } x < 2 \\\\ ax^2 - bx + 3 & \\text{nếu } 2 \\le x < 3 \\\\ 2x - a + b & \\text{nếu } x \\ge 3 \\end{cases}$$',
+    hint: 'Khử dạng $\\frac{0}{0}$ ở nhánh đầu khi $x \\to 2^-$: $\\frac{x^2-4}{x-2} = x + 2 \\to 4$. Sau đó lập hệ 2 phương trình của $a, b$ tại hai điểm nối $x = 2$ và $x = 3$!',
+    errorCategory: 'Rút gọn sai giới hạn (x^2-4)/(x-2) khi x -> 2 hoặc giải sai hệ phương trình tại x=2 và x=3',
+    keyTakeaway: 'Hàm 3 nhánh liên tục trên R khi nó nối khít tại cả 2 mối ghép x = 2 và x = 3: lim(x→2⁻) = f(2) và lim(x→3⁻) = f(3)!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Xét tính liên tục tại $x = 2$: $\\lim_{x \\to 2^-} \\frac{x^2 - 4}{x - 2} = \\lim_{x \\to 2^-} (x + 2) = 4$. Giá trị $f(2) = a(2^2) - b(2) + 3 = 4a - 2b + 3$. Cho bằng nhau: $4a - 2b + 3 = 4 \\Leftrightarrow 4a - 2b = 1$ (1).',
+          'Bước 2: Xét tính liên tục tại $x = 3$: $\\lim_{x \\to 3^-} (ax^2 - bx + 3) = 9a - 3b + 3$, và $f(3) = 2(3) - a + b = 6 - a + b$. Cho bằng nhau: $9a - 3b + 3 = 6 - a + b \\Leftrightarrow 10a - 4b = 3$ (2).',
+          'Bước 3: Giải hệ (1) và (2): Nhân (1) với $2$ được $8a - 4b = 2$, lấy (2) trừ đi ta có $2a = 1 \\Rightarrow a = \\frac{1}{2}$. Thay vào (1): $4(\\frac{1}{2}) - 2b = 1 \\Rightarrow 2b = 1 \\Rightarrow b = \\frac{1}{2}$.'
+        ],
+        finalAnswer: '$a = \\frac{1}{2}, \\; b = \\frac{1}{2}$',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Cả hai điều kiện nối tại $x = 2$ ($4a - 2b = 1$) và tại $x = 3$ ($10a - 4b = 3$) đều cho nghiệm duy nhất $a = \\frac{1}{2}, b = \\frac{1}{2}$.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Tại $x = 2$, thay $x = 2$ vào tử số $x^2 - 4$ được $0$, nên $\\lim_{x \\to 2^-} f(x) = 0 \\Rightarrow 4a - 2b + 3 = 0$.',
+          'Bước 2: Tại $x = 3$, ta có phương trình $9a - 3b + 3 = 6 - a + b \\Leftrightarrow 10a - 4b = 3$.',
+          'Bước 3: Giải hệ thu được $a = \\frac{9}{2}, b = \\frac{21}{2}$.'
+        ],
+        finalAnswer: '$a = \\frac{9}{2}, \\; b = \\frac{21}{2}$',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai ở Bước 1! Khi $x \\to 2^-$, $\\frac{x^2-4}{x-2} = \\frac{(x-2)(x+2)}{x-2} = x + 2 \\to 4$ chứ không phải bằng $0$!'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Tại $x = 2$, ta có phương trình $4a - 2b = 1$.',
+          'Bước 2: Tại $x = 3$, chuyển vế $9a - 3b + 3 = 6 - a + b \\Leftrightarrow 8a - 2b = 3$ (cộng nhầm dấu của $a$ và $b$).',
+          'Bước 3: Giải hệ được $a = \\frac{1}{2}, b = \\frac{1}{2}$.'
+        ],
+        finalAnswer: 'Phương trình (2) là $8a - 2b = 3$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai biến đổi đại số ở Bước 2! Chuyển $-a$ từ vế phải sang vế trái phải thành $+a$ ($9a + a = 10a$), chuyển $+b$ sang trái phải thành $-b$ ($-3b - b = -4b$).'
+      }
+    ]
+  },
+  {
+    id: 'b2-12',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Trung bình',
+    title: 'Bài 12 (Buổi 2): Xét tính liên tục của hàm Dirichlet trên R',
+    problem: 'Với những giá trị nào của $x$ thì hàm số sau liên tục?\n$$f(x) = \\begin{cases} 0 & \\text{nếu } x \\text{ hữu tỉ} \\\\ 1 & \\text{nếu } x \\text{ vô tỉ} \\end{cases}$$',
+    hint: 'Tương tự Bài 6, với bất kỳ số thực $a \\in \\mathbb{R}$ nào, trong mọi lân cận của $a$ luôn có cả số hữu tỉ ($f=0$) và số vô tỉ ($f=1$).',
+    errorCategory: 'Ngộ nhận hàm Dirichlet liên tục tại các điểm hữu tỉ hoặc tại x = 0',
+    keyTakeaway: 'Hàm Dirichlet (0 tại hữu tỉ, 1 tại vô tỉ) là ví dụ kinh điển về một hàm số GIÁN ĐOẠN TẠI MỌI ĐIỂM trên R (không liên tục tại bất kỳ x nào)!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Lấy $a \\in \\mathbb{R}$ bất kỳ. Do tập số hữu tỉ $\\mathbb{Q}$ và tập số vô tỉ $\\mathbb{R} \\setminus \\mathbb{Q}$ đều trù mật trên $\\mathbb{R}$, trong mọi khoảng $(a - \\delta, a + \\delta)$ luôn có các điểm $x_1 \\in \\mathbb{Q}$ ($f(x_1) = 0$) và $x_2 \\notin \\mathbb{Q}$ ($f(x_2) = 1$).',
+          'Bước 2: Vì hàm số luôn nhảy qua lại giữa $0$ và $1$ trong mọi lân cận của $a$, nên $\\lim_{x \\to a} f(x)$ không tồn tại với mọi $a \\in \\mathbb{R}$.',
+          'Bước 3: Kết luận: Hàm số $f(x)$ KHÔNG liên tục tại bất kỳ giá trị nào của $x$ (gián đoạn tại mọi điểm trên $\\mathbb{R}$).'
+        ],
+        finalAnswer: 'Không có giá trị nào của $x$ (Gián đoạn tại mọi $x \\in \\mathbb{R}$)',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Không tồn tại bất kỳ điểm $x$ nào mà hàm Dirichlet liên tục.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Trên tập số hữu tỉ $\\mathbb{Q}$, hàm số là hàm hằng $f(x) = 0$.',
+          'Bước 2: Trên tập số vô tỉ, hàm số là hàm hằng $f(x) = 1$.',
+          'Bước 3: Vì hàm hằng luôn liên tục nên $f(x)$ liên tục tại mọi $x \\in \\mathbb{R}$.'
+        ],
+        finalAnswer: 'Liên tục tại mọi $x \\in \\mathbb{R}$',
+        isCorrect: false,
+        wrongStep: 3,
+        explanation: 'Sai ở Bước 3! Khi xét giới hạn $x \\to a$ trên $\\mathbb{R}$, biến $x$ phải chạy qua TẤT CẢ các số thực gần $a$ (gồm cả hữu tỉ lẫn vô tỉ), chứ không được tách riêng!'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Cho hai nhánh bằng nhau: $0 = 1$ (vô nghiệm), nhưng tại gốc tọa độ $x = 0$ thì $f(0) = 0$.',
+          'Bước 2: Do đó hàm số liên tục tại duy nhất điểm $x = 0$.',
+          'Bước 3: Kết luận $x = 0$.'
+        ],
+        finalAnswer: 'Chỉ liên tục tại $x = 0$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! Như đã chứng minh ở Bài 6, ngay cả tại $x = 0$ thì $\\lim_{x \\to 0} f(x)$ cũng không tồn tại (bạn đang nhầm với hàm $g(x)$ ở Bài 13).'
+      }
+    ]
+  },
+  {
+    id: 'b2-13',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Khó',
+    title: 'Bài 13 (Buổi 2): Với giá trị nào của x thì g(x) = (0 nếu x hữu tỉ, x nếu x vô tỉ) liên tục?',
+    problem: 'Với những giá trị nào của $x$ thì hàm số $g$ liên tục?\n$$g(x) = \\begin{cases} 0 & \\text{nếu } x \\text{ hữu tỉ} \\\\ x & \\text{nếu } x \\text{ vô tỉ} \\end{cases}$$',
+    hint: 'Hai đường $y = 0$ (nhánh hữu tỉ) và $y = x$ (nhánh vô tỉ) cắt nhau tại đúng một điểm duy nhất là $x = 0$! Hãy dùng định lý kẹp $0 \\le |g(x)| \\le |x|$ tại $x = 0$.',
+    errorCategory: 'Kết luận hàm g(x) gián đoạn tại mọi điểm giống hàm Dirichlet mà quên điểm giao nhau x = 0',
+    keyTakeaway: 'Khi hai nhánh hữu tỉ f₁(x) và vô tỉ f₂(x) đều liên tục, hàm ghép chỉ liên tục tại đúng những điểm x₀ làm cho hai nhánh BẰNG NHAU: f₁(x₀) = f₂(x₀) (ở đây là x = 0)!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Xét tại $x = 0$: Ta luôn có $|g(x) - g(0)| = |g(x)| \\le |x|$ với mọi $x \\in \\mathbb{R}$ (vì $g(x)$ chỉ nhận giá trị $0$ hoặc $x$). Do $\\lim_{x \\to 0} |x| = 0$, theo định lý kẹp $\\lim_{x \\to 0} g(x) = 0 = g(0)$, nên $g$ liên tục tại $x = 0$.',
+          'Bước 2: Xét tại $a \\neq 0$: Chọn dãy số hữu tỉ $r_n \\to a$ thì $g(r_n) = 0 \\to 0$, còn chọn dãy số vô tỉ $s_n \\to a$ thì $g(s_n) = s_n \\to a \\neq 0$. Do đó $\\lim_{x \\to a} g(x)$ không tồn tại khi $a \\neq 0$.',
+          'Bước 3: Kết luận: Hàm số $g(x)$ chỉ liên tục tại duy nhất một điểm là $x = 0$.'
+        ],
+        finalAnswer: 'Chỉ liên tục tại duy nhất $x = 0$',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Tuyệt vời! Tại $x = 0$, hai nhánh $y = 0$ và $y = x$ ép sát vào nhau tại gốc tọa độ nên hàm liên tục tại đúng $x = 0$.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Giống như hàm Dirichlet ở Bài 12, hàm $g(x)$ được định nghĩa tách biệt trên tập hữu tỉ và vô tỉ.',
+          'Bước 2: Vì tập hữu tỉ và vô tỉ trù mật nên giới hạn không tồn tại ở bất kỳ điểm nào.',
+          'Bước 3: Kết luận hàm $g(x)$ không liên tục tại bất kỳ giá trị nào của $x$.'
+        ],
+        finalAnswer: 'Không liên tục tại bất kỳ $x$ nào',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! Tại $x = 0$, nhánh vô tỉ $y = x$ cũng tiến về $0$ trùng khít với nhánh hữu tỉ $y = 0$, nên giới hạn tại $x = 0$ tồn tại và bằng $0$.'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Hàm $y = 0$ liên tục trên $\\mathbb{R}$ và hàm $y = x$ cũng liên tục trên $\\mathbb{R}$.',
+          'Bước 2: Vì cả hai nhánh thành phần đều là hàm đa thức liên tục.',
+          'Bước 3: Suy ra $g(x)$ liên tục với mọi $x \\in \\mathbb{R}$.'
+        ],
+        finalAnswer: 'Liên tục với mọi $x \\in \\mathbb{R}$',
+        isCorrect: false,
+        wrongStep: 3,
+        explanation: 'Sai ở Bước 3! Tại mọi điểm $a \\neq 0$, các điểm hữu tỉ quanh $a$ có tung độ bằng $0$, còn các điểm vô tỉ quanh $a$ có tung độ gần $a \\neq 0$ nên đồ thị bị xé làm đôi.'
+      }
+    ]
+  },
+  {
+    id: 'b2-14',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Trung bình',
+    title: 'Bài 14 (Buổi 2): Chứng minh hàm f(x) = x⁴ sin(1/x) liên tục trên (-∞, ∞)',
+    problem: 'Chứng minh rằng hàm số:\n$$f(x) = \\begin{cases} x^4 \\sin\\left(\\frac{1}{x}\\right) & \\text{nếu } x \\neq 0 \\\\ 0 & \\text{nếu } x = 0 \\end{cases}$$\nliên tục trên $(-\\infty, \\infty)$.',
+    hint: 'Với $x \\neq 0$, hàm là tích/hợp của các hàm sơ cấp nên liên tục. Tại $x = 0$, dùng Định lý kẹp (Squeeze Theorem) với $-x^4 \\le x^4 \\sin(1/x) \\le x^4$!',
+    errorCategory: 'Không dùng định lý kẹp tại x = 0 hoặc ngộ nhận sin(1/x) không tồn tại giới hạn thì tích cũng không tồn tại',
+    keyTakeaway: 'Dù sin(1/x) dao động mạnh khi x → 0, nhưng vì luôn bị chặn trong [-1, 1] nên khi nhân với x⁴ → 0 thì tích x⁴·sin(1/x) bị kẹp giữa -x⁴ và x⁴ và tiến về 0!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Với mọi $x \\neq 0$, $f(x) = x^4 \\sin(1/x)$ là tích và hàm hợp của các hàm đa thức, phân thức và lượng giác xác định trên $\\mathbb{R} \\setminus \\{0\\}$ nên liên tục tại mọi $x \\neq 0$.',
+          'Bước 2: Tại $x = 0$, với mọi $x \\neq 0$ ta có $-1 \\le \\sin\\left(\\frac{1}{x}\\right) \\le 1$. Nhân cả 3 vế với $x^4 > 0$, ta được: $-x^4 \\le x^4 \\sin\\left(\\frac{1}{x}\\right) \\le x^4$.',
+          'Bước 3: Vì $\\lim_{x \\to 0} (-x^4) = 0$ và $\\lim_{x \\to 0} x^4 = 0$, theo Định lý Kẹp suy ra $\\lim_{x \\to 0} f(x) = 0 = f(0)$. Vậy $f$ cũng liên tục tại $x = 0$, tức liên tục trên $(-\\infty, \\infty)$.'
+        ],
+        finalAnswer: 'Liên tục tại $x \\neq 0$ (hàm sơ cấp) và tại $x = 0$ (theo Định lý Kẹp $-x^4 \\le f(x) \\le x^4$)',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Trình bày đầy đủ cả hai phần: $x \\neq 0$ và điểm đặc biệt $x = 0$ bằng Định lý Kẹp.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Tách giới hạn tại $x = 0$ thành tích hai giới hạn: $\\lim_{x \\to 0} x^4 \\cdot \\lim_{x \\to 0} \\sin\\left(\\frac{1}{x}\\right)$.',
+          'Bước 2: Vì $\\lim_{x \\to 0} x^4 = 0$ và $0$ nhân với bất kỳ thứ gì cũng bằng $0$.',
+          'Bước 3: Suy ra $\\lim_{x \\to 0} f(x) = 0 = f(0)$.'
+        ],
+        finalAnswer: 'Tách thành $\\lim x^4 \\cdot \\lim \\sin(1/x) = 0$',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai quy tắc giới hạn ở Bước 1! Chỉ được tách $\\lim(u \\cdot v) = \\lim u \\cdot \\lim v$ khi CẢ HAI giới hạn thành phần đều tồn tại. Ở đây $\\lim_{x \\to 0} \\sin(1/x)$ không tồn tại nên bắt buộc phải dùng Định lý Kẹp!'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Áp dụng vô cùng bé tương đương $\\sin\\left(\\frac{1}{x}\\right) \\sim \\frac{1}{x}$ khi $x \\to 0$.',
+          'Bước 2: Thay vào được $\\lim_{x \\to 0} x^4 \\cdot \\frac{1}{x} = \\lim_{x \\to 0} x^3 = 0$.',
+          'Bước 3: Do đó hàm liên tục tại $x = 0$.'
+        ],
+        finalAnswer: 'Dùng tương đương $\\sin(1/x) \\sim 1/x$',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai nặng ở Bước 1! Công thức $\\sin u \\sim u$ chỉ đúng khi $u \\to 0$. Khi $x \\to 0$ thì $u = \\frac{1}{x} \\to \\infty$ chứ không tiến về $0$!'
+      }
+    ]
+  },
+  {
+    id: 'b2-15',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Khó',
+    title: 'Bài 15 (Buổi 2): Chứng minh phương trình có nghiệm bằng Định lý Giá trị Trung gian',
+    problem: 'Nếu $a$ và $b$ là các số dương ($a > 0, b > 0$), hãy chứng minh rằng phương trình:\n$$\\frac{a}{x^3 + 2x^2 - 1} + \\frac{b}{x^3 + x - 2} = 0$$\ncó ít nhất một nghiệm trong khoảng $(-1, 1)$.',
+    hint: 'Quy đồng mẫu số (hoặc nhân hai vế với $(x^3+2x^2-1)(x^3+x-2)$) để đưa về đa thức liên tục $P(x) = a(x^3 + x - 2) + b(x^3 + 2x^2 - 1) = 0$, hoặc xét giới hạn một phía tại nghiệm của mẫu số trong $(-1, 1)$!',
+    errorCategory: 'Áp dụng Định lý Giá trị Trung gian trực tiếp trên [-1, 1] khi phân thức bị gián đoạn tại nghiệm của mẫu số',
+    keyTakeaway: 'Không được áp dụng trực tiếp Định lý Giá trị Trung gian cho phân thức trên [-1, 1] vì mẫu x³+2x²-1 có nghiệm trong (-1, 1)! Hãy quy đồng về đa thức P(x) = a(x³+x-2) + b(x³+2x²-1) rồi tính P(-1) < 0 và P(1) > 0!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Quy đồng mẫu số, phương trình tương đương với $P(x) = a(x^3 + x - 2) + b(x^3 + 2x^2 - 1) = 0$ (với điều kiện $x$ không làm mẫu bằng $0$). Đa thức $P(x)$ liên tục trên $[-1, 1]$.',
+          'Bước 2: Tính giá trị tại hai đầu mút: Tại $x = -1$, $P(-1) = a(-1 - 1 - 2) + b(-1 + 2 - 1) = -4a < 0$ (do $a > 0$). Tại $x = 1$, $P(1) = a(1 + 1 - 2) + b(1 + 2 - 1) = 2b > 0$ (do $b > 0$).',
+          'Bước 3: Vì $P(-1) \\cdot P(1) = -8ab < 0$ và $P(x)$ liên tục trên $[-1, 1]$, theo Định lý Giá trị Trung gian tồn tại $c \\in (-1, 1)$ sao cho $P(c) = 0$. (Tại $c$, nếu một mẫu bằng $0$ thì mẫu kia cũng phải bằng $0$, nhưng hai mẫu không có nghiệm chung trên $(-1,1)$ nên $c$ là nghiệm của phương trình ban đầu).'
+        ],
+        finalAnswer: 'Đặt $P(x) = a(x^3+x-2) + b(x^3+2x^2-1)$ liên tục, có $P(-1) = -4a < 0$ và $P(1) = 2b > 0$',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Rất chặt chẽ! Chuyển về đa thức $P(x)$ giúp tránh điểm gián đoạn của mẫu số $x^3 + 2x^2 - 1 = (x+1)(x^2+x-1)$ tại $x = \\frac{-1+\\sqrt{5}}{2} \\in (-1, 1)$.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Đặt trực tiếp $f(x) = \\frac{a}{x^3 + 2x^2 - 1} + \\frac{b}{x^3 + x - 2}$ và khẳng định $f(x)$ liên tục trên đoạn $[-1, 1]$.',
+          'Bước 2: Thay $x = -1$ và $x = 1$ trực tiếp vào $f(x)$.',
+          'Bước 3: Kết luận theo định lý giá trị trung gian trên $[-1, 1]$.'
+        ],
+        finalAnswer: 'Xét trực tiếp $f(-1)$ và $f(1)$ trên $[-1, 1]$',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai ở Bước 1 và 2! Tại $x = -1$ mẫu đầu tiên $(-1)^3 + 2(-1)^2 - 1 = 0$, tại $x = 1$ mẫu thứ hai $1^3 + 1 - 2 = 0$, và tại $x = \\frac{\\sqrt{5}-1}{2} \\in (-1,1)$ mẫu đầu cũng bằng $0$ nên $f(x)$ KHÔNG liên tục trên $[-1, 1]$!'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Cho từng phân thức bằng $0$: $\\frac{a}{x^3+2x^2-1} = 0$ và $\\frac{b}{x^3+x-2} = 0$.',
+          'Bước 2: Vì $a > 0, b > 0$ khác $0$ nên từng phân thức vô nghiệm.',
+          'Bước 3: Suy ra phương trình vô nghiệm.'
+        ],
+        finalAnswer: 'Phương trình vô nghiệm',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai ở Bước 1! Tổng hai phân thức bằng $0$ nghĩa là hai phân thức đối dấu nhau (một âm, một dương triệt tiêu nhau), không phải từng phân thức bằng $0$.'
+      }
+    ]
+  }
+);
+
+window.BUILTIN_QUESTIONS.push(
+  {
+    id: 'b2-16a',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Dễ',
+    title: 'Bài 16 a, b, c, d, e, f (Buổi 2): Giới hạn phân thức hữu tỉ tại vô cực',
+    problem: 'Tìm các giới hạn tại vô cực sau (từ Bài 16a đến 16f):\n(a) $\\lim_{x \\to \\infty} \\frac{4x + 3}{5x - 1}$ $\\quad$ (b) $\\lim_{x \\to \\infty} \\frac{-2}{3x + 7}$ $\\quad$ (c) $\\lim_{t \\to \\infty} \\frac{3t^2 + t}{t^3 - 4t + 1}$\n(d) $\\lim_{t \\to -\\infty} \\frac{6t^2 + t - 5}{9 - 2t^2}$ $\\quad$ (e) $\\lim_{r \\to \\infty} \\frac{r - r^3}{2 - r^2 + 3r^3}$ $\\quad$ (f) $\\lim_{x \\to \\infty} \\frac{3x^3 - 8x + 2}{4x^3 - 5x^2 - 2}$',
+    hint: 'Quy tắc bậc của tử và mẫu khi $x \\to \\pm\\infty$: Nếu bậc tử < bậc mẫu thì giới hạn = 0; nếu bậc tử = bậc mẫu thì giới hạn = tỉ số hệ số của lũy thừa bậc cao nhất (cẩn thận khi đa thức viết ngược thứ tự như $9 - 2t^2$ hay $r - r^3$)!',
+    errorCategory: 'Lấy nhầm hệ số đứng đầu thay vì hệ số của bậc cao nhất khi đa thức sắp xếp không theo thứ tự giảm dần',
+    keyTakeaway: 'Ở (d) 9 - 2t² có bậc cao nhất là -2t², ở (e) r - r³ có bậc cao nhất là -r³. Luôn nhìn vào SỐ MŨ CAO NHẤT chứ đừng nhìn số đứng đầu tiên!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Với (a) cùng bậc 1: $\\frac{4}{5}$; với (b) bậc tử $0 <$ bậc mẫu $1$: $0$; với (c) bậc tử $2 <$ bậc mẫu $3$: chia cho $t^3$ được $\\lim_{t \\to \\infty} \\frac{3/t + 1/t^2}{1 - 4/t^2 + 1/t^3} = 0$.',
+          'Bước 2: Với (d) cùng bậc 2: hệ số của $t^2$ ở tử là $6$, ở mẫu là $-2$ (trong $9 - 2t^2$), nên giới hạn bằng $\\frac{6}{-2} = -3$.',
+          'Bước 3: Với (e) cùng bậc 3: hệ số của $r^3$ ở tử là $-1$, ở mẫu là $3$, nên giới hạn bằng $-\\frac{1}{3}$. Với (f) cùng bậc 3: tỉ số hệ số bậc 3 là $\\frac{3}{4}$.'
+        ],
+        finalAnswer: '(a) $\\frac{4}{5}$; (b) $0$; (c) $0$; (d) $-3$; (e) $-\\frac{1}{3}$; (f) $\\frac{3}{4}$',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Bạn đã không bị lừa bởi thứ tự viết ngược của $9 - 2t^2$ ở câu (d) và $r - r^3$ ở câu (e).'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: (a) ra $\\frac{4}{5}$, (b) ra $0$, (c) lấy tỉ số hệ số đầu là $\\frac{3}{1} = 3$.',
+          'Bước 2: Ở (d), lấy hệ số đứng đầu của tử và mẫu là $\\frac{6}{9} = \\frac{2}{3}$.',
+          'Bước 3: Ở (e) lấy $\\frac{1}{2}$ và ở (f) lấy $\\frac{3}{4}$.'
+        ],
+        finalAnswer: '(a) $\\frac{4}{5}$; (b) $0$; (c) $3$; (d) $\\frac{2}{3}$; (e) $\\frac{1}{2}$; (f) $\\frac{3}{4}$',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai ở Bước 1, 2, 3! Câu (c) bậc tử nhỏ hơn bậc mẫu nên bằng $0$; câu (d) và (e) mẫu số viết bậc cao nhất ở phía sau ($-2t^2$ và $3r^3$), không được lấy số đứng đầu!'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: (a) $\\frac{4}{5}$, (b) $0$, (c) $0$.',
+          'Bước 2: Ở câu (d), vì $t \\to -\\infty$ (âm vô cùng) nên $t^2$ mang dấu âm, suy ra $\\frac{6t^2}{-2t^2} = +3$.',
+          'Bước 3: (e) $-\\frac{1}{3}$, (f) $\\frac{3}{4}$.'
+        ],
+        finalAnswer: '(a) $\\frac{4}{5}$; (b) $0$; (c) $0$; (d) $+3$; (e) $-\\frac{1}{3}$; (f) $\\frac{3}{4}$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! Dù $t \\to -\\infty$ thì $t^2$ ở tử và $t^2$ ở mẫu vẫn rút gọn trực tiếp cho nhau ($\\frac{6t^2}{-2t^2} = -3$), không bị đổi dấu!'
+      }
+    ]
+  },
+  {
+    id: 'b2-16b',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Trung bình',
+    title: 'Bài 16 g, h, i, j, k, l (Buổi 2): Giới hạn chứa căn thức tại +∞ và -∞',
+    problem: 'Tìm các giới hạn sau (từ Bài 16g đến 16l):\n(g) $\\lim_{x \\to \\infty} \\frac{4 - \\sqrt{x}}{2 + \\sqrt{x}}$ $\\quad$ (h) $\\lim_{u \\to -\\infty} \\frac{(u^2 + 1)(2u^2 - 1)}{(u^2 + 2)^2}$ $\\quad$ (i) $\\lim_{x \\to \\infty} \\frac{\\sqrt{x + 3x^2}}{4x - 1}$\n(j) $\\lim_{t \\to \\infty} \\frac{t + 3}{\\sqrt{2t^2 - 1}}$ $\\quad$ (k) $\\lim_{x \\to \\infty} \\frac{\\sqrt{1 + 4x^6}}{2 - x^3}$ $\\quad$ (l) $\\lim_{x \\to -\\infty} \\frac{\\sqrt{1 + 4x^6}}{2 - x^3}$',
+    hint: 'Chú ý hai câu cực kỳ dễ sập bẫy là (k) và (l): $\\sqrt{x^6} = |x^3|$. Khi $x \\to +\\infty$ thì $|x^3| = x^3$; nhưng khi $x \\to -\\infty$ ($x < 0$) thì $x^3 < 0$ nên $\\sqrt{x^6} = |x^3| = -x^3$!',
+    errorCategory: 'Quên √(x^6) = |x^3| = -x^3 khi x -> -∞ ở câu 16(l)',
+    keyTakeaway: 'Siêu bẫy ở 16(k) và 16(l): √(1 + 4x⁶) / (2 - x³). Khi x → +∞ thì tử dương, mẫu âm nên ra -2. Khi x → -∞ thì x³ < 0 nên mẫu (2 - x³) > 0 và tử cũng > 0, kết quả phải ra +2!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: (g) Chia tử và mẫu cho $\\sqrt{x}$: $\\lim_{x \\to \\infty} \\frac{4/\\sqrt{x} - 1}{2/\\sqrt{x} + 1} = -1$. (h) Bậc cao nhất ở tử là $2u^4$, ở mẫu là $u^4$, nên giới hạn bằng $2$.',
+          'Bước 2: (i) Với $x > 0$, chia cho $x = \\sqrt{x^2}$: $\\lim_{x \\to \\infty} \\frac{\\sqrt{1/x + 3}}{4 - 1/x} = \\frac{\\sqrt{3}}{4}$. (j) Với $t > 0$, chia cho $t = \\sqrt{t^2}$: $\\lim_{t \\to \\infty} \\frac{1 + 3/t}{\\sqrt{2 - 1/t^2}} = \\frac{1}{\\sqrt{2}}$.',
+          'Bước 3: Ta có $\\sqrt{1 + 4x^6} = |x^3|\\sqrt{\\frac{1}{x^6} + 4}$. Ở (k) khi $x \\to +\\infty$, $|x^3| = x^3 \\Rightarrow \\lim \\frac{x^3\\sqrt{1/x^6+4}}{x^3(2/x^3 - 1)} = -2$. Ở (l) khi $x \\to -\\infty$, vì $x < 0$ nên $x^3 < 0 \\Rightarrow |x^3| = -x^3$, suy ra $\\lim \\frac{-x^3\\sqrt{1/x^6+4}}{x^3(2/x^3 - 1)} = \\frac{-2}{-1} = +2$.'
+        ],
+        finalAnswer: '(g) $-1$; (h) $2$; (i) $\\frac{\\sqrt{3}}{4}$; (j) $\\frac{1}{\\sqrt{2}}$; (k) $-2$; (l) $+2$',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Quá xuất sắc! Ở câu (l), vì $x^6$ mũ chẵn còn $x^3$ mũ lẻ, khi $x < 0$ thì $\\sqrt{4x^6} = 2|x^3| = -2x^3$, chia cho $-x^3$ ở mẫu cho ra $+2$.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: (g) ra $-1$, (h) ra $2$, (i) ra $\\frac{\\sqrt{3}}{4}$, (j) ra $\\frac{1}{\\sqrt{2}}$.',
+          'Bước 2: Ở cả (k) và (l), vì $\\sqrt{4x^6} = 2x^3$ với mọi $x$ (do mũ 6 là mũ chẵn).',
+          'Bước 3: Nên cả câu (k) và câu (l) đều có cùng kết quả là $\\frac{2}{-1} = -2$.'
+        ],
+        finalAnswer: '(g) $-1$; (h) $2$; (i) $\\frac{\\sqrt{3}}{4}$; (j) $\\frac{1}{\\sqrt{2}}$; (k) $-2$; (l) $-2$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sập bẫy ở Bước 2! $\\sqrt{x^6} = |x^3|$ chứ không phải $x^3$. Vì số mũ sau khi khai căn là số lẻ ($3$), nên khi $x < 0$ thì $x^3 < 0 \\Rightarrow |x^3| = -x^3$, làm câu (l) đổi dấu thành $+2$!'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: (g) ra $-1$, (h) ra $2$.',
+          'Bước 2: Ở (i), đưa $3x^2$ ra khỏi căn thành $3x$, chia cho $4x$ được $\\frac{3}{4}$. Ở (j) đưa $2t^2$ ra khỏi căn thành $2t$, được $\\frac{1}{2}$.',
+          'Bước 3: (k) ra $-2$, (l) ra $+2$.'
+        ],
+        finalAnswer: '(g) $-1$; (h) $2$; (i) $\\frac{3}{4}$; (j) $\\frac{1}{2}$; (k) $-2$; (l) $+2$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! Khi đưa hệ số $3$ và $2$ ra khỏi dấu căn bậc hai thì phải lấy căn thành $\\sqrt{3}$ và $\\sqrt{2}$ chứ không phải giữ nguyên $3$ và $2$.'
+      }
+    ]
+  },
+  {
+    id: 'b2-17',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Dễ',
+    title: 'Bài 17 (Buổi 2): Bài toán thực tế Nồng độ nước muối C(t) khi t → ∞',
+    problem: 'Một bể chứa $5000\\text{ L}$ nước tinh khiết. Nước muối có nồng độ $30\\text{ g muối/1 lít}$ được bơm vào bể với tốc độ $25\\text{ L/phút}$.\n(a) Chứng minh rằng nồng độ muối trong bể sau $t$ phút (tính bằng gam/lít) là $C(t) = \\frac{30t}{200 + t}$.\n(b) Khi $t \\to \\infty$, nồng độ sẽ tiến đến giá trị nào?',
+    hint: 'Sau $t$ phút: lượng nước muối bơm vào là $25t$ (lít), mang theo $30 \\cdot 25t = 750t$ (gam muối). Tổng thể tích trong bể là $5000 + 25t$ (lít). Lấy khối lượng muối chia tổng thể tích!',
+    errorCategory: 'Quên cộng thể tích nước ban đầu 5000 L hoặc tính sai giới hạn khi t -> ∞',
+    keyTakeaway: 'Nồng độ C(t) = (Tổng khối lượng muối) / (Tổng thể tích dung dịch) = (750t) / (5000 + 25t) = 30t / (200 + t). Khi t → ∞, nồng độ trong bể tiến về đúng nồng độ nước bơm vào (30 g/L)!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: (a) Sau $t$ phút, thể tích nước muối bơm vào là $25t$ (lít), nên tổng thể tích dung dịch trong bể là $V(t) = 5000 + 25t$ (lít). Khối lượng muối được bơm vào là $m(t) = 30 \\cdot 25t = 750t$ (gam).',
+          'Bước 2: Nồng độ muối sau $t$ phút là $C(t) = \\frac{m(t)}{V(t)} = \\frac{750t}{5000 + 25t}$. Chia cả tử và mẫu cho $25$, ta được $C(t) = \\frac{30t}{200 + t}\\text{ (g/L)}$ (đpcm).',
+          'Bước 3: (b) Khi $t \\to \\infty$: $\\lim_{t \\to \\infty} C(t) = \\lim_{t \\to \\infty} \\frac{30t}{200 + t} = \\lim_{t \\to \\infty} \\frac{30}{200/t + 1} = 30\\text{ (g/L)}$.'
+        ],
+        finalAnswer: '(a) $C(t) = \\frac{750t}{5000+25t} = \\frac{30t}{200+t}$; (b) Tiến tới $30\\text{ g/L}$',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Về mặt vật lý, khi bơm nước muối $30\\text{ g/L}$ mãi mãi ($t \\to \\infty$), lượng nước tinh khiết ban đầu trở nên không đáng kể nên nồng độ tiến về $30\\text{ g/L}$.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: (a) Rút gọn $\\frac{750t}{5000 + 25t} = \\frac{30t}{200 + t}$.',
+          'Bước 2: (b) Khi $t \\to \\infty$, mẫu số $200 + t \\to \\infty$.',
+          'Bước 3: Suy ra nồng độ $C(t)$ tiến về $0\\text{ g/L}$.'
+        ],
+        finalAnswer: '(b) Tiến tới $0\\text{ g/L}$',
+        isCorrect: false,
+        wrongStep: 3,
+        explanation: 'Sai ở Bước 3! Cả tử số $30t$ và mẫu số $200 + t$ đều bậc 1 theo $t$, nên giới hạn khi $t \\to \\infty$ bằng tỉ số hệ số bậc nhất là $\\frac{30}{1} = 30$ chứ không phải $0$.'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: (a) Ta có $C(t) = \\frac{30t}{200 + t}$.',
+          'Bước 2: (b) Khi $t \\to \\infty$, lấy tỉ số hệ số đầu của tử và mẫu là $\\frac{30}{200}$.',
+          'Bước 3: Vậy nồng độ tiến tới $\\frac{3}{20} = 0.15\\text{ g/L}$.'
+        ],
+        finalAnswer: '(b) Tiến tới $0.15\\text{ g/L}$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! Ở mẫu số $200 + t$, hệ số của bậc cao nhất ($t^1$) là $1$ chứ không phải hằng số $200$.'
+      }
+    ]
+  },
+  {
+    id: 'b2-18',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Dễ',
+    title: 'Bài 18 (Buổi 2): Vận tốc hòn đá ném trên bề mặt Sao Hỏa',
+    problem: 'Một hòn đá được ném thẳng đứng lên trên bề mặt sao Hỏa với vận tốc ban đầu $10\\text{ m/s}$. Độ cao sau $t$ giây được cho bởi $H(t) = 10t - 1.86t^2$.\n(a) Tìm vận tốc của hòn đá sau $1$ giây.\n(b) Tìm vận tốc của hòn đá tại thời điểm $t = a$.\n(c) Hòn đá sẽ rơi xuống mặt đất sau bao lâu?\n(d) Vận tốc của hòn đá khi chạm đất là bao nhiêu?',
+    hint: 'Vận tốc tức thời là đạo hàm của độ cao theo thời gian: $v(t) = H\'(t) = 10 - 3.72t$. Hòn đá chạm đất khi độ cao $H(t) = 0$ (với $t > 0$).',
+    errorCategory: 'Quên nhân 2 khi đạo hàm -1.86t^2 hoặc lấy vận tốc trung bình thay vì vận tốc tức thời',
+    keyTakeaway: 'Vận tốc tức thời v(t) = H\'(t) = 10 - 3.72t. Khi chạm đất, vận tốc có cùng độ lớn với vận tốc ném lên nhưng ngược chiều: v = -10 m/s!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: (a & b) Vận tốc tại thời điểm $t = a$ là $v(a) = H\'(a) = \\lim_{h \\to 0} \\frac{H(a+h) - H(a)}{h} = 10 - 2(1.86)a = 10 - 3.72a\\text{ (m/s)}$. Tại $t = 1\\text{ s}$, vận tốc là $v(1) = 10 - 3.72(1) = 6.28\\text{ m/s}$.',
+          'Bước 2: (c) Hòn đá chạm đất khi $H(t) = 0$ ($t > 0$) $\\Leftrightarrow t(10 - 1.86t) = 0 \\Rightarrow t = \\frac{10}{1.86} = \\frac{500}{93} \\approx 5.38\\text{ giây}$.',
+          'Bước 3: (d) Thay thời điểm chạm đất $t = \\frac{10}{1.86}$ vào công thức vận tốc: $v\\left(\\frac{10}{1.86}\\right) = 10 - 3.72 \\cdot \\frac{10}{1.86} = 10 - 20 = -10\\text{ m/s}$.'
+        ],
+        finalAnswer: '(a) $6.28\\text{ m/s}$; (b) $10 - 3.72a\\text{ m/s}$; (c) $\\approx 5.38\\text{ s}$; (d) $-10\\text{ m/s}$',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Dấu trừ trong $-10\\text{ m/s}$ ở câu (d) thể hiện lúc chạm đất hòn đá đang chuyển động đi xuống.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: (a) Tính độ cao tại $t = 1$: $H(1) = 10(1) - 1.86(1)^2 = 8.14\\text{ m/s}$.',
+          'Bước 2: (b) $v(a) = 10 - 1.86a$.',
+          'Bước 3: (c) $t \\approx 5.38\\text{ s}$ và (d) vận tốc khi chạm đất bằng $0\\text{ m/s}$.'
+        ],
+        finalAnswer: '(a) $8.14\\text{ m/s}$; (b) $10 - 1.86a$; (c) $5.38\\text{ s}$; (d) $0\\text{ m/s}$',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai ở cả 3 bước! $H(1) = 8.14\\text{ m}$ là độ cao (hay vận tốc trung bình trên $[0,1]$), không phải vận tốc tức thời; và ngay khoảnh khắc chạm đất vận tốc là $-10\\text{ m/s}$ (tại đỉnh cao nhất vận tốc mới bằng $0$).'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: (a) $v(1) = 6.28\\text{ m/s}$; (b) $v(a) = 10 - 3.72a\\text{ m/s}$.',
+          'Bước 2: (c) Cho $v(t) = 0 \\Leftrightarrow 10 - 3.72t = 0 \\Rightarrow t = \\frac{10}{3.72} \\approx 2.69\\text{ s}$ là lúc chạm đất.',
+          'Bước 3: (d) Thay vào được vận tốc chạm đất bằng $0$.'
+        ],
+        finalAnswer: '(c) Chạm đất sau $2.69\\text{ s}$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! $v(t) = 0$ ($t \\approx 2.69\\text{ s}$) là thời điểm hòn đá lên tới ĐỈNH CAO NHẤT. Thời điểm rơi chạm đất phải gấp đôi thời gian lên đỉnh: $H(t) = 0 \\Rightarrow t \\approx 5.38\\text{ s}$!'
+      }
+    ]
+  },
+  {
+    id: 'b2-19',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Dễ',
+    title: 'Bài 19 (Buổi 2): Tốc độ tăng trưởng trung bình và tức thời của chuỗi cà phê',
+    problem: 'Số lượng $N$ của các cửa hàng trong một chuỗi cà phê nổi tiếng được cho bởi bảng:\n• Năm 2008: $16,680$ $\\quad$ • Năm 2010: $16,858$ $\\quad$ • Năm 2012: $18,066$ $\\quad$ • Năm 2014: $21,366$ $\\quad$ • Năm 2016: $25,085$\n(a) Tính tốc độ tăng trưởng trung bình: (i) từ 2008 đến 2010, (ii) từ 2010 đến 2012 (nêu đơn vị).\n(b) Ước lượng tốc độ tăng trưởng tức thời vào năm 2010 bằng trung bình cộng hai tốc độ trên.',
+    hint: 'Tốc độ thay đổi trung bình trên $[t_1, t_2]$ là $\\frac{\\Delta N}{\\Delta t} = \\frac{N(t_2) - N(t_1)}{t_2 - t_1}$. Chú ý khoảng thời gian từ 2008 đến 2010 là $2$ năm!',
+    errorCategory: 'Quên chia cho khoảng thời gian Δt = 2 năm khi tính tốc độ tăng trưởng trung bình',
+    keyTakeaway: 'Tốc độ thay đổi trung bình = ΔN / Δt (đơn vị: cửa hàng/năm). Để ước lượng đạo hàm N\'(2010) từ bảng số liệu rời rạc, ta lấy trung bình cộng tốc độ đoạn liền trước và đoạn liền sau!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: (a)(i) Từ 2008 đến 2010: $\\frac{N(2010) - N(2008)}{2010 - 2008} = \\frac{16858 - 16680}{2} = \\frac{178}{2} = 89$ (cửa hàng/năm).',
+          'Bước 2: (a)(ii) Từ 2010 đến 2012: $\\frac{N(2012) - N(2010)}{2012 - 2010} = \\frac{18066 - 16858}{2} = \\frac{1208}{2} = 604$ (cửa hàng/năm). Kết luận: Giai đoạn 2010–2012 chuỗi mở rộng nhanh gấp gần 7 lần giai đoạn 2008–2010.',
+          'Bước 3: (b) Ước lượng tốc độ tăng trưởng tức thời năm 2010: $N\'(2010) \\approx \\frac{89 + 604}{2} = 346.5$ (cửa hàng/năm) (xấp xỉ hệ số góc cát tuyến nối 2008 và 2012).'
+        ],
+        finalAnswer: '(a)(i) $89$ cửa hàng/năm; (ii) $604$ cửa hàng/năm; (b) $346.5$ cửa hàng/năm',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Cả con số lẫn đơn vị "cửa hàng/năm" đều chuẩn xác.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: (a)(i) Lấy $16858 - 16680 = 178$ cửa hàng/năm.',
+          'Bước 2: (a)(ii) Lấy $18066 - 16858 = 1208$ cửa hàng/năm.',
+          'Bước 3: (b) Trung bình cộng là $\\frac{178 + 1208}{2} = 693$ cửa hàng/năm.'
+        ],
+        finalAnswer: '(a)(i) $178$; (ii) $1208$; (b) $693$ cửa hàng/năm',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai ở Bước 1 và 2! Khoảng cách giữa các mốc năm trong bảng là $\\Delta t = 2010 - 2008 = 2$ năm, bạn quên chia cho $2$ rồi!'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: (a)(i) $89$ cửa hàng/năm; (ii) $604$ cửa hàng/năm.',
+          'Bước 2: (b) Lấy hiệu hai tốc độ $\\frac{604 - 89}{2} = 257.5$ cửa hàng/năm.',
+          'Bước 3: Kết luận $257.5$ cửa hàng/năm.'
+        ],
+        finalAnswer: '(b) $257.5$ cửa hàng/năm',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! Để lấy trung bình cộng hai tốc độ trung bình, ta phải CỘNG lại chia đôi: $\\frac{89 + 604}{2} = 346.5$.'
+      }
+    ]
+  },
+  {
+    id: 'b2-20',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Trung bình',
+    title: 'Bài 20 (Buổi 2): Kiểm tra đạo hàm f\'(0) có tồn tại không với f(x) = x sin(1/x)',
+    problem: 'Kiểm tra xem $f\'(0)$ có tồn tại hay không đối với hàm số:\n$$f(x) = \\begin{cases} x \\sin\\left(\\frac{1}{x}\\right) & \\text{nếu } x \\neq 0 \\\\ 0 & \\text{nếu } x = 0 \\end{cases}$$',
+    hint: 'Tại điểm ghép $x = 0$, BẮT BUỘC phải dùng định nghĩa đạo hàm: $f\'(0) = \\lim_{h \\to 0} \\frac{f(0+h) - f(0)}{h} = \\lim_{h \\to 0} \\frac{h \\sin(1/h)}{h} = \\lim_{h \\to 0} \\sin\\left(\\frac{1}{h}\\right)$.',
+    errorCategory: 'Nhầm lẫn giữa tính liên tục của x sin(1/x) và tính khả vi tại x = 0',
+    keyTakeaway: 'Hàm f(x) = x·sin(1/x) LIÊN TỤC tại x = 0, nhưng KHÔNG CÓ ĐẠO HÀM tại x = 0 vì tỉ số sai phân f(h)/h = sin(1/h) dao động liên tục giữa -1 và 1 khi h → 0! (Muốn khả vi tại 0 thì phải là x²·sin(1/x)).',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Áp dụng định nghĩa đạo hàm tại $x = 0$: $f\'(0) = \\lim_{h \\to 0} \\frac{f(0 + h) - f(0)}{h} = \\lim_{h \\to 0} \\frac{h \\sin(1/h) - 0}{h}$.',
+          'Bước 2: Rút gọn $h \\neq 0$ ở tử và mẫu, ta được $f\'(0) = \\lim_{h \\to 0} \\sin\\left(\\frac{1}{h}\\right)$.',
+          'Bước 3: Khi $h \\to 0$, $\\frac{1}{h} \\to \\pm\\infty$ làm $\\sin(1/h)$ dao động vô hạn lần giữa $-1$ và $1$ mà không tiến về một số cố định nào. Vậy $f\'(0)$ KHÔNG TỒN TẠI.'
+        ],
+        finalAnswer: '$f\'(0)$ không tồn tại (vì $\\lim_{h \\to 0} \\sin(1/h)$ không tồn tại)',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Đây là ví dụ kinh điển về một hàm số liên tục tại $x = 0$ nhưng không khả vi tại $x = 0$.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Ta có $-|x| \\le x \\sin(1/x) \\le |x|$, theo định lý kẹp $\\lim_{x \\to 0} f(x) = 0 = f(0)$.',
+          'Bước 2: Vì hàm số liên tục tại $x = 0$ và nhận giá trị $f(0) = 0$.',
+          'Bước 3: Đạo hàm của $0$ bằng $0$, nên $f\'(0) = 0$.'
+        ],
+        finalAnswer: '$f\'(0) = 0$',
+        isCorrect: false,
+        wrongStep: 3,
+        explanation: 'Sai ở Bước 3! Liên tục tại $x = 0$ không suy ra khả vi tại $x = 0$, và không được lấy đạo hàm của giá trị điểm $f(0) = 0$!'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Theo định nghĩa đạo hàm: $f\'(0) = \\lim_{h \\to 0} \\frac{h \\sin(1/h)}{h} = \\lim_{h \\to 0} \\sin\\left(\\frac{1}{h}\\right)$.',
+          'Bước 2: Áp dụng công thức giới hạn lượng giác cơ bản $\\lim \\frac{\\sin u}{u} = 1$.',
+          'Bước 3: Kết luận $f\'(0) = 1$.'
+        ],
+        finalAnswer: '$f\'(0) = 1$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! Biểu thức còn lại chỉ là $\\sin(1/h)$ chứ không phải $\\frac{\\sin u}{u}$, và $\\frac{1}{h} \\to \\infty$ chứ không tiến về $0$.'
+      }
+    ]
+  },
+  {
+    id: 'b2-21',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Dễ',
+    title: 'Bài 21 (Buổi 2): Đọc đạo hàm f\'(x) và phác thảo đồ thị f\' từ đồ thị y = f(x)',
+    problem: 'Dựa vào đồ thị hàm số $y = f(x)$ ở Bài 21 (trang 5 file PDF: đồ thị đạt đỉnh cực đại ngang tại $x = 1$, đi xuống dốc nhất tại $x = 3$, đạt đáy cực tiểu ngang tại $x = 5$, rồi đi lên qua $x = 6, 7$), hãy xác định dấu và giá trị ước lượng của $f\'(0), f\'(1), f\'(2), \\dots, f\'(7)$.',
+    hint: '$f\'(x)$ chính là HỆ SỐ GÓC (độ dốc) của tiếp tuyến với đồ thị $y = f(x)$ tại hoành độ $x$: tại đỉnh/đáy nằm ngang thì $f\'(x) = 0$; đồ thị đi lên thì $f\'(x) > 0$; đồ thị đi xuống thì $f\'(x) < 0$!',
+    errorCategory: 'Đọc tung độ f(x) thay vì đọc độ dốc tiếp tuyến f\'(x) trên đồ thị',
+    keyTakeaway: 'Khi nhìn đồ thị f(x) để tìm f\'(x): Đỉnh cực đại & Đáy cực tiểu luôn có tiếp tuyến nằm ngang (f\' = 0); nhánh đi lên có f\' > 0; nhánh đi xuống có f\' < 0!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Tại $x = 1$ (đỉnh cực đại) và $x = 5$ (đáy cực tiểu), tiếp tuyến nằm ngang nên chắc chắn $f\'(1) = 0$ và $f\'(5) = 0$.',
+          'Bước 2: Tại $x = 0$, đồ thị đang đi lên với độ dốc khoảng $f\'(0) \\approx 0.5$. Trên khoảng $(1, 5)$, đồ thị đi xuống nên đạo hàm âm: $f\'(2) \\approx -1$, $f\'(3) \\approx -1.8$ (dốc nhất), $f\'(4) \\approx -1$.',
+          'Bước 3: Với $x > 5$, đồ thị đi lên trở lại nên đạo hàm dương: $f\'(6) \\approx 1$, $f\'(7) \\approx 0.8$. Đồ thị $y = f\'(x)$ cắt trục hoành tại $x = 1$ và $x = 5$, nằm dưới trục hoành trên $(1, 5)$.'
+        ],
+        finalAnswer: '$f\'(1) = 0, f\'(5) = 0$; $f\'(x) < 0$ trên $(1, 5)$ (thấp nhất tại $x=3$); $f\'(x) > 0$ tại $x=0, 6, 7$',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Nắm vững mối liên hệ giữa chiều biến thiên của $f(x)$ và dấu của $f\'(x)$ giúp phác thảo đồ thị $f\'$ ngay lập tức.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Đọc trực tiếp tung độ $y$ của đồ thị tại các điểm $x = 1$ và $x = 5$.',
+          'Bước 2: Tại $x = 1$ đồ thị cao nhất nên $f\'(1) \\approx 2.2$ đạt giá trị lớn nhất; tại $x = 3$ đồ thị cắt trục hoành nên $f\'(3) = 0$.',
+          'Bước 3: Tại $x = 5$ đồ thị thấp nhất nên $f\'(5) \\approx -1.5$.'
+        ],
+        finalAnswer: '$f\'(1) \\approx 2.2, \\; f\'(3) = 0, \\; f\'(5) \\approx -1.5$',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai căn bản ở Bước 1 và 2! Bạn đang đọc giá trị hàm số $f(x)$ chứ không phải đạo hàm $f\'(x)$. Tại đỉnh $x = 1$ tiếp tuyến nằm ngang nên $f\'(1) = 0$, còn tại $x = 3$ đồ thị đang lao xuống dốc nhất nên $f\'(3) < 0$ đạt cực tiểu!'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Tại $x = 1$ và $x = 5$ có tiếp tuyến ngang nên $f\'(1) = 0, f\'(5) = 0$.',
+          'Bước 2: Trên khoảng $(1, 5)$ đồ thị đi xuống nên $f\'(x) > 0$.',
+          'Bước 3: Trên khoảng $(5, 7)$ đồ thị đi lên nên $f\'(x) < 0$.'
+        ],
+        finalAnswer: '$f\'(x) > 0$ trên $(1, 5)$ và $f\'(x) < 0$ trên $(5, 7)$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ngược dấu ở Bước 2 và 3! Đồ thị đi xuống (hàm nghịch biến) thì hệ số góc tiếp tuyến $f\'(x) < 0$, còn đi lên (đồng biến) thì $f\'(x) > 0$.'
+      }
+    ]
+  },
+  {
+    id: 'b2-22a',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Dễ',
+    title: 'Bài 22 a, b, c, d, e, f, j (Buổi 2): Đạo hàm và miền xác định của các hàm đa thức',
+    problem: 'Tính đạo hàm và tìm miền xác định của hàm số lẫn đạo hàm (Bài 22a–f, j):\n(a) $f(x) = 3x - 8$ $\\quad$ (b) $f(x) = mx + b$ $\\quad$ (c) $f(t) = 2.5t^2 + 6t$\n(d) $f(x) = 4 + 8x - 5x^2$ $\\quad$ (e) $A(p) = 4p^3 + 3p$ $\\quad$ (f) $F(t) = t^3 - 5t + 1$ $\\quad$ (j) $f(x) = x^4$',
+    hint: 'Mọi hàm đa thức đều có miền xác định là toàn bộ trục số thực $\\mathbb{R} = (-\\infty, \\infty)$, và đạo hàm của chúng cũng có miền xác định là $\\mathbb{R}$!',
+    errorCategory: 'Đạo hàm sai hệ số bậc 2, bậc 3 hoặc quên đạo hàm hằng số bằng 0',
+    keyTakeaway: 'Với hàm đa thức bất kỳ: Miền xác định của f và của f\' đều là R = (-∞, ∞). Công thức: (x^n)\' = n·x^(n-1), hằng số đạo hàm bằng 0!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Các hàm bậc nhất (a) $f\'(x) = 3$; (b) $f\'(x) = m$. Các hàm bậc hai (c) $f\'(t) = 5t + 6$; (d) $f\'(x) = 8 - 10x$.',
+          'Bước 2: Các hàm bậc ba và bậc bốn: (e) $A\'(p) = 12p^2 + 3$; (f) $F\'(t) = 3t^2 - 5$; (j) $f\'(x) = 4x^3$.',
+          'Bước 3: Vì tất cả đều là hàm đa thức nên miền xác định của mọi hàm số trên và miền xác định của các đạo hàm của chúng đều là $(-\\infty, \\infty)$ (tức $\\mathbb{R}$).'
+        ],
+        finalAnswer: '(a) $3$; (b) $m$; (c) $5t+6$; (d) $8-10x$; (e) $12p^2+3$; (f) $3t^2-5$; (j) $4x^3$. MXĐ đều là $\\mathbb{R}$',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Cả 7 đạo hàm và miền xác định $\\mathbb{R}$ đều hoàn toàn chuẩn xác.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: (a) $f\'(x) = 3 - 8 = -5$; (b) $f\'(x) = m + b$.',
+          'Bước 2: (c) $f\'(t) = 5t + 6$; (d) $f\'(x) = 4 + 8 - 10x = 12 - 10x$.',
+          'Bước 3: (e) $12p^2 + 3$; (f) $3t^2 - 5 + 1$; (j) $4x^3$.'
+        ],
+        finalAnswer: '(a) $-5$; (b) $m+b$; (d) $12-10x$',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai ở Bước 1 và 2! Đạo hàm của các hằng số tự do ($-8, b, 4, 1$) phải bằng $0$ chứ không được giữ nguyên!'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Tính đúng đạo hàm các câu (a) $3$, (b) $m$, (c) $5t+6$, (d) $8-10x$, (e) $12p^2+3$, (f) $3t^2-5$, (j) $4x^3$.',
+          'Bước 2: Ở câu (f), vì $F\'(t) = 3t^2 - 5 = 0$ tại $t = \\pm\\sqrt{5/3}$.',
+          'Bước 3: Nên miền xác định của $F\'(t)$ là $\\mathbb{R} \\setminus \\{\\pm\\sqrt{5/3}\\}$.'
+        ],
+        finalAnswer: 'MXĐ của $F\'(t)$ ở câu (f) là $\\mathbb{R} \\setminus \\{\\pm\\sqrt{5/3}\\}$',
+        isCorrect: false,
+        wrongStep: 3,
+        explanation: 'Sai ở Bước 3! Đạo hàm bằng $0$ vẫn là một giá trị thực hoàn toàn xác định, không phải mẫu số bằng $0$, nên miền xác định của $F\'(t)$ vẫn là toàn bộ $\\mathbb{R}$.'
+      }
+    ]
+  },
+  {
+    id: 'b2-22b',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Trung bình',
+    title: 'Bài 22 g, h, i (Buổi 2): Đạo hàm và miền xác định của các hàm phân thức',
+    problem: 'Tính đạo hàm và tìm miền xác định của hàm số và của đạo hàm (Bài 22g, h, i):\n(g) $f(x) = \\frac{1}{x^2 - 4}$ $\\quad$ (h) $F(v) = \\frac{v}{v + 2}$ $\\quad$ (i) $g(u) = \\frac{u + 1}{4u - 1}$',
+    hint: 'Áp dụng $\\left(\\frac{1}{v}\\right)\' = -\\frac{v\'}{v^2}$ và $\\left(\\frac{u}{v}\\right)\' = \\frac{u\'v - uv\'}{v^2}$ (hoặc định nghĩa giới hạn). Miền xác định là tập hợp mọi giá trị làm cho mẫu số khác $0$!',
+    errorCategory: 'Sai dấu trên tử số khi tính đạo hàm hàm phân thức hoặc quên loại nghiệm của mẫu khỏi miền xác định',
+    keyTakeaway: 'Mẹo nhẩm nhanh đạo hàm bậc nhất trên bậc nhất: ((ax+b)/(cx+d))\' = (a·d - b·c) / (cx+d)². Miền xác định của cả hàm và đạo hàm là mẫu khác 0!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: (g) $f\'(x) = \\lim_{h \\to 0} \\frac{\\frac{1}{(x+h)^2-4} - \\frac{1}{x^2-4}}{h} = \\frac{-(x^2 - 4)\'}{(x^2 - 4)^2} = \\frac{-2x}{(x^2 - 4)^2}$. Miền xác định của $f$ và $f\'$ đều là $x \\neq \\pm 2$, tức $(-\\infty, -2) \\cup (-2, 2) \\cup (2, \\infty)$.',
+          'Bước 2: (h) $F\'(v) = \\frac{1(v + 2) - v(1)}{(v + 2)^2} = \\frac{2}{(v + 2)^2}$. Miền xác định của $F$ và $F\'$ đều là $v \\neq -2$, tức $(-\\infty, -2) \\cup (-2, \\infty)$.',
+          'Bước 3: (i) $g\'(u) = \\frac{1(4u - 1) - (u + 1)(4)}{(4u - 1)^2} = \\frac{4u - 1 - 4u - 4}{(4u - 1)^2} = \\frac{-5}{(4u - 1)^2}$. Miền xác định của $g$ và $g\'$ đều là $u \\neq \\frac{1}{4}$.'
+        ],
+        finalAnswer: '(g) $\\frac{-2x}{(x^2-4)^2}$ ($x \\neq \\pm 2$); (h) $\\frac{2}{(v+2)^2}$ ($v \\neq -2$); (i) $\\frac{-5}{(4u-1)^2}$ ($u \\neq \\frac{1}{4}$)',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Cả 3 đạo hàm và điều kiện mẫu khác $0$ đều được tính rất cẩn thận.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: (g) $f\'(x) = \\frac{2x}{(x^2 - 4)^2}$ (quên dấu trừ của công thức $(-1/v^2)v\'$).',
+          'Bước 2: (h) $F\'(v) = \\frac{v - (v + 2)}{(v + 2)^2} = \\frac{-2}{(v + 2)^2}$.',
+          'Bước 3: (i) $g\'(u) = \\frac{4u - 1 - 4u + 4}{(4u - 1)^2} = \\frac{3}{(4u - 1)^2}$.'
+        ],
+        finalAnswer: '(g) $\\frac{2x}{(x^2-4)^2}$; (h) $\\frac{-2}{(v+2)^2}$; (i) $\\frac{3}{(4u-1)^2}$',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai dấu ở cả 3 câu! Ở (g) thiếu dấu trừ; ở (h) lấy ngược $uv\' - u\'v$; ở (i) khi phá ngoặc $-(u+1)\\cdot 4 = -4u - 4$ chứ không phải $-4u + 4$.'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Tính đúng đạo hàm (g) $\\frac{-2x}{(x^2-4)^2}$, (h) $\\frac{2}{(v+2)^2}$, (i) $\\frac{-5}{(4u-1)^2}$.',
+          'Bước 2: Ở câu (g), mẫu số $x^2 - 4 \\neq 0 \\Rightarrow x \\neq 2$.',
+          'Bước 3: Kết luận miền xác định của câu (g) là $\\mathbb{R} \\setminus \\{2\\}$.'
+        ],
+        finalAnswer: 'Câu (g) có MXĐ là $\\mathbb{R} \\setminus \\{2\\}$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! Phương trình $x^2 - 4 = 0$ có HAI nghiệm là $x = 2$ và $x = -2$, bạn đã bỏ sót điểm $x = -2$!'
+      }
+    ]
+  },
+  {
+    id: 'b2-22c',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Khó',
+    title: 'Bài 22 k, l (Buổi 2): Bẫy miền xác định bị thu hẹp khi lấy đạo hàm hàm căn thức!',
+    problem: 'Tính đạo hàm và xác định miền xác định của hàm số và của đạo hàm (Bài 22k, l):\n(k) $f(x) = \\frac{1}{\\sqrt{1 + x}}$ $\\qquad$ (l) $g(x) = \\frac{1}{1 + \\sqrt{x}}$',
+    hint: 'Cẩn thận câu (l): Hàm $g(x) = \\frac{1}{1 + \\sqrt{x}}$ xác định tại $x = 0$ (vì $g(0) = 1$), tức $D_g = [0, \\infty)$. Nhưng trong đạo hàm $g\'(x)$ xuất hiện $\\sqrt{x}$ ở mẫu số nên tại $x = 0$ đạo hàm KHÔNG xác định ($D_{g\'} = (0, \\infty)$)!',
+    errorCategory: 'Quên loại bỏ điểm đầu mút x = 0 khỏi miền xác định của đạo hàm g\'(x) khi có √x ở mẫu',
+    keyTakeaway: 'Siêu bẫy ở câu 22(l): g(x) = 1/(1 + √x) có MXĐ là [0, +∞) (lấy cả số 0), nhưng đạo hàm g\'(x) = -1 / [2√x(1 + √x)²] có √x dưới mẫu nên MXĐ của g\' chỉ là (0, +∞) (không lấy số 0)!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: (k) Viết $f(x) = (1 + x)^{-1/2}$. Đạo hàm $f\'(x) = -\\frac{1}{2}(1 + x)^{-3/2} = -\\frac{1}{2(1 + x)\\sqrt{1 + x}}$. Vì $\\sqrt{1+x}$ nằm ở mẫu nên cả $f$ và $f\'$ đều có cùng miền xác định là $1 + x > 0 \\Leftrightarrow x \\in (-1, \\infty)$.',
+          'Bước 2: (l) Với $g(x) = \\frac{1}{1 + \\sqrt{x}}$, vì $1 + \\sqrt{x} \\ge 1 > 0$ nên $g(x)$ xác định khi $x \\ge 0 \\Rightarrow$ Miền xác định của $g$ là $[0, \\infty)$.',
+          'Bước 3: Đạo hàm $g\'(x) = -\\frac{(1 + \\sqrt{x})\'}{(1 + \\sqrt{x})^2} = -\\frac{1}{2\\sqrt{x}(1 + \\sqrt{x})^2}$. Do có $\\sqrt{x}$ ở mẫu số nên $g\'(x)$ đòi hỏi $x > 0 \\Rightarrow$ Miền xác định của $g\'$ là $(0, \\infty)$ (bị mất điểm $x = 0$).'
+        ],
+        finalAnswer: '(k) $f\'(x) = -\\frac{1}{2(1+x)^{3/2}}$, MXĐ $f, f\'$: $(-1, \\infty)$; (l) $g\'(x) = -\\frac{1}{2\\sqrt{x}(1+\\sqrt{x})^2}$, MXĐ $g$: $[0, \\infty)$, MXĐ $g\'$: $(0, \\infty)$',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Tuyệt vời! Phát hiện ra sự khác biệt giữa $[0, \\infty)$ của $g$ và $(0, \\infty)$ của $g\'$ ở câu (l) là điểm ăn tiền tuyệt đối.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: (k) $f\'(x) = -\\frac{1}{2(1+x)^{3/2}}$, miền xác định của $f$ và $f\'$ là $[-1, \\infty)$.',
+          'Bước 2: (l) $g\'(x) = -\\frac{1}{2\\sqrt{x}(1+\\sqrt{x})^2}$.',
+          'Bước 3: Miền xác định của cả $g$ và $g\'$ đều là $[0, \\infty)$.'
+        ],
+        finalAnswer: 'MXĐ của (k) là $[-1, \\infty)$, MXĐ của $g\'$ ở (l) là $[0, \\infty)$',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai ở Bước 1 và 3! Ở câu (k), tại $x = -1$ mẫu số $\\sqrt{1+x} = 0$ nên không lấy đầu mút $-1$. Ở câu (l), tại $x = 0$ mẫu số của $g\'(x)$ chứa $2\\sqrt{x} = 0$ nên $g\'(0)$ không tồn tại!'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: (k) Đạo hàm của $\\sqrt{1+x}$ là $\\frac{1}{2\\sqrt{1+x}}$, nên đạo hàm của $\\frac{1}{\\sqrt{1+x}}$ là $\\frac{1}{\\frac{1}{2\\sqrt{1+x}}} = 2\\sqrt{1+x}$.',
+          'Bước 2: (l) Đạo hàm từng số hạng dưới mẫu: $g\'(x) = \\frac{1}{0 + \\frac{1}{2\\sqrt{x}}} = 2\\sqrt{x}$.',
+          'Bước 3: Miền xác định là $(0, \\infty)$.'
+        ],
+        finalAnswer: '(k) $2\\sqrt{1+x}$; (l) $2\\sqrt{x}$',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai nặng công thức ở Bước 1 và 2! Đạo hàm của $\\frac{1}{v}$ là $-\\frac{v\'}{v^2}$ chứ tuyệt đối không phải $\\frac{1}{v\'}$!'
+      }
+    ]
+  },
+  {
+    id: 'b2-23',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Dễ',
+    title: 'Bài 23 (Buổi 2): Ý nghĩa đạo hàm N\'(t) và bảng ước lượng ca phẫu thuật thẩm mỹ',
+    problem: 'Bảng số liệu cho biết số lượng $N(t)$ (tính bằng nghìn) các ca phẫu thuật thẩm mỹ tại Hoa Kỳ:\n• 2000: $5,500$ $\\quad$ • 2002: $4,897$ $\\quad$ • 2004: $7,470$ $\\quad$ • 2006: $9,138$ $\\quad$ • 2008: $10,897$ $\\quad$ • 2010: $11,561$ $\\quad$ • 2012: $13,035$ $\\quad$ • 2014: $13,945$\n(a) Ý nghĩa của $N\'(t)$ là gì? Đơn vị của nó là gì?\n(b) Lập bảng giá trị ước lượng cho $N\'(t)$ tại các năm.\n(d) Làm thế nào để có được các giá trị chính xác hơn cho $N\'(t)$?',
+    hint: 'Đơn vị của đạo hàm $N\'(t) = \\frac{dN}{dt}$ là đơn vị của $N$ chia cho đơn vị của $t$: "nghìn ca phẫu thuật / năm". Để ước lượng chính xác hơn, ta cần thu thập dữ liệu với khoảng thời gian $\\Delta t$ nhỏ hơn (hàng năm, hàng quý, hàng tháng)!',
+    errorCategory: 'Nêu thiếu chữ "nghìn" trong đơn vị của N\'(t) hoặc tính sai tỉ số sai phân',
+    keyTakeaway: 'Đơn vị của đạo hàm y\'(t) luôn là (Đơn vị của y) / (Đơn vị của t). Muốn ước lượng đạo hàm từ bảng số liệu chính xác hơn, ta phải đo số liệu ở các mốc thời gian dày hơn (Δt → 0)!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: (a) $N\'(t)$ biểu thị tốc độ thay đổi tức thời của số ca phẫu thuật theo thời gian $t$. Đơn vị là: nghìn ca phẫu thuật / năm.',
+          'Bước 2: (b) Dùng tỉ số sai phân: $N\'(2000) \\approx \\frac{4897 - 5500}{2} = -301.5$; tại các năm giữa dùng trung bình hai phía $\\frac{N(t+2) - N(t-2)}{4}$: $N\'(2002) \\approx \\frac{7470 - 5500}{4} = 492.5$; $N\'(2004) \\approx \\frac{9138 - 4897}{4} = 1060.25$; $N\'(2006) \\approx 856.75$; $N\'(2008) \\approx 605.75$; $N\'(2010) \\approx 534.5$; $N\'(2012) \\approx 596$; $N\'(2014) \\approx \\frac{13945 - 13035}{2} = 455$.',
+          'Bước 3: (d) Để có giá trị chính xác hơn cho $N\'(t)$, cần thu thập số liệu thống kê trong các khoảng thời gian nhỏ hơn (ví dụ từng năm một, từng quý hoặc từng tháng để $\\Delta t$ nhỏ hơn).'
+        ],
+        finalAnswer: '(a) Tốc độ tăng (nghìn ca/năm); (b) $-301.5; 492.5; 1060.25; \\dots$; (d) Đo dữ liệu với khoảng thời gian $\\Delta t$ nhỏ hơn',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Sử dụng sai phân đối xứng $\\frac{N(t+2)-N(t-2)}{4}$ cho các điểm ở giữa là cách ước lượng chuẩn xác nhất.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: (a) $N\'(t)$ là tổng số ca phẫu thuật đã thực hiện, đơn vị là nghìn ca.',
+          'Bước 2: (b) Lấy hiệu số giữa hai năm liên tiếp mà không chia cho khoảng cách năm.',
+          'Bước 3: (d) Khảo sát thêm các năm sau 2014 như 2016, 2018.'
+        ],
+        finalAnswer: '(a) Tổng số ca; (d) Lấy thêm các năm 2016, 2018',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai ở cả 3 bước! $N\'(t)$ là tốc độ thay đổi (nghìn ca/năm) chứ không phải tổng số ca; và muốn chính xác hơn tại các năm 2000–2014 thì phải chia nhỏ khoảng đo $\\Delta t$ chứ không phải đo năm 2018.'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: (a) Đơn vị là năm / nghìn ca.',
+          'Bước 2: (b) Tại năm 2002, lấy $\\frac{7470 - 5500}{2} = 985$ (chia cho $2$ thay vì khoảng cách từ 2000 đến 2004 là $4$ năm).',
+          'Bước 3: (d) Đo dữ liệu hàng năm.'
+        ],
+        finalAnswer: '(a) Đơn vị năm/nghìn ca; (b) $N\'(2002) \\approx 985$',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai ở Bước 1 và 2! Đơn vị phải là (nghìn ca / năm), và khoảng cách từ năm 2000 đến 2004 là $2004 - 2000 = 4$ năm chứ không phải $2$ năm.'
+      }
+    ]
+  },
+  {
+    id: 'b2-24',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Trung bình',
+    title: 'Bài 24 a, b (Buổi 2): Đạo hàm trái f\'_-(0), đạo hàm phải f\'_+(0) và tính khả vi',
+    problem: 'Tìm đạo hàm trái $f\'_-(0)$ và đạo hàm phải $f\'_+(0)$ cho các hàm số sau. Hàm số $f$ có khả vi tại $x = 0$ không?\n(a) $f(x) = \\begin{cases} 0 & \\text{nếu } x \\le 0 \\\\ x & \\text{nếu } x > 0 \\end{cases}$ $\\qquad$ (b) $f(x) = \\begin{cases} 0 & \\text{nếu } x \\le 0 \\\\ x^2 & \\text{nếu } x > 0 \\end{cases}$',
+    hint: 'Hàm số khả vi tại $x = 0$ khi và chỉ khi đạo hàm trái BẰNG đạo hàm phải: $f\'_-(0) = f\'_+(0)$. Ở câu (a) đồ thị bị gãy góc tại $0$, còn ở câu (b) nhánh parabol $x^2$ tiếp xúc êm với trục hoành tại $0$!',
+    errorCategory: 'Kết luận hàm ghép khả vi tại điểm nối khi chưa kiểm tra đạo hàm trái bằng đạo hàm phải',
+    keyTakeaway: 'Muốn có đạo hàm tại x₀ thì đồ thị phải TRƠN (không gãy góc), tức là Đạo hàm Trái = Đạo hàm Phải: ở (a) f\'_-(0) = 0 ≠ f\'_+(0) = 1 (không khả vi); ở (b) f\'_-(0) = 0 = f\'_+(0) (khả vi, f\'(0) = 0)!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: Với cả hai câu (a) và (b), khi $h \\to 0^-$ ($h < 0$) thì $f(h) = 0$ và $f(0) = 0$, nên đạo hàm trái là $f\'_-(0) = \\lim_{h \\to 0^-} \\frac{f(h) - f(0)}{h} = \\lim_{h \\to 0^-} \\frac{0}{h} = 0$.',
+          'Bước 2: Ở câu (a), khi $h \\to 0^+$ ($h > 0$) thì $f(h) = h$, nên $f\'_+(0) = \\lim_{h \\to 0^+} \\frac{h - 0}{h} = 1$. Do $f\'_-(0) = 0 \\neq 1 = f\'_+(0)$, hàm (a) KHÔNG khả vi tại $x = 0$.',
+          'Bước 3: Ở câu (b), khi $h \\to 0^+$ thì $f(h) = h^2$, nên $f\'_+(0) = \\lim_{h \\to 0^+} \\frac{h^2 - 0}{h} = \\lim_{h \\to 0^+} h = 0$. Do $f\'_-(0) = f\'_+(0) = 0$, hàm (b) KHẢ VI tại $x = 0$ và $f\'(0) = 0$.'
+        ],
+        finalAnswer: '(a) $f\'_-(0) = 0, f\'_+(0) = 1 \\Rightarrow$ Không khả vi; (b) $f\'_-(0) = f\'_+(0) = 0 \\Rightarrow$ Khả vi ($f\'(0) = 0$)',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Câu (a) có điểm gãy góc tại $(0,0)$ với độ dốc nhảy từ $0$ lên $1$, còn câu (b) có độ dốc hai bên cùng bằng $0$ nên nối trơn tru.'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Cả câu (a) và câu (b) đều liên tục tại $x = 0$ vì $\\lim_{x \\to 0^-} f(x) = \\lim_{x \\to 0^+} f(x) = 0$.',
+          'Bước 2: Vì hàm số đã liên tục tại $x = 0$.',
+          'Bước 3: Nên cả hai hàm (a) và (b) đều khả vi tại $x = 0$.'
+        ],
+        finalAnswer: 'Cả (a) và (b) đều khả vi tại $x = 0$',
+        isCorrect: false,
+        wrongStep: 3,
+        explanation: 'Sai ở Bước 3! Liên tục chỉ là điều kiện CẦN, không phải điều kiện đủ để khả vi. Câu (a) liên tục nhưng bị gãy góc tại $x = 0$ nên không khả vi.'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Ở câu (b), đạo hàm của $x^2$ là $2x$, hệ số đầu là $1$ nên $f\'_+(0) = 1$.',
+          'Bước 2: Đạo hàm trái $f\'_-(0) = 0$.',
+          'Bước 3: Vậy cả (a) và (b) đều không khả vi tại $x = 0$.'
+        ],
+        finalAnswer: 'Ở câu (b), $f\'_+(0) = 1$ nên không khả vi',
+        isCorrect: false,
+        wrongStep: 1,
+        explanation: 'Sai ở Bước 1! Đạo hàm của $x^2$ là $2x$, khi thay $x = 0$ vào thì $2(0) = 0$ chứ không phải $1$.'
+      }
+    ]
+  },
+  {
+    id: 'b2-25',
+    topic: 'buoi_2_bt',
+    topicName: 'Phiếu BT Buổi 2 (GT1)',
+    difficulty: 'Dễ',
+    title: 'Bài 25 (Buổi 2): Phác thảo đồ thị quãng đường s(t) và vận tốc ds/dt của Nick',
+    problem: 'Nick bắt đầu chạy chậm rồi nhanh dần trong $3$ phút, sau đó anh đi bộ trong $5$ phút. Anh dừng lại tại một ngã tư trong $2$ phút, rồi chạy khá nhanh trong $5$ phút, sau đó đi bộ trong $4$ phút.\n(a) Mô tả đồ thị của quãng đường $s(t)$ theo thời gian $t$ (từ $t = 0$ đến $t = 19$ phút).\n(b) Mô tả đồ thị vận tốc $v(t) = \\frac{ds}{dt}$.',
+    hint: 'Quãng đường đã đi $s(t)$ không bao giờ giảm! Khi chạy nhanh dần thì $s(t)$ cong lên; đi bộ đều thì $s(t)$ là đoạn thẳng dốc vừa; ĐỨNG YÊN thì $s(t)$ NẰM NGANG ($v = 0$); chạy nhanh thì $s(t)$ rất dốc!',
+    errorCategory: 'Vẽ đồ thị quãng đường s(t) chạm xuống trục hoành (bằng 0) khi Nick dừng lại tại ngã tư',
+    keyTakeaway: 'Bẫy cực hay gặp: Khi Nick DỪNG LẠI ở ngã tư (từ phút 8 đến phút 10), vận tốc ds/dt = 0 (chạm trục hoành), nhưng quãng đường s(t) phải là ĐOẠN THẲNG NẰM NGANG ở độ cao hiện tại chứ không phải rơi về 0!',
+    solutions: [
+      {
+        id: 'sol-1',
+        steps: [
+          'Bước 1: (a) Đồ thị quãng đường $s(t)$ luôn không giảm trên $[0, 19]$: Từ $t \\in [0, 3]$ (chạy nhanh dần) đồ thị đi lên và ngày càng dốc (lõm lên); từ $t \\in [3, 8]$ (đi bộ 5p) là đoạn thẳng đi lên với độ dốc nhỏ.',
+          'Bước 2: Từ $t \\in [8, 10]$ (dừng lại 2p ở ngã tư) quãng đường không đổi nên $s(t)$ là ĐOẠN THẲNG NẰM NGANG; từ $t \\in [10, 15]$ (chạy nhanh 5p) là đoạn thẳng đi lên rất dốc; từ $t \\in [15, 19]$ (đi bộ 4p) là đoạn thẳng đi lên dốc nhẹ.',
+          'Bước 3: (b) Đồ thị vận tốc $\\frac{ds}{dt}$: Trên $[0, 3]$ tăng dần từ $0$ lên cao; trên $[3, 8]$ hạ xuống mức thấp dương (tốc độ đi bộ); trên $[8, 10]$ nằm trùng trên trục hoành ($\\frac{ds}{dt} = 0$); trên $[10, 15]$ ở mức cao dương (chạy nhanh); trên $[15, 19]$ hạ về mức thấp dương (đi bộ).'
+        ],
+        finalAnswer: 'Khi dừng lại ($t \\in [8, 10]$): $s(t)$ nằm ngang giữ nguyên độ cao, còn $\\frac{ds}{dt} = 0$',
+        isCorrect: true,
+        wrongStep: null,
+        explanation: 'Chính xác! Phân biệt rõ ràng giữa quãng đường tích lũy $s(t)$ (nằm ngang khi dừng) và vận tốc $\\frac{ds}{dt}$ (bằng $0$ khi dừng).'
+      },
+      {
+        id: 'sol-2',
+        steps: [
+          'Bước 1: Từ $t = 0$ đến $t = 8$, đồ thị quãng đường $s(t)$ tăng lên.',
+          'Bước 2: Từ $t = 8$ đến $t = 10$, vì Nick dừng lại tại ngã tư nên đồ thị quãng đường $s(t)$ tụt thẳng về $0$ trên trục hoành.',
+          'Bước 3: Từ $t = 10$ đến $t = 19$ đồ thị lại tăng lên.'
+        ],
+        finalAnswer: 'Trên $[8, 10]$ đồ thị quãng đường $s(t)$ rơi về $0$',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! Nếu $s(t)$ rơi về $0$ nghĩa là Nick chạy lùi tức thời về vạch xuất phát! Khi đứng yên, quãng đường đã đi được giữ nguyên nên $s(t)$ phải nằm ngang.'
+      },
+      {
+        id: 'sol-3',
+        steps: [
+          'Bước 1: Trên $[10, 15]$ Nick chạy khá nhanh, trên $[15, 19]$ Nick chuyển sang đi bộ chậm hơn.',
+          'Bước 2: Vì đi bộ chậm hơn chạy nên trên $[15, 19]$ vận tốc $\\frac{ds}{dt}$ mang dấu âm ($< 0$) và quãng đường $s(t)$ đi xuống.',
+          'Bước 3: Phác thảo $s(t)$ đi xuống trên $[15, 19]$.'
+        ],
+        finalAnswer: 'Trên $[15, 19]$ vận tốc $\\frac{ds}{dt} < 0$ và $s(t)$ đi xuống',
+        isCorrect: false,
+        wrongStep: 2,
+        explanation: 'Sai ở Bước 2! Đi bộ chậm hơn nghĩa là vận tốc $\\frac{ds}{dt}$ nhỏ hơn nhưng VẪN DƯƠNG ($> 0$), quãng đường $s(t)$ vẫn tiếp tục tăng lên nhưng ít dốc hơn!'
       }
     ]
   }

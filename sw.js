@@ -1,4 +1,4 @@
-const CACHE_NAME = 'giaitich-hunter-v2';
+const CACHE_NAME = 'giaitich-hunter-v3';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
