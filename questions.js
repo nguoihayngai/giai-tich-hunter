@@ -2020,7 +2020,7 @@ window.BUILTIN_QUESTIONS.push(
     topicName: 'Phiếu BT Buổi 2 (GT1)',
     difficulty: 'Dễ',
     title: 'Bài 1 (Buổi 2): Tìm số δ từ đồ thị của hàm số f',
-    problem: 'Sử dụng đồ thị đã cho của hàm $f$ (biết trên đồ thị tại $y = 1.2$ ứng với $x = 0.7$, tại $y = 1$ ứng với $x = 1$, tại $y = 0.8$ ứng với $x = 1.1$), hãy tìm một số $\\delta > 0$ sao cho:\n$$\\text{nếu } |x - 1| < \\delta \\quad \\text{thì} \\quad |f(x) - 1| < 0.2$$',
+    problem: 'Sử dụng đồ thị đã cho của hàm $f$, hãy tìm một số $\\delta > 0$ sao cho:\n$$\\text{nếu } |x - 1| < \\delta \\quad \\text{thì} \\quad |f(x) - 1| < 0.2$$<img src="./images/bai1.png" alt="Đồ thị Bài 1" class="problem-graph-img" />',
     hint: 'Bất đẳng thức $|f(x) - 1| < 0.2$ tương đương $0.8 < f(x) < 1.2$. Từ đồ thị, điều này xảy ra khi $x \\in (0.7, 1.1)$. Khoảng đối xứng quanh $x=1$ phải chọn bán kính nhỏ hơn trong hai bên!',
     errorCategory: 'Chọn bán kính lân cận δ lớn hơn thay vì nhỏ hơn khi khoảng quanh x_0 không đối xứng',
     keyTakeaway: 'Khi khoảng (a, b) chứa x₀ không đối xứng, muốn |x - x₀| < δ nằm gọn trong (a, b) thì phải chọn δ = min(x₀ - a, b - x₀) (khoảng cách gần hơn)!',
@@ -2069,7 +2069,7 @@ window.BUILTIN_QUESTIONS.push(
     topicName: 'Phiếu BT Buổi 2 (GT1)',
     difficulty: 'Trung bình',
     title: 'Bài 2 (Buổi 2): Tìm số δ cho hàm f(x) = x² từ đồ thị',
-    problem: 'Sử dụng đồ thị đã cho của $f(x) = x^2$, hãy tìm một số $\\delta > 0$ sao cho:\n$$\\text{nếu } |x - 1| < \\delta \\quad \\text{thì} \\quad |x^2 - 1| < 0.5$$',
+    problem: 'Sử dụng đồ thị đã cho của $f(x) = x^2$, hãy tìm một số $\\delta > 0$ sao cho:\n$$\\text{nếu } |x - 1| < \\delta \\quad \\text{thì} \\quad |x^2 - 1| < 0.5$$<img src="./images/bai2.png" alt="Đồ thị Bài 2" class="problem-graph-img" />',
     hint: 'Giải $0.5 < x^2 < 1.5$ với $x > 0$ để tìm hai dấu chấm hỏi $?$ trên trục hoành là $\\sqrt{0.5}$ và $\\sqrt{1.5}$, sau đó lấy khoảng cách nhỏ hơn tới $1$.',
     errorCategory: 'Chọn nhầm khoảng cách lớn hơn khi tìm δ cho định nghĩa giới hạn',
     keyTakeaway: 'Từ 0.5 < x² < 1.5 suy ra √0.5 < x < √1.5. Vì hàm x² dốc hơn ở bên phải x=1 nên nhánh phải hẹp hơn: δ = √1.5 - 1 ≈ 0.224!',
@@ -2363,7 +2363,7 @@ window.BUILTIN_QUESTIONS.push(
     topicName: 'Phiếu BT Buổi 2 (GT1)',
     difficulty: 'Dễ',
     title: 'Bài 8 (Buổi 2): Nhìn đồ thị tìm các điểm gián đoạn (không liên tục)',
-    problem: 'Từ đồ thị ở Bài 8 (trang 2 file PDF: đồ thị có lỗ tròn rỗng tại $x = -4$; tại $x = -2$ nhánh trái có chấm đặc cao hơn nhánh phải có chấm rỗng; tại $x = 2$ nhánh trái có chấm rỗng thấp hơn nhánh phải có chấm đặc; tại $x = 4$ có đường tiệm cận đứng), hãy chỉ ra các điểm mà hàm số không liên tục và giải thích lý do.',
+    problem: 'Từ đồ thị dưới đây, hãy chỉ ra các điểm mà hàm số không liên tục và giải thích lý do:<img src="./images/bai8.png" alt="Đồ thị Bài 8" class="problem-graph-img" />',
     hint: 'Hàm số không liên tục tại nơi đồ thị bị: (1) Đứt lỗ thủng (không xác định), (2) Nhảy bậc (giới hạn trái $\\neq$ giới hạn phải), hoặc (3) Tiến ra vô cùng (tiệm cận đứng).',
     errorCategory: 'Bỏ sót điểm gián đoạn loại khử được (lỗ thủng) hoặc điểm tiệm cận đứng',
     keyTakeaway: 'Trên đồ thị, hàm số gián đoạn tại mọi hoành độ x mà ta phải "nhấc bút lên" khi vẽ: lỗ thủng (x = -4), bước nhảy (x = -2 và x = 2), tiệm cận đứng (x = 4)!',
@@ -2411,8 +2411,8 @@ window.BUILTIN_QUESTIONS.push(
     topic: 'buoi_2_bt',
     topicName: 'Phiếu BT Buổi 2 (GT1)',
     difficulty: 'Dễ',
-    title: 'Bài 9 (Buổi 2): Giải thích vì sao hàm số không liên tục tại x = -2',
-    problem: 'Giải thích vì sao hai hàm số sau không liên tục tại $x = -2$:\n(a) $f(x) = \\frac{1}{x + 2}$\n(b) $f(x) = \\begin{cases} \\frac{1}{x + 2} & \\text{nếu } x \\neq -2 \\\\ 1 & \\text{nếu } x = -2 \\end{cases}$',
+    title: 'Bài 9 (Buổi 2): Vẽ đồ thị và giải thích vì sao hàm số không liên tục tại x = -2',
+    problem: 'Vẽ đồ thị và giải thích vì sao hai hàm số sau không liên tục tại $x = -2$:\n(a) $f(x) = \\frac{1}{x + 2}$\n(b) $f(x) = \\begin{cases} \\frac{1}{x + 2} & \\text{nếu } x \\neq -2 \\\\ 1 & \\text{nếu } x = -2 \\end{cases}$<img src="./images/bai9_sol.svg" alt="Đồ thị Bài 9" class="problem-graph-img" />',
     hint: 'Ba điều kiện để $f$ liên tục tại $a$: (1) $f(a)$ xác định, (2) $\\lim_{x \\to a} f(x)$ tồn tại hữu hạn, (3) $\\lim_{x \\to a} f(x) = f(a)$. Hãy xem câu (a) và (b) vi phạm điều kiện nào!',
     errorCategory: 'Nhầm lẫn giữa không xác định f(a) và không tồn tại giới hạn hữu hạn khi giải thích sự gián đoạn',
     keyTakeaway: 'Ở câu (a), f(-2) không xác định (mẫu bằng 0). Ở câu (b), dù đã gán thêm f(-2) = 1 nhưng lim(x→-2) 1/(x+2) tiến ra ±∞ (không tồn tại giới hạn hữu hạn) nên vẫn gián đoạn vô cực!',
@@ -2954,7 +2954,7 @@ window.BUILTIN_QUESTIONS.push(
     topicName: 'Phiếu BT Buổi 2 (GT1)',
     difficulty: 'Dễ',
     title: 'Bài 19 (Buổi 2): Tốc độ tăng trưởng trung bình và tức thời của chuỗi cà phê',
-    problem: 'Số lượng $N$ của các cửa hàng trong một chuỗi cà phê nổi tiếng được cho bởi bảng:\n• Năm 2008: $16,680$ $\\quad$ • Năm 2010: $16,858$ $\\quad$ • Năm 2012: $18,066$ $\\quad$ • Năm 2014: $21,366$ $\\quad$ • Năm 2016: $25,085$\n(a) Tính tốc độ tăng trưởng trung bình: (i) từ 2008 đến 2010, (ii) từ 2010 đến 2012 (nêu đơn vị).\n(b) Ước lượng tốc độ tăng trưởng tức thời vào năm 2010 bằng trung bình cộng hai tốc độ trên.',
+    problem: 'Số lượng $N$ của các cửa hàng trong một chuỗi cà phê nổi tiếng được cho trong bảng sau (tính đến ngày 1 tháng 10):<table class="data-table"><thead><tr><th>Năm</th><th>Số cửa hàng $N$</th></tr></thead><tbody><tr><td>2008</td><td>16,680</td></tr><tr><td>2010</td><td>16,858</td></tr><tr><td>2012</td><td>18,066</td></tr><tr><td>2014</td><td>21,366</td></tr><tr><td>2016</td><td>25,085</td></tr></tbody></table>(a) Tính tốc độ tăng trưởng trung bình: (i) từ 2008 đến 2010, (ii) từ 2010 đến 2012 (nêu đơn vị).\n(b) Ước lượng tốc độ tăng trưởng tức thời vào năm 2010 bằng trung bình cộng hai tốc độ trên.',
     hint: 'Tốc độ thay đổi trung bình trên $[t_1, t_2]$ là $\\frac{\\Delta N}{\\Delta t} = \\frac{N(t_2) - N(t_1)}{t_2 - t_1}$. Chú ý khoảng thời gian từ 2008 đến 2010 là $2$ năm!',
     errorCategory: 'Quên chia cho khoảng thời gian Δt = 2 năm khi tính tốc độ tăng trưởng trung bình',
     keyTakeaway: 'Tốc độ thay đổi trung bình = ΔN / Δt (đơn vị: cửa hàng/năm). Để ước lượng đạo hàm N\'(2010) từ bảng số liệu rời rạc, ta lấy trung bình cộng tốc độ đoạn liền trước và đoạn liền sau!',
@@ -3052,7 +3052,7 @@ window.BUILTIN_QUESTIONS.push(
     topicName: 'Phiếu BT Buổi 2 (GT1)',
     difficulty: 'Dễ',
     title: 'Bài 21 (Buổi 2): Đọc đạo hàm f\'(x) và phác thảo đồ thị f\' từ đồ thị y = f(x)',
-    problem: 'Dựa vào đồ thị hàm số $y = f(x)$ ở Bài 21 (trang 5 file PDF: đồ thị đạt đỉnh cực đại ngang tại $x = 1$, đi xuống dốc nhất tại $x = 3$, đạt đáy cực tiểu ngang tại $x = 5$, rồi đi lên qua $x = 6, 7$), hãy xác định dấu và giá trị ước lượng của $f\'(0), f\'(1), f\'(2), \\dots, f\'(7)$.',
+    problem: 'Dựa vào đồ thị sau của hàm số $y = f(x)$ để tính (ước lượng) các đạo hàm $f\'(0), f\'(1), f\'(2), \\dots, f\'(7)$ và vẽ đồ thị của $f\'$:<img src="./images/bai21.png" alt="Đồ thị Bài 21" class="problem-graph-img" />',
     hint: '$f\'(x)$ chính là HỆ SỐ GÓC (độ dốc) của tiếp tuyến với đồ thị $y = f(x)$ tại hoành độ $x$: tại đỉnh/đáy nằm ngang thì $f\'(x) = 0$; đồ thị đi lên thì $f\'(x) > 0$; đồ thị đi xuống thì $f\'(x) < 0$!',
     errorCategory: 'Đọc tung độ f(x) thay vì đọc độ dốc tiếp tuyến f\'(x) trên đồ thị',
     keyTakeaway: 'Khi nhìn đồ thị f(x) để tìm f\'(x): Đỉnh cực đại & Đáy cực tiểu luôn có tiếp tuyến nằm ngang (f\' = 0); nhánh đi lên có f\' > 0; nhánh đi xuống có f\' < 0!',
@@ -3062,7 +3062,7 @@ window.BUILTIN_QUESTIONS.push(
         steps: [
           'Bước 1: Tại $x = 1$ (đỉnh cực đại) và $x = 5$ (đáy cực tiểu), tiếp tuyến nằm ngang nên chắc chắn $f\'(1) = 0$ và $f\'(5) = 0$.',
           'Bước 2: Tại $x = 0$, đồ thị đang đi lên với độ dốc khoảng $f\'(0) \\approx 0.5$. Trên khoảng $(1, 5)$, đồ thị đi xuống nên đạo hàm âm: $f\'(2) \\approx -1$, $f\'(3) \\approx -1.8$ (dốc nhất), $f\'(4) \\approx -1$.',
-          'Bước 3: Với $x > 5$, đồ thị đi lên trở lại nên đạo hàm dương: $f\'(6) \\approx 1$, $f\'(7) \\approx 0.8$. Đồ thị $y = f\'(x)$ cắt trục hoành tại $x = 1$ và $x = 5$, nằm dưới trục hoành trên $(1, 5)$.'
+          'Bước 3: Với $x > 5$, đồ thị đi lên trở lại nên đạo hàm dương: $f\'(6) \\approx 1$, $f\'(7) \\approx 0.8$. Phác thảo đồ thị $y = f\'(x)$:<img src="./images/bai21_sol.svg" alt="Đồ thị đạo hàm f\'" class="problem-graph-img" />'
         ],
         finalAnswer: '$f\'(1) = 0, f\'(5) = 0$; $f\'(x) < 0$ trên $(1, 5)$ (thấp nhất tại $x=3$); $f\'(x) > 0$ tại $x=0, 6, 7$',
         isCorrect: true,
@@ -3247,8 +3247,8 @@ window.BUILTIN_QUESTIONS.push(
     topic: 'buoi_2_bt',
     topicName: 'Phiếu BT Buổi 2 (GT1)',
     difficulty: 'Dễ',
-    title: 'Bài 23 (Buổi 2): Ý nghĩa đạo hàm N\'(t) và bảng ước lượng ca phẫu thuật thẩm mỹ',
-    problem: 'Bảng số liệu cho biết số lượng $N(t)$ (tính bằng nghìn) các ca phẫu thuật thẩm mỹ tại Hoa Kỳ:\n• 2000: $5,500$ $\\quad$ • 2002: $4,897$ $\\quad$ • 2004: $7,470$ $\\quad$ • 2006: $9,138$ $\\quad$ • 2008: $10,897$ $\\quad$ • 2010: $11,561$ $\\quad$ • 2012: $13,035$ $\\quad$ • 2014: $13,945$\n(a) Ý nghĩa của $N\'(t)$ là gì? Đơn vị của nó là gì?\n(b) Lập bảng giá trị ước lượng cho $N\'(t)$ tại các năm.\n(d) Làm thế nào để có được các giá trị chính xác hơn cho $N\'(t)$?',
+    title: 'Bài 23 (Buổi 2): Ý nghĩa đạo hàm N\'(t), bảng ước lượng và đồ thị ca phẫu thuật thẩm mỹ',
+    problem: 'Bảng sau cho biết số lượng $N(t)$, tính bằng nghìn, của các ca phẫu thuật thẩm mỹ xâm lấn tối thiểu tại Hoa Kỳ:<table class="data-table"><thead><tr><th>Năm $t$</th><th>$N(t)$ (nghìn)</th></tr></thead><tbody><tr><td>2000</td><td>5,500</td></tr><tr><td>2002</td><td>4,897</td></tr><tr><td>2004</td><td>7,470</td></tr><tr><td>2006</td><td>9,138</td></tr><tr><td>2008</td><td>10,897</td></tr><tr><td>2010</td><td>11,561</td></tr><tr><td>2012</td><td>13,035</td></tr><tr><td>2014</td><td>13,945</td></tr></tbody></table>(a) Ý nghĩa của $N\'(t)$ là gì? Đơn vị của nó là gì?\n(b) Lập bảng giá trị ước lượng cho $N\'(t)$.\n(c) Vẽ đồ thị $N$ và $N\'$.\n(d) Làm thế nào để có được các giá trị chính xác hơn cho $N\'(t)$?',
     hint: 'Đơn vị của đạo hàm $N\'(t) = \\frac{dN}{dt}$ là đơn vị của $N$ chia cho đơn vị của $t$: "nghìn ca phẫu thuật / năm". Để ước lượng chính xác hơn, ta cần thu thập dữ liệu với khoảng thời gian $\\Delta t$ nhỏ hơn (hàng năm, hàng quý, hàng tháng)!',
     errorCategory: 'Nêu thiếu chữ "nghìn" trong đơn vị của N\'(t) hoặc tính sai tỉ số sai phân',
     keyTakeaway: 'Đơn vị của đạo hàm y\'(t) luôn là (Đơn vị của y) / (Đơn vị của t). Muốn ước lượng đạo hàm từ bảng số liệu chính xác hơn, ta phải đo số liệu ở các mốc thời gian dày hơn (Δt → 0)!',
@@ -3257,8 +3257,8 @@ window.BUILTIN_QUESTIONS.push(
         id: 'sol-1',
         steps: [
           'Bước 1: (a) $N\'(t)$ biểu thị tốc độ thay đổi tức thời của số ca phẫu thuật theo thời gian $t$. Đơn vị là: nghìn ca phẫu thuật / năm.',
-          'Bước 2: (b) Dùng tỉ số sai phân: $N\'(2000) \\approx \\frac{4897 - 5500}{2} = -301.5$; tại các năm giữa dùng trung bình hai phía $\\frac{N(t+2) - N(t-2)}{4}$: $N\'(2002) \\approx \\frac{7470 - 5500}{4} = 492.5$; $N\'(2004) \\approx \\frac{9138 - 4897}{4} = 1060.25$; $N\'(2006) \\approx 856.75$; $N\'(2008) \\approx 605.75$; $N\'(2010) \\approx 534.5$; $N\'(2012) \\approx 596$; $N\'(2014) \\approx \\frac{13945 - 13035}{2} = 455$.',
-          'Bước 3: (d) Để có giá trị chính xác hơn cho $N\'(t)$, cần thu thập số liệu thống kê trong các khoảng thời gian nhỏ hơn (ví dụ từng năm một, từng quý hoặc từng tháng để $\\Delta t$ nhỏ hơn).'
+          'Bước 2: (b) Dùng tỉ số sai phân: $N\'(2000) \\approx \\frac{4897 - 5500}{2} = -301.5$; tại các năm giữa dùng trung bình hai phía $\\frac{N(t+2) - N(t-2)}{4}$: $N\'(2002) \\approx 492.5$; $N\'(2004) \\approx 1060.25$; $N\'(2006) \\approx 856.75$; $N\'(2008) \\approx 605.75$; $N\'(2010) \\approx 534.5$; $N\'(2012) \\approx 596$; $N\'(2014) \\approx 455$.',
+          'Bước 3: (c) Đồ thị $N(t)$ và $N\'(t)$ như hình dưới. (d) Để có giá trị chính xác hơn cho $N\'(t)$, cần thu thập số liệu thống kê trong các khoảng thời gian nhỏ hơn (ví dụ từng năm một, từng quý hoặc từng tháng).<img src="./images/bai23_sol.svg" alt="Đồ thị N(t) và N\'(t)" class="problem-graph-img" />'
         ],
         finalAnswer: '(a) Tốc độ tăng (nghìn ca/năm); (b) $-301.5; 492.5; 1060.25; \\dots$; (d) Đo dữ liệu với khoảng thời gian $\\Delta t$ nhỏ hơn',
         isCorrect: true,
@@ -3356,7 +3356,7 @@ window.BUILTIN_QUESTIONS.push(
         steps: [
           'Bước 1: (a) Đồ thị quãng đường $s(t)$ luôn không giảm trên $[0, 19]$: Từ $t \\in [0, 3]$ (chạy nhanh dần) đồ thị đi lên và ngày càng dốc (lõm lên); từ $t \\in [3, 8]$ (đi bộ 5p) là đoạn thẳng đi lên với độ dốc nhỏ.',
           'Bước 2: Từ $t \\in [8, 10]$ (dừng lại 2p ở ngã tư) quãng đường không đổi nên $s(t)$ là ĐOẠN THẲNG NẰM NGANG; từ $t \\in [10, 15]$ (chạy nhanh 5p) là đoạn thẳng đi lên rất dốc; từ $t \\in [15, 19]$ (đi bộ 4p) là đoạn thẳng đi lên dốc nhẹ.',
-          'Bước 3: (b) Đồ thị vận tốc $\\frac{ds}{dt}$: Trên $[0, 3]$ tăng dần từ $0$ lên cao; trên $[3, 8]$ hạ xuống mức thấp dương (tốc độ đi bộ); trên $[8, 10]$ nằm trùng trên trục hoành ($\\frac{ds}{dt} = 0$); trên $[10, 15]$ ở mức cao dương (chạy nhanh); trên $[15, 19]$ hạ về mức thấp dương (đi bộ).'
+          'Bước 3: (b) Đồ thị vận tốc $\\frac{ds}{dt}$: Trên $[0, 3]$ tăng dần từ $0$ lên cao; trên $[3, 8]$ hạ xuống mức thấp dương (tốc độ đi bộ); trên $[8, 10]$ nằm trùng trên trục hoành ($\\frac{ds}{dt} = 0$); trên $[10, 15]$ ở mức cao dương (chạy nhanh); trên $[15, 19]$ hạ về mức thấp dương (đi bộ).<img src="./images/bai25_sol.svg" alt="Đồ thị quãng đường s(t) và vận tốc ds/dt của Nick" class="problem-graph-img" />'
         ],
         finalAnswer: 'Khi dừng lại ($t \\in [8, 10]$): $s(t)$ nằm ngang giữ nguyên độ cao, còn $\\frac{ds}{dt} = 0$',
         isCorrect: true,

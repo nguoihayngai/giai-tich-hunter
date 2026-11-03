@@ -928,3 +928,38 @@ body {
   overflow-x: auto;
   overflow-y: hidden;
 }
+
+.problem-graph-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 12px auto 6px;
+  background: #ffffff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.data-table {
+  width: 100%;
+  max-width: 360px;
+  margin: 10px auto;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  text-align: center;
+}
+
+.data-table th {
+  background: rgba(99, 102, 241, 0.25);
+  color: #e0e7ff;
+  font-weight: 700;
+}

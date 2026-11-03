@@ -1,4 +1,4 @@
-const CACHE_NAME = 'giaitich-hunter-v3';
+const CACHE_NAME = 'giaitich-hunter-v4';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -9,6 +9,14 @@ const ASSETS_TO_CACHE = [
   './app.js',
   './manifest.json',
   './icon.svg',
+  './images/bai1.png',
+  './images/bai2.png',
+  './images/bai8.png',
+  './images/bai21.png',
+  './images/bai9_sol.svg',
+  './images/bai21_sol.svg',
+  './images/bai23_sol.svg',
+  './images/bai25_sol.svg',
   'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css',
   'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js',
   'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js'

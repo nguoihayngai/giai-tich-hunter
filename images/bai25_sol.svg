@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 215" width="580" height="215" style="background:#ffffff;font-family:sans-serif">
+  <!-- (a) Quãng đường s(t) -->
+  <g transform="translate(15,10)">
+    <text x="125" y="16" font-size="13" font-weight="bold" text-anchor="middle" fill="#0f172a">(a) Đồ thị quãng đường s(t)</text>
+    <line x1="25" y1="175" x2="255" y2="175" stroke="#334155" stroke-width="1.8"/>
+    <line x1="25" y1="25" x2="25" y2="180" stroke="#334155" stroke-width="1.8"/>
+    <text x="12" y="34" font-size="12" font-weight="bold" fill="#2563eb">s</text>
+    <text x="248" y="192" font-size="12" font-weight="bold" fill="#334155">t</text>
+    <!-- Time ticks: 3, 8, 10, 15, 19 -->
+    <text x="58" y="191" font-size="10" fill="#475569">3</text>
+    <text x="115" y="191" font-size="10" fill="#475569">8</text>
+    <text x="137" y="191" font-size="10" fill="#ef4444" font-weight="bold">10</text>
+    <text x="195" y="191" font-size="10" fill="#475569">15</text>
+    <text x="235" y="191" font-size="10" fill="#475569">19</text>
+    <!-- Path s(t): [0,3] concave up, [3,8] moderate line, [8,10] flat, [10,15] steep line, [15,19] moderate line -->
+    <path d="M 25 175 Q 48 172 60 145 L 118 112 L 142 112 L 200 52 L 242 30" fill="none" stroke="#2563eb" stroke-width="3"/>
+    <text x="116" y="105" font-size="10" fill="#ef4444" font-weight="bold">Dừng (ngang)</text>
+  </g>
+
+  <!-- (b) Vận tốc v(t) = ds/dt -->
+  <g transform="translate(305,10)">
+    <text x="125" y="16" font-size="13" font-weight="bold" text-anchor="middle" fill="#0f172a">(b) Đồ thị vận tốc ds/dt</text>
+    <line x1="25" y1="175" x2="255" y2="175" stroke="#334155" stroke-width="1.8"/>
+    <line x1="25" y1="25" x2="25" y2="180" stroke="#334155" stroke-width="1.8"/>
+    <text x="4" y="34" font-size="11" font-weight="bold" fill="#dc2626">ds/dt</text>
+    <text x="248" y="192" font-size="12" font-weight="bold" fill="#334155">t</text>
+    <!-- Time ticks -->
+    <text x="58" y="191" font-size="10" fill="#475569">3</text>
+    <text x="115" y="191" font-size="10" fill="#475569">8</text>
+    <text x="137" y="191" font-size="10" fill="#475569">10</text>
+    <text x="195" y="191" font-size="10" fill="#475569">15</text>
+    <text x="235" y="191" font-size="10" fill="#475569">19</text>
+    <!-- Path v(t): [0,3] rising, [3,8] low positive, [8,10] zero, [10,15] high positive, [15,19] low positive -->
+    <path d="M 25 175 L 58 65 L 64 125 L 116 125 L 120 175 L 140 175 L 145 55 L 196 55 L 202 125 L 242 125" fill="none" stroke="#dc2626" stroke-width="2.8"/>
+  </g>
+</svg>
