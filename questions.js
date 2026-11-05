@@ -2117,47 +2117,48 @@ window.BUILTIN_QUESTIONS.push(
     topic: 'buoi_2_bt',
     topicName: 'Phiếu BT Buổi 2 (GT1)',
     difficulty: 'Trung bình',
+    isProof: true,
     title: 'Bài 3 (Buổi 2): Chứng minh lim(x→2) (1/x) = 1/2 bằng định nghĩa ε - δ',
     problem: 'Chứng minh bằng định nghĩa $\\varepsilon - \\delta$ rằng:\n$$\\lim_{x \\to 2} \\frac{1}{x} = \\frac{1}{2}$$',
     hint: 'Biến đổi $|\\frac{1}{x} - \\frac{1}{2}| = \\frac{|x - 2|}{2|x|}$. Để chặn mẫu số $2|x|$ từ dưới, trước tiên hãy giả sử $|x - 2| < 1 \\Rightarrow 1 < x < 3 \\Rightarrow 2|x| > 2$!',
-    errorCategory: 'Quên chặn biến x trong lân cận bán kính 1 trước khi chọn δ theo ε',
-    keyTakeaway: 'Khi chứng minh giới hạn phân thức bằng ε-δ, luôn giả sử trước |x - x₀| < 1 (hoặc một số nhỏ) để làm mất biến x ở mẫu số, rồi chọn δ = min(1, ...)!',
+    errorCategory: 'Quên chặn biến x trong lân cận bán kính 1 hoặc chọn δ phụ thuộc vào biến x khi chứng minh ε - δ',
+    keyTakeaway: 'Khi chứng minh giới hạn phân thức bằng ε-δ, số δ tuyệt đối không được chứa biến x! Luôn giả sử trước |x - x₀| < 1 để chặn mẫu số từ dưới, rồi chọn δ = min(1, ...)!',
     solutions: [
       {
         id: 'sol-1',
         steps: [
           'Bước 1: Với mọi $\\varepsilon > 0$, ta cần tìm $\\delta > 0$ sao cho nếu $0 < |x - 2| < \\delta$ thì $\\left|\\frac{1}{x} - \\frac{1}{2}\\right| = \\frac{|x - 2|}{2|x|} < \\varepsilon$.',
           'Bước 2: Trước hết, giả sử $|x - 2| < 1 \\Rightarrow 1 < x < 3 \\Rightarrow |x| > 1 \\Rightarrow \\frac{1}{2|x|} < \\frac{1}{2}$. Khi đó $\\frac{|x - 2|}{2|x|} < \\frac{|x - 2|}{2}$.',
-          'Bước 3: Chọn $\\delta = \\min(1, 2\\varepsilon)$. Khi đó nếu $0 < |x - 2| < \\delta$ thì $|x - 2| < 1$ và $|x - 2| < 2\\varepsilon$, suy ra $\\left|\\frac{1}{x} - \\frac{1}{2}\\right| < \\frac{2\\varepsilon}{2} = \\varepsilon$ (đpcm).'
+          'Bước 3: Chọn $\\delta = \\min(1, 2\\varepsilon) > 0$. Khi $0 < |x - 2| < \\delta$, ta có đồng thời $|x - 2| < 1$ và $|x - 2| < 2\\varepsilon$, suy ra $\\left|\\frac{1}{x} - \\frac{1}{2}\\right| < \\frac{2\\varepsilon}{2} = \\varepsilon$ (đpcm).'
         ],
-        finalAnswer: 'Chọn $\\delta = \\min(1, 2\\varepsilon)$ (hoặc $\\frac{2\\varepsilon}{1+2\\varepsilon}$)',
+        finalAnswer: '',
         isCorrect: true,
         wrongStep: null,
-        explanation: 'Chính xác! Bước chặn phụ $|x - 2| < 1 \\Rightarrow |x| > 1$ giúp $\\delta = \\min(1, 2\\varepsilon)$ chỉ phụ thuộc vào $\\varepsilon$ mà không chứa biến $x$.'
+        explanation: 'Chính xác! Bước chặn phụ $|x - 2| < 1 \\Rightarrow |x| > 1$ giúp làm mất biến $x$ ở mẫu một cách hợp lệ và $\\delta = \\min(1, 2\\varepsilon)$ chỉ phụ thuộc vào $\\varepsilon$.'
       },
       {
         id: 'sol-2',
         steps: [
-          'Bước 1: Ta có $\\left|\\frac{1}{x} - \\frac{1}{2}\\right| = \\frac{|x - 2|}{2|x|} < \\varepsilon$.',
-          'Bước 2: Nhân chéo $2|x|$ sang vế phải, ta được $|x - 2| < 2|x|\\varepsilon$.',
-          'Bước 3: Vậy ta chọn trực tiếp $\\delta = 2|x|\\varepsilon$ là hoàn tất chứng minh.'
+          'Bước 1: Với mọi $\\varepsilon > 0$, biến đổi $\\left|\\frac{1}{x} - \\frac{1}{2}\\right| = \\frac{|2 - x|}{2|x|} = \\frac{|x - 2|}{2|x|}$.',
+          'Bước 2: Để $\\frac{|x - 2|}{2|x|} < \\varepsilon$, nhân chéo $2|x| > 0$ sang vế phải ta được điều kiện tương đương $|x - 2| < 2|x|\\varepsilon$.',
+          'Bước 3: Vậy ta chọn $\\delta = 2|x|\\varepsilon > 0$. Khi đó nếu $0 < |x - 2| < \\delta$ thì $\\left|\\frac{1}{x} - \\frac{1}{2}\\right| = \\frac{|x - 2|}{2|x|} < \\frac{2|x|\\varepsilon}{2|x|} = \\varepsilon$ (đpcm).'
         ],
-        finalAnswer: 'Chọn $\\delta = 2|x|\\varepsilon$',
+        finalAnswer: '',
         isCorrect: false,
         wrongStep: 3,
-        explanation: 'Sai bản chất ở Bước 3! Số $\\delta$ phải là một hằng số chỉ phụ thuộc vào $\\varepsilon$ (và điểm $x_0 = 2$), TUYỆT ĐỐI không được chứa biến chạy $x$!'
+        explanation: 'Sai bản chất ở Bước 3! Số $\\delta$ phải là một hằng số cố định chỉ phụ thuộc vào $\\varepsilon$, TUYỆT ĐỐI không được chứa biến chạy $x$ trong biểu thức của $\\delta$!'
       },
       {
         id: 'sol-3',
         steps: [
-          'Bước 1: Biến đổi $\\left|\\frac{1}{x} - \\frac{1}{2}\\right| = \\frac{1}{|x - 2|}$.',
-          'Bước 2: Cho $\\frac{1}{|x - 2|} < \\varepsilon \\Leftrightarrow |x - 2| > \\frac{1}{\\varepsilon}$.',
-          'Bước 3: Chọn $\\delta = \\frac{1}{\\varepsilon}$.'
+          'Bước 1: Với mọi $\\varepsilon > 0$, ta có $\\left|\\frac{1}{x} - \\frac{1}{2}\\right| = \\frac{|x - 2|}{2|x|}$. Giả sử trước $|x - 2| < 1 \\Leftrightarrow 1 < x < 3$.',
+          'Bước 2: Thay giá trị lớn nhất $x = 3$ vào mẫu số để đánh giá: $\\frac{|x - 2|}{2|x|} \\le \\frac{|x - 2|}{2 \\cdot 3} = \\frac{|x - 2|}{6}$.',
+          'Bước 3: Chọn $\\delta = \\min(1, 6\\varepsilon)$. Khi $0 < |x - 2| < \\delta$ thì $\\left|\\frac{1}{x} - \\frac{1}{2}\\right| \\le \\frac{|x - 2|}{6} < \\frac{6\\varepsilon}{6} = \\varepsilon$ (đpcm).'
         ],
-        finalAnswer: 'Chọn $\\delta = \\frac{1}{\\varepsilon}$',
+        finalAnswer: '',
         isCorrect: false,
-        wrongStep: 1,
-        explanation: 'Sai quy đồng phân số ở Bước 1! $\\frac{1}{x} - \\frac{1}{2} = \\frac{2 - x}{2x}$ chứ không phải $\\frac{1}{x - 2}$.'
+        wrongStep: 2,
+        explanation: 'Sai chiều bất đẳng thức ở Bước 2! Vì $x < 3$ nằm ở MẪU SỐ nên $\\frac{1}{2|x|} > \\frac{1}{6}$ chứ không phải $\\le \\frac{1}{6}$. Muốn phân số nhỏ hơn thì phải thay cận dưới $x > 1$ vào mẫu số!'
       }
     ]
   },
@@ -2166,6 +2167,7 @@ window.BUILTIN_QUESTIONS.push(
     topic: 'buoi_2_bt',
     topicName: 'Phiếu BT Buổi 2 (GT1)',
     difficulty: 'Trung bình',
+    isProof: true,
     title: 'Bài 4 (Buổi 2): Chứng minh lim(x→a) √x = √a với a > 0',
     problem: 'Chứng minh bằng định nghĩa $\\varepsilon - \\delta$ rằng:\n$$\\lim_{x \\to a} \\sqrt{x} = \\sqrt{a} \\quad (\\text{nếu } a > 0)$$\n*(Gợi ý: Sử dụng $|\\sqrt{x} - \\sqrt{a}| = \\frac{|x - a|}{\\sqrt{x} + \\sqrt{a}}$).*',
     hint: 'Vì $x \\ge 0$ nên ở mẫu số ta luôn có $\\sqrt{x} + \\sqrt{a} \\ge \\sqrt{a}$, suy ra $\\frac{|x - a|}{\\sqrt{x} + \\sqrt{a}} \\le \\frac{|x - a|}{\\sqrt{a}}$!',
@@ -2175,38 +2177,38 @@ window.BUILTIN_QUESTIONS.push(
       {
         id: 'sol-1',
         steps: [
-          'Bước 1: Với mọi $\\varepsilon > 0$, xét $x > 0$ (chẳng hạn $|x - a| < a$), nhân liên hợp ta có $|\\sqrt{x} - \\sqrt{a}| = \\frac{|x - a|}{\\sqrt{x} + \\sqrt{a}}$.',
-          'Bước 2: Vì $\\sqrt{x} > 0$ nên $\\sqrt{x} + \\sqrt{a} > \\sqrt{a} \\Rightarrow \\frac{|x - a|}{\\sqrt{x} + \\sqrt{a}} < \\frac{|x - a|}{\\sqrt{a}}$.',
-          'Bước 3: Chọn $\\delta = \\min(a, \\sqrt{a}\\,\\varepsilon)$. Khi $0 < |x - a| < \\delta$, ta có $x > 0$ và $|\\sqrt{x} - \\sqrt{a}| < \\frac{\\sqrt{a}\\,\\varepsilon}{\\sqrt{a}} = \\varepsilon$ (đpcm).'
+          'Bước 1: Với mọi $\\varepsilon > 0$, xét $x > 0$ (bằng cách chặn $|x - a| < a$), nhân lượng liên hợp ta có $|\\sqrt{x} - \\sqrt{a}| = \\frac{|x - a|}{\\sqrt{x} + \\sqrt{a}}$.',
+          'Bước 2: Vì $\\sqrt{x} > 0$ nên mẫu số $\\sqrt{x} + \\sqrt{a} > \\sqrt{a} \\Rightarrow \\frac{|x - a|}{\\sqrt{x} + \\sqrt{a}} < \\frac{|x - a|}{\\sqrt{a}}$.',
+          'Bước 3: Chọn $\\delta = \\min(a, \\sqrt{a}\\,\\varepsilon) > 0$. Khi $0 < |x - a| < \\delta$, ta có $x > 0$ và $|\\sqrt{x} - \\sqrt{a}| < \\frac{|x - a|}{\\sqrt{a}} < \\frac{\\sqrt{a}\\,\\varepsilon}{\\sqrt{a}} = \\varepsilon$ (đpcm).'
         ],
-        finalAnswer: 'Chọn $\\delta = \\min(a, \\sqrt{a}\\,\\varepsilon)$',
+        finalAnswer: '',
         isCorrect: true,
         wrongStep: null,
-        explanation: 'Hoàn hảo! Đánh giá $\\sqrt{x} + \\sqrt{a} > \\sqrt{a}$ cực kỳ gọn và chặt chẽ.'
+        explanation: 'Hoàn hảo! Đánh giá $\\sqrt{x} + \\sqrt{a} > \\sqrt{a}$ giúp làm mất $\\sqrt{x}$ ở mẫu và giữ đúng chiều bất đẳng thức $< \\varepsilon$.'
       },
       {
         id: 'sol-2',
         steps: [
-          'Bước 1: Ta có $|\\sqrt{x} - \\sqrt{a}| = \\frac{|x - a|}{\\sqrt{x} + \\sqrt{a}}$.',
-          'Bước 2: Thay $x = a$ vào mẫu số được $|\\sqrt{x} - \\sqrt{a}| = \\frac{|x - a|}{2\\sqrt{a}}$ với mọi $x$.',
-          'Bước 3: Chọn $\\delta = 2\\sqrt{a}\\,\\varepsilon$ mà không cần điều kiện phụ.'
+          'Bước 1: Với mọi $\\varepsilon > 0$, nhân lượng liên hợp ta có $|\\sqrt{x} - \\sqrt{a}| = \\frac{|x - a|}{\\sqrt{x} + \\sqrt{a}}$.',
+          'Bước 2: Khi $x$ ở lân cận của $a$, đánh giá mẫu số $\\sqrt{x} + \\sqrt{a} \\ge \\sqrt{a} + \\sqrt{a} = 2\\sqrt{a}$, suy ra $|\\sqrt{x} - \\sqrt{a}| \\le \\frac{|x - a|}{2\\sqrt{a}}$.',
+          'Bước 3: Chọn $\\delta = \\min(a, 2\\sqrt{a}\\,\\varepsilon)$. Khi $0 < |x - a| < \\delta$, ta suy ra $|\\sqrt{x} - \\sqrt{a}| \\le \\frac{|x - a|}{2\\sqrt{a}} < \\varepsilon$ (đpcm).'
         ],
-        finalAnswer: 'Chọn $\\delta = 2\\sqrt{a}\\,\\varepsilon$',
+        finalAnswer: '',
         isCorrect: false,
         wrongStep: 2,
-        explanation: 'Sai ở Bước 2! Khi $x < a$, ta có $\\sqrt{x} + \\sqrt{a} < 2\\sqrt{a}$ nên $\\frac{|x - a|}{\\sqrt{x} + \\sqrt{a}} > \\frac{|x - a|}{2\\sqrt{a}}$, bất đẳng thức bị ngược chiều!'
+        explanation: 'Sai ở Bước 2! Với những điểm $x < a$ trong lân cận của $a$, ta có $\\sqrt{x} < \\sqrt{a}$ nên $\\sqrt{x} + \\sqrt{a} < 2\\sqrt{a}$, do đó $\\frac{|x - a|}{\\sqrt{x} + \\sqrt{a}} > \\frac{|x - a|}{2\\sqrt{a}}$ (ngược chiều bất đẳng thức!).'
       },
       {
         id: 'sol-3',
         steps: [
-          'Bước 1: Biến đổi $|\\sqrt{x} - \\sqrt{a}| = \\sqrt{|x - a|}$.',
-          'Bước 2: Để $\\sqrt{|x - a|} < \\varepsilon$, ta bình phương hai vế được $|x - a| < \\varepsilon^2$.',
-          'Bước 3: Chọn $\\delta = \\varepsilon^2$.'
+          'Bước 1: Với mọi $\\varepsilon > 0$, xét biểu thức bình phương $|\\sqrt{x} - \\sqrt{a}|^2 = (\\sqrt{x} - \\sqrt{a})^2$.',
+          'Bước 2: Khai triển bình phương hiệu hai căn thức ta được $(\\sqrt{x} - \\sqrt{a})^2 = |x - a| \\Rightarrow |\\sqrt{x} - \\sqrt{a}| = \\sqrt{|x - a|}$.',
+          'Bước 3: Chọn $\\delta = \\varepsilon^2 > 0$. Khi $0 < |x - a| < \\delta$, ta có $|\\sqrt{x} - \\sqrt{a}| = \\sqrt{|x - a|} < \\sqrt{\\varepsilon^2} = \\varepsilon$ (đpcm).'
         ],
-        finalAnswer: 'Chọn $\\delta = \\varepsilon^2$',
+        finalAnswer: '',
         isCorrect: false,
-        wrongStep: 1,
-        explanation: 'Sai ở Bước 1! $|\\sqrt{x} - \\sqrt{a}|$ không bằng $\\sqrt{|x - a|}$ (chỉ đúng khi $a = 0$).'
+        wrongStep: 2,
+        explanation: 'Sai hằng đẳng thức ở Bước 2! $(\\sqrt{x} - \\sqrt{a})^2 = x - 2\\sqrt{ax} + a$ chứ KHÔNG bằng $|x - a|$!'
       }
     ]
   },
@@ -2215,47 +2217,48 @@ window.BUILTIN_QUESTIONS.push(
     topic: 'buoi_2_bt',
     topicName: 'Phiếu BT Buổi 2 (GT1)',
     difficulty: 'Khó',
+    isProof: true,
     title: 'Bài 5 (Buổi 2): Chứng minh hàm Heaviside không có giới hạn tại 0',
     problem: 'Cho hàm Heaviside $H(t) = \\begin{cases} 0 & \\text{nếu } t < 0 \\\\ 1 & \\text{nếu } t \\ge 0 \\end{cases}$. Hãy dùng định nghĩa giới hạn (phản chứng với $\\varepsilon = \\frac{1}{2}$) để chứng minh:\n$$\\lim_{t \\to 0} H(t) \\text{ không tồn tại.}$$',
     hint: 'Giả sử tồn tại giới hạn $L$. Với $\\varepsilon = \\frac{1}{2}$, trong mọi khoảng $(-\\delta, \\delta)$ luôn có cả số $t_1 < 0$ ($H(t_1)=0$) và số $t_2 > 0$ ($H(t_2)=1$). Áp dụng bất đẳng thức tam giác cho $1 = |1 - 0|$!',
-    errorCategory: 'Không chỉ ra được mâu thuẫn trên cả hai phía âm và dương của lân cận (-δ, δ)',
-    keyTakeaway: 'Nếu hàm số nhận hai giá trị cách nhau 1 đơn vị (0 và 1) trong mọi lân cận của 0, thì với ε = 1/2 không thể có số L nào cách cả 0 và 1 một khoảng nhỏ hơn 1/2!',
+    errorCategory: 'Chọn điểm cố định nằm ngoài khoảng (-δ, δ) hoặc gán trước giá trị của L khi chứng minh phản chứng',
+    keyTakeaway: 'Khi phản chứng lim H(t) = L với ε = 1/2: Phải lấy t₁ = -δ/2 ∈ (-δ, 0) và t₂ = δ/2 ∈ (0, δ) để suy ra |L| < 1/2 và |1 - L| < 1/2 với MỌI số thực L, dẫn tới 1 < 1 (vô lý)!',
     solutions: [
       {
         id: 'sol-1',
         steps: [
-          'Bước 1: Giả sử phản chứng rằng $\\lim_{t \\to 0} H(t) = L$. Chọn $\\varepsilon = \\frac{1}{2} > 0$, theo định nghĩa phải tồn tại $\\delta > 0$ sao cho nếu $0 < |t| < \\delta$ thì $|H(t) - L| < \\frac{1}{2}$.',
+          'Bước 1: Giả sử phản chứng rằng $\\lim_{t \\to 0} H(t) = L$ ($L \\in \\mathbb{R}$). Chọn $\\varepsilon = \\frac{1}{2} > 0$, theo định nghĩa phải tồn tại $\\delta > 0$ sao cho nếu $0 < |t| < \\delta$ thì $|H(t) - L| < \\frac{1}{2}$.',
           'Bước 2: Lấy $t_1 = -\\frac{\\delta}{2} \\in (-\\delta, 0) \\Rightarrow H(t_1) = 0$, suy ra $|0 - L| = |L| < \\frac{1}{2}$. Lấy $t_2 = \\frac{\\delta}{2} \\in (0, \\delta) \\Rightarrow H(t_2) = 1$, suy ra $|1 - L| < \\frac{1}{2}$.',
-          'Bước 3: Áp dụng bất đẳng thức tam giác: $1 = |1 - 0| = |(1 - L) + L| \\le |1 - L| + |L| < \\frac{1}{2} + \\frac{1}{2} = 1 \\Rightarrow 1 < 1$ (mâu thuẫn!). Vậy giới hạn không tồn tại.'
+          'Bước 3: Áp dụng bất đẳng thức tam giác: $1 = |1 - 0| = |(1 - L) + L| \\le |1 - L| + |L| < \\frac{1}{2} + \\frac{1}{2} = 1 \\Rightarrow 1 < 1$ (mâu thuẫn!). Vậy $\\lim_{t \\to 0} H(t)$ không tồn tại (đpcm).'
         ],
-        finalAnswer: 'Chứng minh phản chứng với $\\varepsilon = \\frac{1}{2}$ dẫn đến $1 < 1$ (mâu thuẫn)',
+        finalAnswer: '',
         isCorrect: true,
         wrongStep: null,
-        explanation: 'Xuất sắc! Đây là lời giải chuẩn mực nhất theo đúng gợi ý của sách Stewart Calculus.'
+        explanation: 'Xuất sắc! Đây là cách chứng minh phản chứng hoàn chỉnh và chặt chẽ nhất theo định nghĩa $\\varepsilon - \\delta$.'
       },
       {
         id: 'sol-2',
         steps: [
-          'Bước 1: Tại $t = 0$, theo định nghĩa hàm Heaviside ta có $H(0) = 1$.',
-          'Bước 2: Nhưng với $t = -1 < 0$ thì $H(-1) = 0 \\neq H(0)$.',
-          'Bước 3: Vì $H(-1) \\neq H(0)$ nên giới hạn tại $0$ không tồn tại.'
+          'Bước 1: Giả sử phản chứng $\\lim_{t \\to 0} H(t) = L$. Với $\\varepsilon = \\frac{1}{2}$, theo định nghĩa tồn tại $\\delta > 0$ sao cho $0 < |t| < \\delta \\Rightarrow |H(t) - L| < \\frac{1}{2}$.',
+          'Bước 2: Thay hai giá trị cụ thể $t_1 = -1$ ($H(-1) = 0$) và $t_2 = 1$ ($H(1) = 1$) vào bất đẳng thức trên, ta được $|0 - L| < \\frac{1}{2}$ và $|1 - L| < \\frac{1}{2}$.',
+          'Bước 3: Cộng hai bất đẳng thức suy ra $1 \\le |1 - L| + |L| < 1$ (mâu thuẫn!). Vậy $\\lim_{t \\to 0} H(t)$ không tồn tại (đpcm).'
         ],
-        finalAnswer: 'Do $H(-1) \\neq H(0)$',
+        finalAnswer: '',
         isCorrect: false,
         wrongStep: 2,
-        explanation: 'Sai ở Bước 2 và 3! Giá trị tại một điểm ở xa ($t = -1$) hay giá trị tại chính điểm $t = 0$ không quyết định sự tồn tại của giới hạn khi $t \\to 0$.'
+        explanation: 'Sai ở Bước 2! Định nghĩa giới hạn chỉ đảm bảo $|H(t) - L| < \\frac{1}{2}$ khi $0 < |t| < \\delta$ (với $\\delta$ có thể rất nhỏ như $0.001$). Bạn không được phép thay cố định $t = \\pm 1$ vì $\\pm 1$ có thể nằm ngoài khoảng $(-\\delta, \\delta)$!'
       },
       {
         id: 'sol-3',
         steps: [
-          'Bước 1: Giả sử giới hạn là $L = 0$.',
-          'Bước 2: Khi $t < 0$, $|H(t) - 0| = |0 - 0| = 0 < \\frac{1}{2}$ (luôn đúng).',
-          'Bước 3: Suy ra giới hạn bằng $0$ chứ không phải không tồn tại.'
+          'Bước 1: Giả sử phản chứng tồn tại $\\lim_{t \\to 0} H(t) = L$. Vì tại $t = 0$ hàm số có giá trị $H(0) = 1$, nên giới hạn $L$ nếu tồn tại thì bắt buộc phải bằng $H(0) = 1$.',
+          'Bước 2: Chọn $\\varepsilon = \\frac{1}{2}$, với mọi $\\delta > 0$, lấy $t = -\\frac{\\delta}{2} \\in (-\\delta, 0)$ thì $H(t) = 0$.',
+          'Bước 3: Khi đó $|H(t) - L| = |0 - 1| = 1 > \\frac{1}{2} = \\varepsilon$ (mâu thuẫn với định nghĩa giới hạn!). Vậy $\\lim_{t \\to 0} H(t)$ không tồn tại (đpcm).'
         ],
-        finalAnswer: 'Giới hạn tồn tại và bằng $0$',
+        finalAnswer: '',
         isCorrect: false,
-        wrongStep: 2,
-        explanation: 'Sai ở Bước 2! Định nghĩa giới hạn $0 < |t| < \\delta$ đòi hỏi điều kiện $|H(t) - L| < \\varepsilon$ phải đúng với CẢ $t > 0$ lẫn $t < 0$ trong khoảng $(-\\delta, \\delta)$.'
+        wrongStep: 1,
+        explanation: 'Sai ngụy biện ở Bước 1! Định nghĩa giới hạn $\\lim_{t \\to 0} H(t) = L$ KHÔNG hề đòi hỏi $L$ phải bằng $H(0) = 1$ (chỉ khi hàm liên tục mới có $L = H(0)$). Bạn mới chỉ bác bỏ được $L = 1$ chứ chưa bác bỏ mọi số thực $L$ khác!'
       }
     ]
   },
@@ -2264,47 +2267,48 @@ window.BUILTIN_QUESTIONS.push(
     topic: 'buoi_2_bt',
     topicName: 'Phiếu BT Buổi 2 (GT1)',
     difficulty: 'Khó',
-    title: 'Bài 6 (Buổi 2): Giới hạn của hàm Dirichlet tại x = 0',
+    isProof: true,
+    title: 'Bài 6 (Buổi 2): Chứng minh giới hạn của hàm Dirichlet tại x = 0 không tồn tại',
     problem: 'Cho hàm số Dirichlet:\n$$f(x) = \\begin{cases} 0 & \\text{nếu } x \\text{ hữu tỉ} \\\\ 1 & \\text{nếu } x \\text{ vô tỉ} \\end{cases}$$\nHãy chứng minh rằng $\\lim_{x \\to 0} f(x)$ không tồn tại.',
     hint: 'Do tính trù mật của số hữu tỉ và số vô tỉ, trong MỌI khoảng $(-\\delta, \\delta)$ quanh $0$ đều chứa vô số số hữu tỉ ($f(x)=0$) và vô số số vô tỉ ($f(x)=1$).',
-    errorCategory: 'Quên tính trù mật của tập số hữu tỉ Q và vô tỉ R\\Q trong mọi khoảng mở',
-    keyTakeaway: 'Giữa hai số thực bất kỳ luôn có cả số hữu tỉ (f=0) lẫn số vô tỉ (f=1). Do đó hàm Dirichlet dao động giữa 0 và 1 ở mọi nơi và KHÔNG có giới hạn tại bất kỳ điểm nào!',
+    errorCategory: 'Nhầm giới hạn trái/phải với nhánh hữu tỉ/vô tỉ hoặc chọn dãy số không hội tụ về 0',
+    keyTakeaway: 'Có 2 cách chuẩn để chứng minh hàm Dirichlet không có giới hạn tại 0: (1) Phản chứng ε = 1/2 dùng tính trù mật trên (0, δ), hoặc (2) Dùng tiêu chuẩn Heine với dãy hữu tỉ x_n = 1/n → 0 và dãy vô tỉ y_n = √2/n → 0!',
     solutions: [
       {
         id: 'sol-1',
         steps: [
           'Bước 1: Giả sử phản chứng $\\lim_{x \\to 0} f(x) = L$. Với $\\varepsilon = \\frac{1}{2}$, tồn tại $\\delta > 0$ sao cho mọi $x \\in (-\\delta, \\delta) \\setminus \\{0\\}$ đều thỏa $|f(x) - L| < \\frac{1}{2}$.',
-          'Bước 2: Vì tập hợp số hữu tỉ và vô tỉ đều trù mật trong $\\mathbb{R}$, trong khoảng $(0, \\delta)$ luôn tồn tại một số hữu tỉ $x_1 \\in \\mathbb{Q}$ ($f(x_1) = 0 \\Rightarrow |L| < \\frac{1}{2}$) và một số vô tỉ $x_2 \\notin \\mathbb{Q}$ ($f(x_2) = 1 \\Rightarrow |1 - L| < \\frac{1}{2}$).',
-          'Bước 3: Suy ra $1 = |1 - L + L| \\le |1 - L| + |L| < \\frac{1}{2} + \\frac{1}{2} = 1$ (mâu thuẫn!). Hoặc dùng dãy: $x_n = \\frac{1}{n} \\to 0 \\Rightarrow f(x_n) \\to 0$, còn $y_n = \\frac{\\sqrt{2}}{n} \\to 0 \\Rightarrow f(y_n) \\to 1 \\neq 0$. Vậy giới hạn không tồn tại.'
+          'Bước 2: Vì tập số hữu tỉ $\\mathbb{Q}$ và vô tỉ $\\mathbb{R}\\setminus\\mathbb{Q}$ đều trù mật trên $\\mathbb{R}$, trong khoảng $(0, \\delta)$ luôn tồn tại số hữu tỉ $x_1 \\in \\mathbb{Q}$ ($f(x_1) = 0 \\Rightarrow |L| < \\frac{1}{2}$) và số vô tỉ $x_2 \\notin \\mathbb{Q}$ ($f(x_2) = 1 \\Rightarrow |1 - L| < \\frac{1}{2}$).',
+          'Bước 3: Suy ra $1 = |1 - L + L| \\le |1 - L| + |L| < \\frac{1}{2} + \\frac{1}{2} = 1$ (mâu thuẫn!). (Hoặc chọn hai dãy $x_n = \\frac{1}{n} \\to 0 \\Rightarrow f(x_n) = 0 \\to 0$ và $y_n = \\frac{\\sqrt{2}}{n} \\to 0 \\Rightarrow f(y_n) = 1 \\to 1 \\neq 0$). Vậy $\\lim_{x \\to 0} f(x)$ không tồn tại (đpcm).'
         ],
-        finalAnswer: 'Không tồn tại giới hạn (do dao động giữa $0$ và $1$ trong mọi lân cận của $0$)',
+        finalAnswer: '',
         isCorrect: true,
         wrongStep: null,
-        explanation: 'Chính xác! Cả cách chứng minh bằng $\\varepsilon - \\delta$ lẫn cách chọn 2 dãy số (1 dãy hữu tỉ $\\frac{1}{n}$ và 1 dãy vô tỉ $\\frac{\\sqrt{2}}{n}$) đều rất thuyết phục.'
+        explanation: 'Chính xác! Lập luận dựa trên tính trù mật trong khoảng $(0, \\delta)$ (hoặc 2 dãy cùng tiến về $0$) hoàn toàn chặt chẽ.'
       },
       {
         id: 'sol-2',
         steps: [
-          'Bước 1: Vì số $0$ là một số hữu tỉ ($0 = \\frac{0}{1} \\in \\mathbb{Q}$).',
-          'Bước 2: Khi $x \\to 0$, $x$ tiến về một số hữu tỉ nên $f(x)$ tiến về $f(0) = 0$.',
-          'Bước 3: Kết luận $\\lim_{x \\to 0} f(x) = 0$.'
+          'Bước 1: Để xét sự tồn tại của $\\lim_{x \\to 0} f(x)$, ta xét giới hạn một phía khi $x \\to 0^-$ và khi $x \\to 0^+$.',
+          'Bước 2: Áp dụng nhánh thứ nhất cho giới hạn bên trái: $\\lim_{x \\to 0^-} f(x) = \\lim_{x \\to 0^-} 0 = 0$; áp dụng nhánh thứ hai cho giới hạn bên phải: $\\lim_{x \\to 0^+} f(x) = \\lim_{x \\to 0^+} 1 = 1$.',
+          'Bước 3: Vì giới hạn trái ($0$) khác giới hạn phải ($1$), nên $\\lim_{x \\to 0} f(x)$ không tồn tại (đpcm).'
         ],
-        finalAnswer: '$\\lim_{x \\to 0} f(x) = 0$',
+        finalAnswer: '',
         isCorrect: false,
         wrongStep: 2,
-        explanation: 'Sai ở Bước 2! Khi $x \\to 0$, $x$ có thể chạy qua các giá trị vô tỉ (ví dụ $x = \\frac{\\sqrt{2}}{n}$) chứ không chỉ nhận giá trị hữu tỉ.'
+        explanation: 'Sai nặng ở Bước 2! Hai nhánh của hàm số phân chia theo "hữu tỉ / vô tỉ" chứ KHÔNG phải theo "$x < 0$ / $x > 0$". Ở cả bên trái lẫn bên phải số $0$ đều có vô số số hữu tỉ và vô tỉ!'
       },
       {
         id: 'sol-3',
         steps: [
-          'Bước 1: Xét giới hạn trái ($x \\to 0^-$) có $f(x) = 0$, và giới hạn phải ($x \\to 0^+$) có $f(x) = 1$.',
-          'Bước 2: Vì giới hạn trái khác giới hạn phải.',
-          'Bước 3: Nên giới hạn tại $0$ không tồn tại.'
+          'Bước 1: Áp dụng định nghĩa giới hạn theo dãy số (Heine): chọn một dãy số hữu tỉ $x_n$ và một dãy số vô tỉ $y_n$.',
+          'Bước 2: Chọn dãy hữu tỉ hằng $x_n = 1 \\in \\mathbb{Q}$ thì $\\lim_{n \\to \\infty} f(x_n) = 0$; chọn dãy vô tỉ hằng $y_n = \\sqrt{2} \\notin \\mathbb{Q}$ thì $\\lim_{n \\to \\infty} f(y_n) = 1$.',
+          'Bước 3: Vì $\\lim f(x_n) \\neq \\lim f(y_n)$ nên $\\lim_{x \\to 0} f(x)$ không tồn tại (đpcm).'
         ],
-        finalAnswer: 'Giới hạn trái bằng $0$, giới hạn phải bằng $1$',
+        finalAnswer: '',
         isCorrect: false,
-        wrongStep: 1,
-        explanation: 'Sai ở Bước 1! Số hữu tỉ và số vô tỉ không phải nằm ở hai bên trái/phải của số $0$, mà xen kẽ dày đặc ở CẢ hai bên âm và dương!'
+        wrongStep: 2,
+        explanation: 'Sai điều kiện ở Bước 2! Muốn dùng tiêu chuẩn dãy số để xét giới hạn tại $x = 0$, cả hai dãy $x_n$ và $y_n$ BẮT BUỘC phải tiến về $0$ khi $n \\to \\infty$ (ví dụ $x_n = \\frac{1}{n}, y_n = \\frac{\\sqrt{2}}{n}$), chứ không được chọn $x_n = 1, y_n = \\sqrt{2}$!'
       }
     ]
   },
@@ -2313,47 +2317,48 @@ window.BUILTIN_QUESTIONS.push(
     topic: 'buoi_2_bt',
     topicName: 'Phiếu BT Buổi 2 (GT1)',
     difficulty: 'Trung bình',
+    isProof: true,
     title: 'Bài 7 (Buổi 2): Chứng minh lim(x→-3) 1/(x+3)² = ∞',
     problem: 'Chứng minh bằng định nghĩa giới hạn vô cực rằng:\n$$\\lim_{x \\to -3} \\frac{1}{(x + 3)^2} = \\infty$$',
     hint: 'Theo định nghĩa giới hạn bằng $+\\infty$: Với mọi số dương lớn $M > 0$, ta cần tìm $\\delta > 0$ sao cho nếu $0 < |x - (-3)| < \\delta$ thì $\\frac{1}{(x+3)^2} > M$.',
-    errorCategory: 'Giải ngược chiều bất đẳng thức 1/(x+3)^2 > M khi tìm δ theo M',
-    keyTakeaway: 'Để chứng minh lim f(x) = +∞: Cho f(x) > M (với M > 0 bất kỳ). Từ 1/(x+3)² > M suy ra |x + 3| < 1/√M, chọn ngay δ = 1/√M!',
+    errorCategory: 'Quên dấu giá trị tuyệt đối khi khai căn (x+3)^2 < 1/M trong chứng minh giới hạn vô cực',
+    keyTakeaway: 'Để chứng minh lim f(x) = +∞: Cho f(x) > M (với M > 0 bất kỳ). Từ 1/(x+3)² > M ⇔ (x+3)² < 1/M ⇔ |x + 3| < 1/√M, chọn ngay δ = 1/√M!',
     solutions: [
       {
         id: 'sol-1',
         steps: [
-          'Bước 1: Với mọi số $M > 0$ lớn tùy ý, ta cần tìm $\\delta > 0$ sao cho nếu $0 < |x + 3| < \\delta$ thì $\\frac{1}{(x + 3)^2} > M$.',
-          'Bước 2: Bất đẳng thức $\\frac{1}{(x + 3)^2} > M \\Leftrightarrow (x + 3)^2 < \\frac{1}{M} \\Leftrightarrow |x + 3| < \\frac{1}{\\sqrt{M}}$.',
-          'Bước 3: Vậy chỉ cần chọn $\\delta = \\frac{1}{\\sqrt{M}} > 0$. Khi đó với mọi $x$ thỏa $0 < |x - (-3)| < \\delta$, ta luôn có $\\frac{1}{(x + 3)^2} > \\frac{1}{\\delta^2} = M$ (đpcm).'
+          'Bước 1: Với mọi số $M > 0$ lớn tùy ý, ta cần chỉ ra $\\delta > 0$ sao cho nếu $0 < |x - (-3)| = |x + 3| < \\delta$ thì $\\frac{1}{(x + 3)^2} > M$.',
+          'Bước 2: Biến đổi tương đương với $x \\neq -3, M > 0$: $\\frac{1}{(x + 3)^2} > M \\Leftrightarrow (x + 3)^2 < \\frac{1}{M} \\Leftrightarrow |x + 3| < \\frac{1}{\\sqrt{M}}$.',
+          'Bước 3: Chọn $\\delta = \\frac{1}{\\sqrt{M}} > 0$. Khi đó với mọi $x$ thỏa $0 < |x + 3| < \\delta$, ta suy ra $(x + 3)^2 < \\delta^2 = \\frac{1}{M} \\Rightarrow \\frac{1}{(x + 3)^2} > M$, vậy $\\lim_{x \\to -3} \\frac{1}{(x + 3)^2} = \\infty$ (đpcm).'
         ],
-        finalAnswer: 'Chọn $\\delta = \\frac{1}{\\sqrt{M}}$ cho mọi $M > 0$',
+        finalAnswer: '',
         isCorrect: true,
         wrongStep: null,
-        explanation: 'Chính xác! Phép biến đổi tương đương từ $\\frac{1}{(x+3)^2} > M$ ra $|x + 3| < \\frac{1}{\\sqrt{M}}$ hoàn toàn chặt chẽ.'
+        explanation: 'Chính xác! Phép biến đổi tương đương có dấu giá trị tuyệt đối $|x + 3| < \\frac{1}{\\sqrt{M}}$ hoàn toàn chuẩn mực.'
       },
       {
         id: 'sol-2',
         steps: [
-          'Bước 1: Với mọi $M > 0$, xét $\\frac{1}{(x + 3)^2} > M$.',
-          'Bước 2: Nghịch đảo hai vế và giữ nguyên chiều bất đẳng thức: $(x + 3)^2 > \\frac{1}{M}$.',
-          'Bước 3: Chọn $\\delta = \\sqrt{M}$.'
+          'Bước 1: Với mọi $M > 0$, xét bất đẳng thức $\\frac{1}{(x + 3)^2} > M \\Leftrightarrow (x + 3)^2 < \\frac{1}{M}$.',
+          'Bước 2: Lấy căn bậc hai cả hai vế của bất đẳng thức, ta được $x + 3 < \\frac{1}{\\sqrt{M}} \\Leftrightarrow x < -3 + \\frac{1}{\\sqrt{M}}$.',
+          'Bước 3: Chọn $\\delta = \\frac{1}{\\sqrt{M}}$, khi đó mọi $x < -3 + \\delta$ đều thỏa mãn $\\frac{1}{(x+3)^2} > M$, suy ra $\\lim_{x \\to -3} \\frac{1}{(x + 3)^2} = \\infty$ (đpcm).'
         ],
-        finalAnswer: 'Chọn $\\delta = \\sqrt{M}$',
+        finalAnswer: '',
         isCorrect: false,
         wrongStep: 2,
-        explanation: 'Sai ở Bước 2! Khi nghịch đảo hai số dương, chiều của bất đẳng thức phải ĐỔI NGƯỢC lại: $(x+3)^2 < \\frac{1}{M}$.'
+        explanation: 'Sai ở Bước 2! Khi lấy căn bậc hai của $(x + 3)^2 < \\frac{1}{M}$, bắt buộc phải có dấu giá trị tuyệt đối $|x + 3| < \\frac{1}{\\sqrt{M}}$ (tức $-3 - \\delta < x < -3 + \\delta$). Nếu chỉ viết $x < -3 + \\delta$ thì với $x = -100$ bất đẳng thức sẽ sai!'
       },
       {
         id: 'sol-3',
         steps: [
-          'Bước 1: Thay trực tiếp $x = -3$ vào phân thức $\\frac{1}{(x+3)^2}$.',
-          'Bước 2: Ta được phép chia số thực $\\frac{1}{0} = \\infty$.',
-          'Bước 3: Điều phải chứng minh.'
+          'Bước 1: Xét giới hạn $\\lim_{x \\to -3} \\frac{1}{(x + 3)^2}$, áp dụng quy tắc L\'Hôpital bằng cách lấy đạo hàm tử số và mẫu số.',
+          'Bước 2: Đạo hàm của $(x + 3)^2$ là $2(x + 3)$, khi thay $x = -3$ vào thì mẫu số tiến về $0$ và luôn không âm.',
+          'Bước 3: Một phân thức có mẫu tiến về $0^+$ thì giới hạn tiến ra $+\\infty$, suy ra $\\lim_{x \\to -3} \\frac{1}{(x + 3)^2} = \\infty$ (đpcm).'
         ],
-        finalAnswer: 'Thay $x = -3$ được $\\frac{1}{0} = \\infty$',
+        finalAnswer: '',
         isCorrect: false,
-        wrongStep: 2,
-        explanation: 'Sai trình bày tự luận ở Bước 2! Trong Toán học không có phép chia cho số $0$ tại một điểm, và bài toán yêu cầu chứng minh bằng định nghĩa giới hạn ($M - \\delta$).'
+        wrongStep: 1,
+        explanation: 'Sai ở Bước 1! Khi $x \\to -3$, tử số bằng $1 \\neq 0$ nên biểu thức có dạng $\\frac{1}{0^+}$ chứ KHÔNG phải dạng vô định $\\frac{0}{0}$ hay $\\frac{\\infty}{\\infty}$, tuyệt đối không được áp dụng quy tắc L\'Hôpital!'
       }
     ]
   },
@@ -2656,47 +2661,48 @@ window.BUILTIN_QUESTIONS.push(
     topic: 'buoi_2_bt',
     topicName: 'Phiếu BT Buổi 2 (GT1)',
     difficulty: 'Trung bình',
+    isProof: true,
     title: 'Bài 14 (Buổi 2): Chứng minh hàm f(x) = x⁴ sin(1/x) liên tục trên (-∞, ∞)',
     problem: 'Chứng minh rằng hàm số:\n$$f(x) = \\begin{cases} x^4 \\sin\\left(\\frac{1}{x}\\right) & \\text{nếu } x \\neq 0 \\\\ 0 & \\text{nếu } x = 0 \\end{cases}$$\nliên tục trên $(-\\infty, \\infty)$.',
     hint: 'Với $x \\neq 0$, hàm là tích/hợp của các hàm sơ cấp nên liên tục. Tại $x = 0$, dùng Định lý kẹp (Squeeze Theorem) với $-x^4 \\le x^4 \\sin(1/x) \\le x^4$!',
-    errorCategory: 'Không dùng định lý kẹp tại x = 0 hoặc ngộ nhận sin(1/x) không tồn tại giới hạn thì tích cũng không tồn tại',
-    keyTakeaway: 'Dù sin(1/x) dao động mạnh khi x → 0, nhưng vì luôn bị chặn trong [-1, 1] nên khi nhân với x⁴ → 0 thì tích x⁴·sin(1/x) bị kẹp giữa -x⁴ và x⁴ và tiến về 0!',
+    errorCategory: 'Tách giới hạn tích khi một thừa số không có giới hạn hoặc áp dụng sai vô cùng bé tương đương sin(1/x) ~ 1/x khi x -> 0',
+    keyTakeaway: 'Khi chứng minh tính liên tục của x⁴·sin(1/x) tại x = 0: tuyệt đối không được tách lim(x⁴)·lim(sin(1/x)) (vì lim sin(1/x) không tồn tại) và không được dùng sin(1/x) ~ 1/x (vì 1/x → ∞). Bắt buộc phải dùng Định lý Kẹp: -x⁴ ≤ x⁴·sin(1/x) ≤ x⁴!',
     solutions: [
       {
         id: 'sol-1',
         steps: [
-          'Bước 1: Với mọi $x \\neq 0$, $f(x) = x^4 \\sin(1/x)$ là tích và hàm hợp của các hàm đa thức, phân thức và lượng giác xác định trên $\\mathbb{R} \\setminus \\{0\\}$ nên liên tục tại mọi $x \\neq 0$.',
-          'Bước 2: Tại $x = 0$, với mọi $x \\neq 0$ ta có $-1 \\le \\sin\\left(\\frac{1}{x}\\right) \\le 1$. Nhân cả 3 vế với $x^4 > 0$, ta được: $-x^4 \\le x^4 \\sin\\left(\\frac{1}{x}\\right) \\le x^4$.',
-          'Bước 3: Vì $\\lim_{x \\to 0} (-x^4) = 0$ và $\\lim_{x \\to 0} x^4 = 0$, theo Định lý Kẹp suy ra $\\lim_{x \\to 0} f(x) = 0 = f(0)$. Vậy $f$ cũng liên tục tại $x = 0$, tức liên tục trên $(-\\infty, \\infty)$.'
+          'Bước 1: Với mọi $x \\neq 0$, $f(x) = x^4 \\sin\\left(\\frac{1}{x}\\right)$ là tích và hàm hợp của các hàm sơ cấp (đa thức $x^4$, phân thức $1/x$ và hàm lượng giác $\\sin$) xác định trên $\\mathbb{R} \\setminus \\{0\\}$ nên liên tục tại mọi $x \\neq 0$.',
+          'Bước 2: Xét tại $x = 0$: Với mọi $x \\neq 0$, ta luôn có $-1 \\le \\sin\\left(\\frac{1}{x}\\right) \\le 1$. Nhân cả 3 vế với $x^4 > 0$, ta thu được bất đẳng thức kẹp: $-x^4 \\le x^4 \\sin\\left(\\frac{1}{x}\\right) \\le x^4$.',
+          'Bước 3: Vì $\\lim_{x \\to 0} (-x^4) = 0$ và $\\lim_{x \\to 0} x^4 = 0$, theo Định lý Kẹp (Squeeze Theorem) suy ra $\\lim_{x \\to 0} f(x) = 0 = f(0)$, nên $f$ liên tục tại $x = 0$. Vậy $f$ liên tục trên $(-\\infty, \\infty)$ (đpcm).'
         ],
-        finalAnswer: 'Liên tục tại $x \\neq 0$ (hàm sơ cấp) và tại $x = 0$ (theo Định lý Kẹp $-x^4 \\le f(x) \\le x^4$)',
+        finalAnswer: '',
         isCorrect: true,
         wrongStep: null,
-        explanation: 'Chính xác! Trình bày đầy đủ cả hai phần: $x \\neq 0$ và điểm đặc biệt $x = 0$ bằng Định lý Kẹp.'
+        explanation: 'Chính xác! Trình bày đầy đủ cả hai miền: $x \\neq 0$ (hàm sơ cấp) và điểm ghép $x = 0$ bằng Định lý Kẹp.'
       },
       {
         id: 'sol-2',
         steps: [
-          'Bước 1: Tách giới hạn tại $x = 0$ thành tích hai giới hạn: $\\lim_{x \\to 0} x^4 \\cdot \\lim_{x \\to 0} \\sin\\left(\\frac{1}{x}\\right)$.',
-          'Bước 2: Vì $\\lim_{x \\to 0} x^4 = 0$ và $0$ nhân với bất kỳ thứ gì cũng bằng $0$.',
-          'Bước 3: Suy ra $\\lim_{x \\to 0} f(x) = 0 = f(0)$.'
+          'Bước 1: Với mọi $x \\neq 0$, hàm số $f(x) = x^4 \\sin\\left(\\frac{1}{x}\\right)$ là hàm sơ cấp xác định nên liên tục trên $(-\\infty, 0) \\cup (0, \\infty)$.',
+          'Bước 2: Tại $x = 0$, áp dụng quy tắc giới hạn của một tích: $\\lim_{x \\to 0} f(x) = \\left(\\lim_{x \\to 0} x^4\\right) \\cdot \\left(\\lim_{x \\to 0} \\sin\\left(\\frac{1}{x}\\right)\\right) = 0 \\cdot \\left(\\lim_{x \\to 0} \\sin\\left(\\frac{1}{x}\\right)\\right) = 0$.',
+          'Bước 3: Vì $\\lim_{x \\to 0} f(x) = 0 = f(0)$ nên hàm số liên tục tại $x = 0$. Vậy $f(x)$ liên tục trên $(-\\infty, \\infty)$ (đpcm).'
         ],
-        finalAnswer: 'Tách thành $\\lim x^4 \\cdot \\lim \\sin(1/x) = 0$',
+        finalAnswer: '',
         isCorrect: false,
-        wrongStep: 1,
-        explanation: 'Sai quy tắc giới hạn ở Bước 1! Chỉ được tách $\\lim(u \\cdot v) = \\lim u \\cdot \\lim v$ khi CẢ HAI giới hạn thành phần đều tồn tại. Ở đây $\\lim_{x \\to 0} \\sin(1/x)$ không tồn tại nên bắt buộc phải dùng Định lý Kẹp!'
+        wrongStep: 2,
+        explanation: 'Sai quy tắc giới hạn ở Bước 2! Định lý $\\lim(u \\cdot v) = \\lim u \\cdot \\lim v$ chỉ được phép áp dụng khi CẢ HAI giới hạn thành phần đều tồn tại hữu hạn. Ở đây $\\lim_{x \\to 0} \\sin(1/x)$ không tồn tại nên cách tách tích này không hợp lệ, bắt buộc phải dùng Định lý Kẹp!'
       },
       {
         id: 'sol-3',
         steps: [
-          'Bước 1: Áp dụng vô cùng bé tương đương $\\sin\\left(\\frac{1}{x}\\right) \\sim \\frac{1}{x}$ khi $x \\to 0$.',
-          'Bước 2: Thay vào được $\\lim_{x \\to 0} x^4 \\cdot \\frac{1}{x} = \\lim_{x \\to 0} x^3 = 0$.',
-          'Bước 3: Do đó hàm liên tục tại $x = 0$.'
+          'Bước 1: Với mọi $x \\neq 0$, hàm số $f(x) = x^4 \\sin\\left(\\frac{1}{x}\\right)$ liên tục vì là tích và hợp của các hàm sơ cấp.',
+          'Bước 2: Tại $x = 0$, khi $x \\to 0$ ta áp dụng công thức vô cùng bé tương đương $\\sin u \\sim u$ cho $u = \\frac{1}{x}$: $\\lim_{x \\to 0} x^4 \\sin\\left(\\frac{1}{x}\\right) = \\lim_{x \\to 0} x^4 \\cdot \\frac{1}{x} = \\lim_{x \\to 0} x^3 = 0$.',
+          'Bước 3: Suy ra $\\lim_{x \\to 0} f(x) = 0 = f(0)$, tức hàm số liên tục tại $x = 0$. Vậy $f$ liên tục trên $(-\\infty, \\infty)$ (đpcm).'
         ],
-        finalAnswer: 'Dùng tương đương $\\sin(1/x) \\sim 1/x$',
+        finalAnswer: '',
         isCorrect: false,
-        wrongStep: 1,
-        explanation: 'Sai nặng ở Bước 1! Công thức $\\sin u \\sim u$ chỉ đúng khi $u \\to 0$. Khi $x \\to 0$ thì $u = \\frac{1}{x} \\to \\infty$ chứ không tiến về $0$!'
+        wrongStep: 2,
+        explanation: 'Sai nặng ở Bước 2! Công thức vô cùng bé tương đương $\\sin u \\sim u$ chỉ đúng khi $u \\to 0$. Khi $x \\to 0$ thì $u = \\frac{1}{x} \\to \\pm\\infty$ chứ không tiến về $0$!'
       }
     ]
   },
@@ -2705,47 +2711,48 @@ window.BUILTIN_QUESTIONS.push(
     topic: 'buoi_2_bt',
     topicName: 'Phiếu BT Buổi 2 (GT1)',
     difficulty: 'Khó',
+    isProof: true,
     title: 'Bài 15 (Buổi 2): Chứng minh phương trình có nghiệm bằng Định lý Giá trị Trung gian',
     problem: 'Nếu $a$ và $b$ là các số dương ($a > 0, b > 0$), hãy chứng minh rằng phương trình:\n$$\\frac{a}{x^3 + 2x^2 - 1} + \\frac{b}{x^3 + x - 2} = 0$$\ncó ít nhất một nghiệm trong khoảng $(-1, 1)$.',
-    hint: 'Quy đồng mẫu số (hoặc nhân hai vế với $(x^3+2x^2-1)(x^3+x-2)$) để đưa về đa thức liên tục $P(x) = a(x^3 + x - 2) + b(x^3 + 2x^2 - 1) = 0$, hoặc xét giới hạn một phía tại nghiệm của mẫu số trong $(-1, 1)$!',
-    errorCategory: 'Áp dụng Định lý Giá trị Trung gian trực tiếp trên [-1, 1] khi phân thức bị gián đoạn tại nghiệm của mẫu số',
-    keyTakeaway: 'Không được áp dụng trực tiếp Định lý Giá trị Trung gian cho phân thức trên [-1, 1] vì mẫu x³+2x²-1 có nghiệm trong (-1, 1)! Hãy quy đồng về đa thức P(x) = a(x³+x-2) + b(x³+2x²-1) rồi tính P(-1) < 0 và P(1) > 0!',
+    hint: 'Quy đồng mẫu số để đưa về đa thức liên tục $P(x) = a(x^3 + x - 2) + b(x^3 + 2x^2 - 1) = 0$ (hoặc xét trên khoảng con giữa hai nghiệm mẫu số), chú ý mẫu $x^3 + 2x^2 - 1 = (x+1)(x^2+x-1)$ có nghiệm $x_0 = \\frac{\\sqrt{5}-1}{2} \\in (-1, 1)$!',
+    errorCategory: 'Áp dụng Định lý Giá trị Trung gian trực tiếp trên đoạn chứa điểm gián đoạn của mẫu số hoặc xét sai dấu hai đầu mút',
+    keyTakeaway: 'Không được áp dụng trực tiếp Định lý Giá trị Trung gian cho phân thức f(x) trên [-1, 1] hay [0, 1] vì mẫu x³+2x²-1 = 0 tại x = -1 và x = (√5-1)/2 ≈ 0.618 ∈ (0, 1)! Cách chuẩn nhất: Quy đồng về đa thức P(x) = a(x³+x-2) + b(x³+2x²-1) tại x = (√5-1)/2 và x = 1 (hoặc x = -1 và x = 1 kèm kiểm tra nghiệm ngoại lai)!',
     solutions: [
       {
         id: 'sol-1',
         steps: [
-          'Bước 1: Quy đồng mẫu số, phương trình tương đương với $P(x) = a(x^3 + x - 2) + b(x^3 + 2x^2 - 1) = 0$ (với điều kiện $x$ không làm mẫu bằng $0$). Đa thức $P(x)$ liên tục trên $[-1, 1]$.',
-          'Bước 2: Tính giá trị tại hai đầu mút: Tại $x = -1$, $P(-1) = a(-1 - 1 - 2) + b(-1 + 2 - 1) = -4a < 0$ (do $a > 0$). Tại $x = 1$, $P(1) = a(1 + 1 - 2) + b(1 + 2 - 1) = 2b > 0$ (do $b > 0$).',
-          'Bước 3: Vì $P(-1) \\cdot P(1) = -8ab < 0$ và $P(x)$ liên tục trên $[-1, 1]$, theo Định lý Giá trị Trung gian tồn tại $c \\in (-1, 1)$ sao cho $P(c) = 0$. (Tại $c$, nếu một mẫu bằng $0$ thì mẫu kia cũng phải bằng $0$, nhưng hai mẫu không có nghiệm chung trên $(-1,1)$ nên $c$ là nghiệm của phương trình ban đầu).'
+          'Bước 1: Quy đồng mẫu số, với $x \\neq -1, 1, \\frac{\\sqrt{5}-1}{2}$ phương trình tương đương với đa thức $P(x) = a(x^3 + x - 2) + b(x^3 + 2x^2 - 1) = 0$. Hàm đa thức $P(x)$ liên tục trên toàn bộ đoạn $[-1, 1]$.',
+          'Bước 2: Xét trên đoạn con $[x_0, 1] \\subset (-1, 1]$ với $x_0 = \\frac{\\sqrt{5}-1}{2} \\approx 0.618$ (là nghiệm của $x^3+2x^2-1=0$): Tại $x = x_0$, $P(x_0) = a(x_0^3 + x_0 - 2) + 0 < 0$ (do $x_0 < 1$ và $a > 0$). Tại $x = 1$, $P(1) = a(0) + b(1 + 2 - 1) = 2b > 0$ (do $b > 0$). (Hoặc xét $P(-1) = -4a < 0$ và $P(1) = 2b > 0$).',
+          'Bước 3: Vì $P(x_0) \\cdot P(1) < 0$ và $P(x)$ liên tục trên $[x_0, 1]$, theo Định lý Giá trị Trung gian tồn tại $c \\in (x_0, 1) \\subset (-1, 1)$ sao cho $P(c) = 0$. Trên khoảng $(x_0, 1)$ cả hai mẫu số đều khác $0$, nên $c$ là nghiệm của phương trình đã cho trong $(-1, 1)$ (đpcm).'
         ],
-        finalAnswer: 'Đặt $P(x) = a(x^3+x-2) + b(x^3+2x^2-1)$ liên tục, có $P(-1) = -4a < 0$ và $P(1) = 2b > 0$',
+        finalAnswer: '',
         isCorrect: true,
         wrongStep: null,
-        explanation: 'Rất chặt chẽ! Chuyển về đa thức $P(x)$ giúp tránh điểm gián đoạn của mẫu số $x^3 + 2x^2 - 1 = (x+1)(x^2+x-1)$ tại $x = \\frac{-1+\\sqrt{5}}{2} \\in (-1, 1)$.'
+        explanation: 'Chính xác và vô cùng chặt chẽ! Chuyển về đa thức $P(x)$ (và kiểm tra nghiệm không trùng với nghiệm của mẫu $x_0 = \\frac{\\sqrt{5}-1}{2}$) đảm bảo Định lý Giá trị Trung gian hoàn toàn hợp lệ.'
       },
       {
         id: 'sol-2',
         steps: [
-          'Bước 1: Đặt trực tiếp $f(x) = \\frac{a}{x^3 + 2x^2 - 1} + \\frac{b}{x^3 + x - 2}$ và khẳng định $f(x)$ liên tục trên đoạn $[-1, 1]$.',
-          'Bước 2: Thay $x = -1$ và $x = 1$ trực tiếp vào $f(x)$.',
-          'Bước 3: Kết luận theo định lý giá trị trung gian trên $[-1, 1]$.'
+          'Bước 1: Đặt $f(x) = \\frac{a}{x^3 + 2x^2 - 1} + \\frac{b}{x^3 + x - 2}$. Để tránh hai đầu mút $x = \\pm 1$ làm mẫu bằng $0$, ta xét hàm $f(x)$ trên đoạn con $\\left[0, \\frac{1}{2}\\right] \\subset (-1, 1)$. Khi đó $f(x)$ liên tục trên $\\left[0, \\frac{1}{2}\\right]$.',
+          'Bước 2: Tính giá trị tại hai đầu mút: Tại $x = 0$, $f(0) = -a - \\frac{b}{2} < 0$. Tại $x = \\frac{1}{2}$, ta có $\\left(\\frac{1}{2}\\right)^3 + 2\\left(\\frac{1}{2}\\right)^2 - 1 = \\frac{1}{8} + \\frac{1}{2} - 1 = \\frac{5}{8} > 0$ nên với $a$ đủ lớn thì $f(1/2) > 0$.',
+          'Bước 3: Do $f(0) \\cdot f(1/2) < 0$, theo Định lý Giá trị Trung gian phương trình $f(x) = 0$ có ít nhất một nghiệm trong $\\left(0, \\frac{1}{2}\\right) \\subset (-1, 1)$ (đpcm).'
         ],
-        finalAnswer: 'Xét trực tiếp $f(-1)$ và $f(1)$ trên $[-1, 1]$',
+        finalAnswer: '',
         isCorrect: false,
-        wrongStep: 1,
-        explanation: 'Sai ở Bước 1 và 2! Tại $x = -1$ mẫu đầu tiên $(-1)^3 + 2(-1)^2 - 1 = 0$, tại $x = 1$ mẫu thứ hai $1^3 + 1 - 2 = 0$, và tại $x = \\frac{\\sqrt{5}-1}{2} \\in (-1,1)$ mẫu đầu cũng bằng $0$ nên $f(x)$ KHÔNG liên tục trên $[-1, 1]$!'
+        wrongStep: 2,
+        explanation: 'Sai tính toán và lập luận ở Bước 2! Tại $x = \\frac{1}{2}$, $\\frac{1}{8} + \\frac{1}{2} - 1 = -\\frac{3}{8} < 0$ (cả hai mẫu đều âm trên $(-1, \\frac{\\sqrt{5}-1}{2})$), nên $f(x) < 0$ với mọi $x \\in (0, 1/2)$ và không hề đổi dấu trên đoạn này!'
       },
       {
         id: 'sol-3',
         steps: [
-          'Bước 1: Cho từng phân thức bằng $0$: $\\frac{a}{x^3+2x^2-1} = 0$ và $\\frac{b}{x^3+x-2} = 0$.',
-          'Bước 2: Vì $a > 0, b > 0$ khác $0$ nên từng phân thức vô nghiệm.',
-          'Bước 3: Suy ra phương trình vô nghiệm.'
+          'Bước 1: Đặt $f(x) = \\frac{a}{x^3 + 2x^2 - 1} + \\frac{b}{x^3 + x - 2}$ và xét trên đoạn con $[-0.5, 0.8] \\subset (-1, 1)$ để không chạm vào hai nghiệm mẫu $x = -1$ và $x = 1$.',
+          'Bước 2: Tại $x = -0.5$, cả hai mẫu số đều âm nên $f(-0.5) < 0$. Tại $x = 0.8$, mẫu đầu $0.8^3 + 2(0.8)^2 - 1 = 0.792 > 0$, nên khi $x$ tiến sát từ bên phải điểm làm mẫu đầu dương thì $f(x) > 0$.',
+          'Bước 3: Vì $f(x)$ đổi dấu trên đoạn $[-0.5, 0.8]$, áp dụng trực tiếp Định lý Giá trị Trung gian cho $f(x)$ trên $[-0.5, 0.8]$ suy ra tồn tại $c \\in (-0.5, 0.8) \\subset (-1, 1)$ sao cho $f(c) = 0$ (đpcm).'
         ],
-        finalAnswer: 'Phương trình vô nghiệm',
+        finalAnswer: '',
         isCorrect: false,
         wrongStep: 1,
-        explanation: 'Sai ở Bước 1! Tổng hai phân thức bằng $0$ nghĩa là hai phân thức đối dấu nhau (một âm, một dương triệt tiêu nhau), không phải từng phân thức bằng $0$.'
+        explanation: 'Sai điều kiện liên tục ở Bước 1 và 3! Đa thức mẫu $x^3 + 2x^2 - 1 = (x+1)(x^2+x-1)$ có nghiệm $x_0 = \\frac{\\sqrt{5}-1}{2} \\approx 0.618 \\in [-0.5, 0.8]$, nên hàm phân thức $f(x)$ bị GIÁN ĐOẠN (tiến ra $\\pm\\infty$) tại $x_0 \\approx 0.618$ và không thể áp dụng Định lý Giá trị Trung gian trực tiếp trên $[-0.5, 0.8]$!'
       }
     ]
   }

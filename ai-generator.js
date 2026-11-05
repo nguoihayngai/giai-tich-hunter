@@ -94,7 +94,8 @@ Nhiệm vụ của bạn là trả về DUY NHẤT một đối tượng JSON h�
 }
 Lưu ý quan trọng:
 - Phải có ĐÚNG 3 lời giải trong mảng "solutions": 1 lời giải có "isCorrect": true, và 2 lời giải có "isCorrect": false.
-- Các lời giải sai phải mắc những lỗi sinh viên cực kỳ hay nhầm (như quên đạo hàm hàm hợp, quên đổi cận tích phân, sai dấu tích phân từng phần, lạm dụng L'Hôpital...), trông rất hợp lý nếu đọc lướt qua.
+- Nếu đề bài là câu hỏi yêu cầu CHỨNG MINH ("Chứng minh rằng..."): hãy đặt thêm trường "isProof": true ở cấp ngoài, đặt "finalAnswer": "" (rỗng) cho cả 3 lời giải, và cả 3 lời giải đều phải trình bày như 3 cách chứng minh đi đến đúng kết luận cần chứng minh (đpcm), nhưng 2 cách chứng minh sai mắc lỗi lập luận ngụy biện hoặc áp dụng sai định lý ở bước trung gian.
+- Các lời giải sai phải mắc những lỗi sinh viên cực kỳ hay nhầm (như quên đạo hàm hàm hợp, quên đổi cận tích phân, sai dấu tích phân từng phần, lạm dụng L'Hôpital, ngụy biện khi chứng minh...), trông rất hợp lý nếu đọc lướt qua.
 - Mọi công thức toán phải bọc trong dấu $...$ hoặc $$...$$.`;
 
     let userPrompt = '';

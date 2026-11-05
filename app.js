@@ -283,6 +283,7 @@
     solutionsList.innerHTML = '';
 
     const letters = ['A', 'B', 'C', 'D'];
+    const labelPrefix = q.isProof ? 'Cách chứng minh' : 'Lời giải';
     currentShuffledSolutions.forEach((sol, idx) => {
       const card = document.createElement('div');
       card.className = 'solution-card';
@@ -294,13 +295,18 @@
         })
         .join('');
 
+      const hasFinalAnswer = !q.isProof && sol.finalAnswer && sol.finalAnswer.trim() !== '';
+      const finalBadgeHtml = hasFinalAnswer
+        ? `<div class="sol-final-badge math-content">Đáp số: ${sol.finalAnswer}</div>`
+        : '';
+
       card.innerHTML = `
         <div class="sol-header">
           <div class="sol-label">
             <span class="sol-letter">${letters[idx]}</span>
-            <span>Lời giải ${letters[idx]}</span>
+            <span>${labelPrefix} ${letters[idx]}</span>
           </div>
-          <div class="sol-final-badge math-content">Đáp số: ${sol.finalAnswer || ''}</div>
+          ${finalBadgeHtml}
         </div>
         <div class="sol-steps">${stepsHtml}</div>
         <div class="sol-explanation hidden math-content"></div>
